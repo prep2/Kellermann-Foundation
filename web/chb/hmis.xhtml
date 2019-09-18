@@ -1,0 +1,312 @@
+<!-- The following codes mimics the implementation of "vht.xhtml".
+     You may find some function call to java method does not make
+	 sense since we did not manage to finally integrate the java
+	 files and this "hmis.xhtml" file. Further modification to the
+	 function call is needed -->
+<ui:composition template="/WEB-INF/templates/chb.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:define name="title">Add or Edit HMIS</ui:define>
+
+    <ui:define name="commands">
+        <p:commandButton id="lBtn" value="LogOut" style="font-family: 'Calisto MT','Cambria','Consolas';font-size: 12px;font-weight: bold; float: right;" action="#{usersBean.logout()}"/>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:form id="hmis_form">
+            <h:inputHidden value="#{usersBean.uid}" binding="#{userid}"/>
+
+            <style>
+				.ui-datatable {
+					position: relative;
+					overflow-x: auto;
+				}
+				.ui-datatable > .ui-datatable-header,
+				.ui-datatable > .ui-paginator {
+					left: 0;
+					right: 0;
+					position: sticky;
+				}
+				.dropdown {
+				    background-color: black;
+                    color: white;
+                    padding: #px;
+                    font-size: #px;
+                    border: none;
+				}
+				.dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+				.dropdown-content {
+                    display: none;
+					position: absolute;
+					background-color: lightgrey;
+					min-width: #px;
+					z-index: 1;
+				}
+				.dropdown-content a {
+					color: black;
+					padding: #px #px;
+					text-decoration: none;
+					display: block;
+				}
+				.dropdown-content a:hover {background-color: white;}
+				.dropdown:hover .dropdown-content {display: block;}
+				.dropdown:hover .dropbtn {background-color: grey;}
+			</style>
+
+            <!--<p:tabView id="tabPanel">-->
+            <p:tabView id="tabPanel">
+                <p:tab title="Add new HMIS">
+                    <p:panel id="existing_vht">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Village and Parish:" />
+                            <p:selectOneMenu id="villages" value="#{chbBean.existing_vht.villageId}" filter="true" filterMatchMode="contains" editable="false" >
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItems value="#{chbBean.get_villages()}" var="village" itemLabel="#{village.villageName}" itemValue="#{village.villageId}" />
+                                <!--<p:ajax listener="#{chbBean.get_village_vht_list()}" update="village_vhts,phone_number,age,sex,isCBD"/> -->
+                            </p:selectOneMenu>
+
+
+                            <h:outputLabel value="Date Of Admission (DOA):" />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value="IPD NO:" />
+                            <p:inputText id="age" value="#{chbBean.existing_vht.age}"/>
+
+                            <h:outputLabel value="ANC NO" />
+                            <p:inputText id="age" value="#{chbBean.existing_vht.age}"/>
+
+                            <h:outputLabel value="ANC REF" />
+                            <p:inputText id="age" value="#{chbBean.existing_vht.age}"/>
+
+                            <h:outputLabel value="Name" />
+                            <p:inputText id="age" value="#{chbBean.existing_vht.age}"/>
+
+                            <h:outputLabel value="Phone No:" />
+                            <p:inputText id="age" value="#{chbBean.existing_vht.age}"/>
+
+                            <h:outputLabel value="Age" />
+                            <!--<p:inputText id="age" value="#{chbBean.existing_vht.age}"/> -->
+                            <!-- can create a drop box for age -->
+                            <form>
+                                <input type="checkbox" name="male" value="m">10-19yrs</input>
+                                <input type="checkbox" name="female" value="f">20-24yrs</input>
+                                <input type="checkbox" name="none" value="n">>=25yrs</input>
+                            </form>
+
+                        </h:panelGrid>
+
+                        <p:panel style="border:none;">
+                            <p:commandButton value="Add HMIS Details" style="font-size: 12px;font-weight: bold;" action="#{chbBean.update_existing_vht('Update')}" update="existing_vht,vht_list,:vht_form:notification"/>
+                            <p:commandButton value="Clear" style="font-size: 12px;font-weight: bold;" action="#{chbBean.update_existing_vht('Clear')}" update="existing_vht,vht_list,:vht_form:notification"/>
+                        </p:panel>
+                    </p:panel>
+                </p:tab>
+                <p:tab title="List existing HMIS">
+                    <p:panel id="vht_list">
+                        <p:dataTable id="vht_table" var="vht_list" value="#{chbBean.get_vht_list()}"
+                                     style=" background-color: #f7f7f7;width: 100%;"
+                                     paginator="true" rows="10" paginatorPosition="bottom"
+                                     tableStyle="table-layout: auto;"
+                                     filteredValue="#{chbBean.filteredVht_list}">
+                            <f:facet name="header">
+                                List of VHTs
+                            </f:facet>
+
+                            <p:column headerText="VHT Id" styleClass="tblcol1">
+                                <h:outputText value="#{vht_list.vhtId}" />
+                            </p:column>
+
+                            <p:column headerText="VHT Name" styleClass="tblcol1" filterBy="#{vht_list.vhtName}" filterMatchMode="contains" >
+                                <h:outputText value="#{vht_list.vhtName}" />
+                            </p:column>
+
+                            <p:column headerText="Age" styleClass="tblcol1">
+                                <h:outputText value="#{vht_list.age}" />
+                            </p:column>
+
+                            <p:column headerText="Sex" styleClass="tblcol1">
+                                <h:outputText value="#{vht_list.sex}" />
+                            </p:column>
+
+                            <p:column headerText="VHT Phone Number" styleClass="tblcol1">
+                                <h:outputText value="#{vht_list.vhtPhoneNumber}" />
+                            </p:column>
+
+                            <p:column headerText="Is a CBD?" styleClass="tblcol1">
+                                <h:outputText value="#{vht_list.isCBD}" />
+                            </p:column>
+
+                            <p:column headerText="Village Name" styleClass="tblcol1" filterBy="#{vht_list.villageName}" >
+                                <h:outputText value="#{vht_list.villageName}" />
+                            </p:column>
+
+                            <p:column headerText="Record Date" styleClass="tblcol1">
+                                <h:outputText value="#{vht_list.recordDate}" />
+                            </p:column>
+
+                            <p:column headerText="User Id" styleClass="tblcol1">
+                                <h:outputText value="#{vht_list.userId}" />
+                            </p:column>
+
+                            <p:column  styleClass="tblcol2">
+                                <p:commandLink value="Edit" style="font-family: 'Tangerine', serif; font-weight: bold; color: blue; width: 10%;" action="#{chbBean.get_existing_vht(vht_list.vhtId,'vht_edit')}" update=":vht_form:tabPanel:existing_vht,:vht_form:tabPanel" immediate="true" />
+                            </p:column>
+
+                        </p:dataTable>
+
+                    </p:panel>
+
+                    <h:panelGrid columns="1">
+                        <p:panel>
+                            <h:commandLink>
+                                <p:graphicImage value="#{resource['images:excel.png']}" />
+                                <p:dataExporter type="xls" target="vht_table" fileName="vht_list" />
+                            </h:commandLink>
+                        </p:panel>
+                    </h:panelGrid>
+
+                </p:tab>
+                <p:tab title="Edit Existing HMIS">
+                    <p:panel id="existing_vht">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Village and Parish" />
+                            <p:selectOneMenu id="villages2" value="#{chbBean.existing_vht.villageId}" filter="true" filterMatchMode="contains" editable="false" >
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItems value="#{chbBean.get_villages()}" var="village" itemLabel="#{village.villageName}" itemValue="#{village.villageId}" />
+                                <!--<p:ajax listener="#{chbBean.get_village_vht_list()}" update="village_vht,phone_number,age,sex,isCBD"/> -->
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value="Name" />
+                            <p:inputText id="age" value="#{chbBean.existing_vht.age}"/>
+
+                            <h:outputLabel value=" GRAVIDA or PARITY" />
+                            <!-- <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/> -->
+                            <form>
+                                <input type="checkbox" name="male" value="m">GRAVIDA</input>
+                                <input type="checkbox" name="female" value="f">PARITY</input>
+                            </form>
+
+                            <h:outputLabel value=" WEEKS OF GESTATION: " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" FINAL DIAGNOSIS:  " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" WHO CLINICAL STAGE/CD4 COUNTS/Viral load" />
+                            <!-- <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/> -->
+                            <form>
+                                <input type="checkbox" name="male" value="m">WHO CLINICAL STAGE</input>
+                                <input type="checkbox" name="female" value="f">CD4 COUNTS</input>
+                                <input type="checkbox" name="none" value="n">VIRAL LOAD</input>
+                            </form>
+
+                            <!-- DELIVERY information -->
+                            <h:outputLabel value=" MODE OF DELIVERY/MANAGEMENT PROCEDURE:  " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" DATE OF DELIVERY" />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" TIME OF DELIVERY" />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" MANAGEMENT OF 3RD STAGE OF LABOUR: " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" OTHER TREATMENT GIVEN" />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" eMTCT CODE" />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" ARVS TO MOTHERS " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" VITAMIN A SUPPLEMENTATION/MUAC/INR NO: " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <!-- Child information -->
+                            <h:outputLabel value="  APGAR SCORE (A or S): " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value="Sex:" />
+                            <p:selectOneMenu id="sex" value="#{chbBean.existing_vht.sex}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="Female" itemValue="F" />
+                                <f:selectItem itemLabel="Male" itemValue="M" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" NOT BREATHING AT BIRTH: " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" IMMEDIATE SKIN TO SKIN CONTACT:  " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" Breast fed less than or equals to 1hrs?  " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" ROUTINE MEDICATION" />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" COUNSELING AT DISCHARGE: " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" IYCF: " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" WEIGHT (WT): " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" ARVS ADMINISTERED TO BABY:  " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" IMMUNISATION (BCG/POLIO 0): " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+
+                            <!-- DISCHARGE information -->
+                            <h:outputLabel value=" FAMILY PLANNING METHOD GIVEN:  " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" CONDITION OF MOTHER ON DISCHARGE: " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" CONDITION OF BABY ON DISCHARGE: " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" DELIVERED BY: " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" PNC AT 6H:  " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value=" DATE OF DISCHARGE or NAME OF THE PERSON WHO DISCHARGING:  " />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/> -->
+
+
+                        </h:panelGrid>
+
+                        <p:panel style="border:none;">
+                            <p:commandButton value="Update Existing VHT Details" style="font-size: 12px;font-weight: bold;" action="#{chbBean.update_existing_vht('Update')}" update="existing_vht,vht_list,:vht_form:notification"/>
+                            <p:commandButton value="Clear" style="font-size: 12px;font-weight: bold;" action="#{chbBean.update_existing_vht('Clear')}" update="existing_vht,vht_list,:vht_form:notification"/>
+                        </p:panel>
+                    </p:panel>
+                </p:tab>
+            </p:tabView>
+
+
+            <p:growl id="notification" sticky="true"/>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

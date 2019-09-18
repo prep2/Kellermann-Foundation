@@ -1,0 +1,63 @@
+<ui:composition template="/WEB-INF/templates/chb.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"              
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:define name="title">Add or Edit VHTs</ui:define>
+
+    <ui:define name="commands">
+        <p:commandButton id="lBtn" value="LogOut" style="font-family: 'Calisto MT','Cambria','Consolas';font-size: 12px;font-weight: bold; float: right;" action="#{usersBean.logout()}"/>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:form id="vht_form">  
+            <h:inputHidden value="#{usersBean.uid}" binding="#{userid}"/>
+
+            <p:tabView id="tabPanel">
+                <p:tab title="Edit Existing VHT">
+                    <p:panel id="existing_vht2">
+
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Village:" />
+                            <h:outputText value="#{chbBean.existing_vht.villageName}" style="font-weight: bold;"/>
+                            <h:outputLabel value="Name of VHT:" />
+                            <h:outputText value="#{chbBean.existing_vht.vhtName}" style="font-weight: bold;"/>
+                            <h:outputLabel value="Phone Number:" />
+                            <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
+
+                            <h:outputLabel value="Age (years):" />
+                            <p:inputText id="age" value="#{chbBean.existing_vht.age}"/>                            
+                            
+                            <h:outputLabel value="Sex:" />
+                            <p:selectOneMenu id="sex" value="#{chbBean.existing_vht.sex}"> 
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="Female" itemValue="F" />
+                                <f:selectItem itemLabel="Male" itemValue="M" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value="Is this VHT a CBD?:" />
+                            <p:selectOneMenu id="isCBD" value="#{chbBean.existing_vht.isCBD}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="No" itemValue="N" />
+                                <f:selectItem itemLabel="Yes" itemValue="Y" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+
+                        <p:panel style="border:none;">
+                            <p:commandButton value="Update Existing VHT Details" style="font-size: 12px;font-weight: bold;" action="#{chbBean.update_existing_vht('Update')}" update="existing_vht2,:vht_form:notification"/>
+                            <p:commandButton value="Cancel" style="font-size: 12px;font-weight: bold;" action="#{chbBean.update_existing_vht('Cancel')}" update="existing_vht2,:vht_form:notification"/>
+                        </p:panel>
+                    </p:panel>
+                </p:tab>
+            </p:tabView>            
+
+            <p:growl id="notification" sticky="true"/>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

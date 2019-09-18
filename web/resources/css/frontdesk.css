@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.old
+{
+  background:yellow  !important ;
+}
+
+.topmenu{
+    height: 40px;
+    background-color: #1b1b1b; 
+}
+
+.topcontent{
+    position:absolute;
+    left:0;
+    top:0;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.toplogout{
+    position:absolute;
+    right:0;
+    top:0;
+    padding-top: 10px;
+    padding-right: 5px;
+    color:#333;
+}
+
+.bannerimage {
+    background: #000000 url(../images/banner.png) no-repeat center;   
+}
+
+.bannerimagelab {
+    background: #0071cd url(../images/laboratorybanner.jpg) no-repeat right;   
+}
+
+.bannerimagestore {
+    background: #FFFFFF url(../images/storebanner.jpg) no-repeat center;   
+}
+
+#userimage{
+    padding-left: 8px;
+    padding-top: 4px;
+}
+
+.content{
+    margin-left: 150px; 
+    margin-right: 150px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+}
+
+.icon-new{
+    background: url("#{resource['images/label_blue_new.png']}");
+}
+
+.image {
+    background: url(/resources/images/label_blue_new.png) no-repeat top left;
+}
+
+.ui-state-default .icon-forward{
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/next.png);
+}
+
+.ui-state-default .icon-cancel{
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/canceled.png);
+}
+.dashboard{
+    margin:0 auto;
+    margin-left: 450px;
+    margin-top: 100px;
+}
+
+a{
+    color:#0071cd;
+    text-decoration: none;
+        
+}
+
+a:hover{
+    text-decoration:underline;      
+}
+

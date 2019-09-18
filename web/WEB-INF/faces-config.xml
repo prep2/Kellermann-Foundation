@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    <lifecycle>
+        <phase-listener>model.AuthorizationListener</phase-listener>
+    </lifecycle>
+
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>start</from-outcome>
+            <to-view-id>/start.xhtml</to-view-id>
+<!--            <to-view-id>start.xhtml</to-view-id>        -->            
+        </navigation-case>
+    </navigation-rule>
+
+
+    <navigation-rule>
+        <from-view-id>/chb/chb.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>completed</from-outcome>
+            <to-view-id>/chb.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/chb/update.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>completed</from-outcome>
+            <to-view-id>/chb.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/chb/search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>update</from-outcome>
+            <to-view-id>/chb/update.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/admin/newdepartment.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>viewall</from-outcome>
+            <to-view-id>/admin/alldepartments.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/admin/alldepartments.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>addnew</from-outcome>
+            <to-view-id>/admin/newdepartment.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/admin/newuser.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ViewUsers</from-outcome>
+            <to-view-id>/admin/allusers.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

@@ -1,0 +1,53 @@
+            
+.tab-block{
+	margin:0 auto;
+	width:998px;
+	overflow:hidden;
+}
+.tabset{
+	padding:0;
+	margin:0 -39px 0 0;
+	list-style:none;
+	width:1037px;
+	font-size:16px;
+	line-height:20px;
+}
+.tabset li{
+	float:left;
+	text-align:center;
+	margin:0 81px 0 27px;
+}
+.tabset a{
+	display:block;
+	color:#a5bfcb;
+	text-decoration:none;
+	padding:0 0 21px;
+}
+.tabset span{
+	display:inline-block;
+	width:52px;
+	height:52px;
+	overflow:hidden;
+	cursor:pointer;
+}
+.tabset img{
+	display:block;
+	width:52px;
+	height:120px;
+	margin:-68px 0 0;
+}
+.tabset strong{
+	display:block;
+	font-weight:normal;
+}
+.tabset .active img,
+.tabset a:hover img{
+	display:block;
+	margin:0;
+}
+.tabset .active,
+.tabset a:hover{
+	color:#285d77;
+	background:url(../images/arrow-tab.png) no-repeat 50% 100%;
+}
+

@@ -1,0 +1,15 @@
+body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-color:#313b3f; font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;}
+
+#mcontent {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}

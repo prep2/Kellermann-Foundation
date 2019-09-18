@@ -1,0 +1,66 @@
+<ui:composition template="/WEB-INF/templates/chb.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:define name="title">Settings</ui:define>
+    
+    <ui:define name="commands">
+        <p:commandButton id="lBtn" value="LogOut" style="font-family: 'Calisto MT','Cambria','Consolas';font-size: 12px;font-weight: bold; float: right;" action="#{usersBean.logout()}"/>
+    </ui:define>
+    
+    <ui:define name="content">
+
+        <h:form>  
+            <p:panel id="pnluserdetails" style="margin-bottom:5px;color: #40356E;background-color: #f7f7f7;">
+                <h:panelGrid id="griduserdetails" columns="2" cellpadding="5" cellspacing="5" style="margin-left: 20px;font-size: 14px;"> 
+
+                    <h:outputLabel value="Full Name: " styleClass="headercolumn" />                  
+                    <p:inputText value="#{usersBean.loggedin.fullname}" styleClass="datacolumn"/>
+                    
+                    <h:outputLabel value="User Name: " styleClass="headercolumn"/>
+                    <h:outputLabel value="#{usersBean.loggedin.username}" styleClass="datacolumn" />
+
+                    <h:outputLabel value="Gender: " styleClass="headercolumn"/>
+                    <h:outputLabel value="#{usersBean.loggedin.gender}" styleClass="datacolumn" />
+
+                    <h:outputLabel value="Status: " styleClass="headercolumn"/>
+                    <h:outputLabel value="#{usersBean.loggedin.status}" styleClass="datacolumn" />
+
+                    <h:outputLabel value="Department: " styleClass="headercolumn"/>
+                    <h:outputLabel value="#{usersBean.loggedin.department}" styleClass="datacolumn" />
+
+                    <h:outputLabel value="Role: " styleClass="headercolumn"/>
+                    <h:outputLabel value="#{usersBean.loggedin.role}" styleClass="datacolumn" />
+
+                </h:panelGrid>
+                <p:separator/>
+                <h:panelGrid id="gridchangepwd" columns="2" cellpadding="5" cellspacing="5" style="margin-left: 20px;font-size: 14px;">
+                    <p:selectBooleanCheckbox itemLabel="Change Your Password" value="#{usersBean.change_pwd}">  
+                        <p:ajax update="gridchangepwd"/>  
+                    </p:selectBooleanCheckbox>
+                    <p:spacer/>
+
+                    <h:outputLabel value="Current Password: " styleClass="headercolumn"/>
+                    <p:password id="current" value="#{usersBean.current_pwd}" style="width: 160px;font-size: 13px;" disabled="#{!usersBean.change_pwd}"/>
+
+                    <h:outputLabel value="New Password: " styleClass="headercolumn"/>
+                    <p:password id="newpwd" value="#{usersBean.loggedin.new_password}" style="width: 160px;font-size: 13px;" disabled="#{!usersBean.change_pwd}"/>
+
+                    <h:outputLabel value="Retype New Password: " styleClass="headercolumn"/>
+                    <p:password id="newpwdretyped" value="#{usersBean.loggedin.new_password_retyped}" style="width: 160px;font-size: 13px;" disabled="#{!usersBean.change_pwd}"/>
+                </h:panelGrid>
+            </p:panel>
+            <p:panel id="pnlaction" style="margin-bottom:5px;">
+                <p:commandButton value="Update Profile" action="#{usersBean.users_update_profile()}"/>
+                <p:commandButton value="Cancel"/>
+            </p:panel>
+            <p:growl id="notification" sticky="true"/>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

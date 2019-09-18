@@ -1,0 +1,226 @@
+html {
+        overflow-y: scroll; /* Sticky vertical scrollbar to prevent horizontal shifts on navigation. */
+}
+
+body {
+        width: 1250px; /* Target minimum of 1280x1024 */
+        margin: 0 auto;
+        padding: 3px 0;
+        background: #eee;
+}
+
+body .ui-widget {
+        font-family: "Trebuchet MS", "Liberation Sans", "DejaVu Sans", sans-serif;
+        font-size: 12px;
+        line-height: 1.3em;
+}
+
+h1 {
+        margin: 0;
+        padding: 2px 0;
+        height: 70px;
+}
+
+h1 a,
+h1 a:hover {
+        text-decoration: none;
+        background: none;
+}
+
+h1 a img {
+        vertical-align: middle;
+        border: 0;
+}
+
+a:hover,
+a.active {
+        background: #ddd;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        border-radius:3px;
+}
+
+code,
+.code {
+        font-family: Consolas, Monaco, "Lucida Console", "Courier New", Courier, monospace;
+}
+
+#header {
+        position: relative;
+        padding: 0;
+        margin-bottom: 3px;
+        height: 83px;
+}
+
+#poweredBy {
+        position: absolute;
+        top: -6px;
+        right: 6px;
+        font-size: .8em;
+        text-align: right;
+        white-space: pre;
+        line-height: 1.3em;
+}
+
+#menu .ui-panel,
+#content .ui-panel {
+        margin: 8px 0;
+}
+
+#menu .ui-panel-titlebar,
+#content .ui-panel-titlebar {
+        padding: 3px 8px;
+}
+
+#menu .ui-panel-content,
+#content .ui-panel-content {
+        padding: 0 8px;
+}
+
+#menu {
+        width: 250px;
+        margin-bottom: 3px;
+}
+
+#menu ul {
+        margin: 3px 0 1px 0;
+        padding: 0;
+        list-style-type: none;
+}
+
+#menu ul.group li {
+        float: left;
+        margin-right: 3px;
+}
+
+#menu a {
+        display: block;
+        line-height: 1.5em;
+}
+
+#menu a.code {
+        padding: 1px 0;
+        line-height: 1.3em;
+}
+
+#content {
+        float: right;
+        width: 985px;
+        margin-bottom: 1000px; /* Just some spacing to avoid vertical page shifts when switching between source code tabs. */
+}
+
+#content .ui-tabs {
+        margin: 8px 0;  
+}
+
+html.progress, html.progress * {
+        cursor: progress !important;
+}
+
+label.error {
+        color: #c66;
+}
+
+input.error, select.error, textarea.error {
+        background-color: #fee;
+}
+
+.messages {
+        margin: 12px 6px;
+        padding: 0;
+}
+
+.messages li {
+        list-style-type: none;
+        padding: 6px;
+        color: white;
+        font-size: 1.4em;
+        box-shadow: 2px 2px 4px #ccc;
+}
+
+.messages li:first-child {
+        -moz-border-radius: 4px 4px 0 0;
+        -webkit-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+}
+
+.messages li:last-child {
+        -moz-border-radius: 0 0 4px 4px;
+        -webkit-border-radius: 0 0 4px 4px;
+        border-radius: 0 0 4px 4px;
+}
+
+.messages li:only-child {
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+}
+
+.messages .info {
+        background: yellowgreen;
+}
+
+.messages .warn {
+        background: orange;
+}
+
+.messages .error {
+        background: orangered;
+}
+
+.messages .fatal {
+        background: maroon;
+}
+
+.snapshot {
+        padding: 0 5px;
+        background: #ff9;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+}
+
+.clearleft:after {
+        content: "";
+        display: table;
+        clear: left;
+}
+
+.clearleft {
+        *zoom: 1; /* IE6/7. */
+}
+
+.ui-panel-titlebar.ui-helper-clearfix:after {
+        display: none; /* New since PF 3.4. Broke the floats. */
+}
+
+.topmenu{
+    height: 40px;
+    background-color: #1b1b1b; 
+}
+
+#userimage{
+    padding-left: 8px;
+    padding-top: 4px;
+}
+
+.topcontent{
+    position:absolute;
+    left:0;
+    top:0;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.toplogout{
+    position:absolute;
+    right:0;
+    top:0;
+    padding-top: 10px;
+    padding-right: 5px;
+    color:#333;
+}
+
+.bannerimage {
+    background: #000000 url(../images/banner.png) no-repeat center;   
+}

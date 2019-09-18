@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Login</title>
+        <link rel="stylesheet" href="#{resource['css:start.css']}"/>
+    </h:head>
+    <h:body id="login">
+
+        <div id="login-wrapper" class="png_bg">
+            <div id="login-top">
+                <img src="#{resource['images:bwindi_logo.png']}" alt="Management System" title="Hospital System" />			
+            </div>
+
+            <div id="login-content">
+
+                <h:form id="loginForm">
+                    <p:growl id="msg" showDetail="true" life="3000"/>
+                    <p:panel id="Login" style="background-color: #1b1b1b; border-style: hidden;padding-left: 60px;" >
+                        <p:panelGrid id="loginPanel" columns="2">
+                            <h:outputText value="Username" style="color: #fff;font-weight: bold;font-size: 14px;"/>
+                            <p:inputText id="username" value="#{usersBean.userName}" style="width: 160px;font-size: 13px;"/>
+                            <p:spacer/>
+
+                            <p:message for="username"/>
+                            <h:outputText value="Password" style="color: #fff;font-weight: bold;font-size: 14px;"/>
+                            <p:password id="password" value="#{usersBean.password}" style="width: 160px;font-size: 13px;"/>
+                            <p:spacer/>
+
+                            <p:message for="password"/>
+                            <p:spacer/>
+                            <p:commandButton action="#{usersBean.login()}" value="Login" update="loginForm" ajax="true" style="float: right; width: 120px;"/>
+                        </p:panelGrid>
+                    </p:panel>
+                </h:form>
+            </div>
+        </div>
+        <div id="dummy"></div>
+        <div id="dummy2"></div>
+
+
+    </h:body>
+</html>

@@ -1,4 +1,7 @@
 /* Need to create scipts to find the totals at the end of the HMIS data form*/
+CREATE DATABASE IF NOT EXISTS `bwindihospital_reduced` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `bwindihospital_reduced`;
+
 
 CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`babyCondition`(
 	`code` VARCHAR(5) NOT NULL,
@@ -91,7 +94,7 @@ VALUES
 ('NC', 'Not counseled')
 ;
 
-CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`breathing`(
+CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`not_breathing`(
 	`code` VARCHAR(3) NOT NULL,
 	`description` VARCHAR(100) NULL DEFAULT NULL,
 PRIMARY KEY (`code`)
@@ -116,7 +119,7 @@ COMMENT='This table holds the data for the muac colour codes'
 ENGINE=InnoDB
 ;
 
-INSERT INTO `muaccolour` (`code`,`description`)
+INSERT INTO `muacColour` (`code`,`description`)
 VALUES
 ('R', 'Red'),
 ('Y', 'Yellow'),

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <ui:insert name="head" />
+        <title><ui:insert name="title">Consultant</ui:insert></title>
+        <link rel="stylesheet" href="#{resource['css:main.css']}" type="text/css"/>
+    </h:head>
+    <h:body>
+
+
+        <p:layout fullPage="true">  
+            <p:layoutUnit position="north"  style="border: 0px;padding: 0px;">  
+                <h:form id="main" style="padding: 0px;">
+                    <div class="topmenu">
+                        <img id="userimage" src="#{resource['images:nice.png']}"/>
+                        <div class="topcontent">
+                            <h:outputText value="#{usersBean.fullName}" binding="#{loggedin}"/>
+                        </div>           
+                        <div class="toplogout">
+                            <h:commandButton value="Log Out" action="#{usersBean.logout()}"/>
+                        </div>
+                    </div>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="12%" style="border: 0px;">  
+                <p:menu>  
+                    <p:submenu label="Ward Menu">  
+                        <p:menuitem outcome="/consultant/ipd/ward/new" value="Forwarded Patients" icon="ui-icon-disk"/> 
+                        <p:menuitem outcome="/consultant/ipd/ward/existing" value="Patients on Ward" icon="ui-icon-disk"/>
+                        <p:menuitem outcome="/consultant/ipd/ward/discharged" value="Discharged Patients" icon="ui-icon-disk"/>                        
+                        <p:menuitem outcome="/consultant/ipd/search" value="Search" icon="ui-icon-disk" />  
+                        <p:menuitem outcome="/consultant/ipd/settings" value="Settings" icon="ui-icon-disk"/>
+                        <p:menuitem outcome="/consultant/ipd/reports" value="Reports" icon="ui-icon-disk" />
+                        <p:menuitem outcome="/consultant/ipd/history" value="History" icon="ui-icon-disk" />
+                    </p:submenu>  
+
+                </p:menu>  
+            </p:layoutUnit>  
+
+            <p:layoutUnit position="center" style="border: 0px;">  
+                <ui:insert name="content" />
+            </p:layoutUnit>  
+        </p:layout> 
+
+    </h:body>
+</html>

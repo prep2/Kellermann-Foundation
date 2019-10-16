@@ -1,0 +1,706 @@
+<!-- The following codes mimics the implementation of "vht.xhtml".
+     You may find some function call to java method does not make
+	 sense since we did not manage to finally integrate the java
+	 files and this "hmis.xhtml" file. Further modification to the
+	 function call is needed -->
+<ui:composition template="/WEB-INF/templates/chb.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:define name="title">Add or Edit HMIS</ui:define>
+
+    <ui:define name="commands">
+        <p:commandButton id="lBtn" value="LogOut" style="font-family: 'Calisto MT','Cambria','Consolas';font-size: 12px;font-weight: bold; float: right;" action="#{usersBean.logout()}"/>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:form id="hmis_form">
+            <h:inputHidden value="#{usersBean.uid}" binding="#{userid}"/>
+
+            <!--<style>
+				.ui-datatable {
+					position: relative;
+					overflow-x: auto;
+				}
+				.ui-datatable > .ui-datatable-header,
+				.ui-datatable > .ui-paginator {
+					left: 0;
+					right: 0;
+					position: sticky;
+				}
+				.dropdown {
+				    background-color: black;
+                    color: white;
+                    padding: #px;
+                    font-size: #px;
+                    border: none;
+				}
+				.dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+				.dropdown-content {
+                    display: none;
+					position: absolute;
+					background-color: lightgrey;
+					min-width: #px;
+					z-index: 1;
+				}
+				.dropdown-content a {
+					color: black;
+					padding: #px #px;
+					text-decoration: none;
+					display: block;
+				}
+				.dropdown-content a:hover {background-color: white;}
+				.dropdown:hover .dropdown-content {display: block;}
+				.dropdown:hover .dropbtn {background-color: grey;}
+			</style>-->
+
+            <!--<p:tabView id="tabPanel">-->
+            <p:tabView id="tabPanel">
+                <p:tab title="Add new HMIS">
+                    <p:panel id="existing_hmis">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Village and Parish:" />
+                            <p:selectOneMenu id="villages" value="#{chbBean.existing_vht.villageId}" filter="true" filterMatchMode="contains" editable="false" >
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItems value="#{chbBean.get_villages()}" var="village" itemLabel="#{village.villageName}" itemValue="#{village.villageId}" />
+                                <!--<p:ajax listener="#{chbBean.get_village_hmis_list()}" update="village_vhts,phone_number,age,sex,isCBD"/> -->
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" GRAVIDA or PARITY" />
+                            <!-- <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/> -->
+
+                            <h:form>
+                                <h:outputLabel value=" Parity "/>
+                                <p:inputText value="#{chbBean.existing_hmis.parity}" />
+
+                                <h:outputLabel value=" Gravida "/>
+                                <p:inputText value="#{chbBean.existing_hmis.gravida}" />
+                            </h:form>
+                            <br />
+
+                            <h:outputLabel value=" WEEKS OF GESTATION: " />
+                            <p:inputText value="#{chbBean.existing_hmis.gestation}"/>
+
+                            <h:outputLabel value=" TERM:  " />
+                            <p:selectOneMenu value="#{chbBean.new_hmis.term}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="Term" itemValue="(T)" />
+                                <f:selectItem itemLabel="Pre-Term" itemValue="(P)" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" FINAL DIAGNOSIS:  " />
+                            <p:inputText value="#{chbBean.existing_hmis.finalDiagnosis}"/>
+
+                            <h:outputLabel value=" WHO CLINICAL STAGE/CD4 COUNTS " />
+                            <h:form>
+                                <h:outputLabel value=" WHO CLINICAL STAGE "/>
+                                <p:inputText value="#{chbBean.existing_hmis.whoClinicalStage}"/>
+
+                                <h:outputLabel value=" CD4 "/>
+                                <p:inputText value="#{chbBean.existing_hmis.cd4Count}"/>
+
+                                <h:outputLabel value=" Viral Load "/>
+                                <p:inputText value="#{chbBean.existing_hmis.viralLoad}"/>
+
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.revisit}" /> Revisit
+                            </h:form>
+
+                            <!-- DELIVERY information -->
+                            <h:outputLabel value=" MODE OF DELIVERY/MANAGEMENT PROCEDURE:  " />
+                            <p:inputText value="#{chbBean.existing_hmis.deliveryMode}"/>
+
+                            <h:outputLabel value=" DATE OF DELIVERY" />
+                            <p:inputText value="#{chbBean.existing_hmis.deliveryDate}"/>
+
+                            <h:outputLabel value=" TIME OF DELIVERY" />
+                            <p:inputText value="#{chbBean.existing_hmis.deliveryTime}"/>
+
+                            <h:outputLabel value=" MANAGEMENT OF 3RD STAGE OF LABOUR: " />
+                            <!-- <h:selectBooleanCheckbox value="#{user.rememberMe}" /> Remember Me -->
+                            <h:form>
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.ergometrine}"/> ERGOMETRINE
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.pitocin}" /> PITOCIN
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.misoprostol}" /> MISOPROSTOL
+                            </h:form>
+
+                            <h:outputLabel value=" OTHER TREATMENT GIVEN" />
+                            <p:inputText value="#{chbBean.existing_hmis.otherMeds}"/>
+
+                            <h:outputLabel value=" eMTCT CODE" />
+                            <p:inputText value="#{chbBean.existing_hmis.emtctCode}"/>
+
+                            <h:outputLabel value=" ARVS TO MOTHERS " />
+                            <p:inputText value="#{chbBean.existing_hmis.arvs}"/>
+
+                            <h:outputLabel value=" VITAMIN A SUPPLEMENTATION " />
+                            <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.vitaminA}" /> Vitamin A
+
+                            <h:outputLabel value=" MUAC COLOR CODE " />
+                            <p:inputText value="#{chbBean.existing_hmis.muacColor}"/>
+
+                            <h:outputLabel value=" MUAC INR NUMBER"/>
+                            <p:inputText value="#{chbBean.existing_hmis.muacINR}"/>
+
+                            <!-- Child information -->
+                            <h:outputLabel value="  APGAR SCORE (A/S): " />
+                            <p:inputText value="#{chbBean.existing_hmis.apgarScore}"/>
+
+                            <h:outputLabel value="SEX:" />
+                            <p:selectOneMenu value="#{chbBean.new_hmis.sexOfBaby}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="Female" itemValue="F" />
+                                <f:selectItem itemLabel="Male" itemValue="M" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" NOT BREATHING AT BIRTH: " />
+                            <p:selectOneMenu value="#{chbBean.new_hmis.breathing}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="Stimulation and or Suction" itemValue="SS" />
+                                <f:selectItem itemLabel="Bag and Mask" itemValue="BM" />
+                                <f:selectItem itemLabel="BMD" itemValue="BMD" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" IMMEDIATE SKIN TO SKIN CONTACT:  " />
+                            <p:inputText value="#{chbBean.existing_hmis.skinToSkin}"/>
+
+                            <h:outputLabel value=" Breast fed less than or equals to 1hrs?  " />
+                            <p:inputText value="#{chbBean.existing_hmis.breastFed}"/>
+
+                            <h:outputLabel value=" ROUTINE MEDICATION " />
+                            <!-- <h:selectBooleanCheckbox value="#{user.rememberMe}" /> Remember Me -->
+                            <h:form>
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.teo}" /> Tetracycline
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.vitK}" /> Vitamin K
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.chlorohexidine}" /> Chlorhexidine
+                            </h:form>
+
+                            <h:outputLabel value=" COUNSELING AT DISCHARGE: " />
+                            <h:form>
+                                <p:selectOneMenu value="#{chbBean.new_hmis.counseled}">
+                                    <f:selectItem itemLabel="Select" itemValue="" />
+                                    <f:selectItem itemLabel="Counseled" itemValue="C" />
+                                    <f:selectItem itemLabel="Not Counseled" itemValue="NC" />
+                                </p:selectOneMenu>
+
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.matNutrCouns}" /> Maternal Nutritional Counseling
+                            </h:form>
+
+                            <h:outputLabel value=" IYCF: " />
+                            <h:form>
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.iycf}" /> Counseled On Infant/Young Feeding
+
+                                <h:outputLabel value="Feeding Option"/>
+                                <p:inputText value="#{chbBean.existing_hmis.iycfFeeding}" />
+                            </h:form>
+
+                            <h:outputLabel value=" WEIGHT (WT): " />
+                            <p:inputText value="#{chbBean.existing_hmis.weight}"/>
+
+                            <h:outputLabel value=" ARV'S ADMINISTERED TO BABY:  " />
+                            <p:inputText value="#{chbBean.existing_hmis.arvsBaby}"/>
+
+                            <h:outputLabel value=" IMMUNISATION (BCG/POLIO 0): " />
+                            <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.immunized}" /> Baby Received BCG and Polio
+
+
+                            <!-- DISCHARGE information -->
+                            <h:outputLabel value=" FAMILY PLANNING METHOD GIVEN: " />
+                            <p:inputText value="#{chbBean.existing_hmis.familyPlanning}"/>
+
+                            <h:outputLabel value=" CONDITION OF MOTHER ON DISCHARGE: " />
+                            <p:selectOneMenu value="#{chbBean.new_hmis.motherCondition}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="D" itemValue="D" />
+                                <f:selectItem itemLabel="DD" itemValue="DD" />
+                                <f:selectItem itemLabel="R" itemValue="R" />
+                                <f:selectItem itemLabel="T" itemValue="T" />
+                                <f:selectItem itemLabel="DF" itemValue="DF" />
+                                <f:selectItem itemLabel="DDF" itemValue="DDF" />
+                                <f:selectItem itemLabel="RF" itemValue="RF" />
+                                <f:selectItem itemLabel="TF" itemValue="TF" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" CONDITION OF BABY ON DISCHARGE: " />
+                            <p:selectOneMenu value="#{chbBean.new_hmis.babyCondition}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="MSB" itemValue="MSB" />
+                                <f:selectItem itemLabel="FSB" itemValue="FSB" />
+                                <f:selectItem itemLabel="NND" itemValue="NND" />
+                                <f:selectItem itemLabel="AL" itemValue="AL" />
+                                <f:selectItem itemLabel="BDF" itemValue="BDF" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" DELIVERED BY: " />
+                            <p:inputText value="#{chbBean.existing_hmis.deliveredBy}"/>
+
+                            <h:outputLabel value=" PNC AT 6H:  " />
+                            <p:inputText value="#{chbBean.existing_hmis.postNatalCare}"/>
+
+                            <h:outputLabel value=" DATE OF DISCHARGE:  " />
+                            <p:inputText value="#{chbBean.existing_hmis.dateOfDischarge}"/>
+
+                            <h:outputLabel value=" NAME OF THE PERSON WHO DISCHARGED THE MOTHER:  " />
+                            <p:inputText value="#{chbBean.existing_hmis.nameDischarge}"/>
+
+
+                        </h:panelGrid>
+
+                        <p:panel style="border:none;">
+                            <!--The problem is here, it has to do with jsf update rendering
+                            https://stackoverflow.com/questions/8634156/how-to-find-out-client-id-of-component-for-ajax-update-render-cannot-find-compo-->
+                            <p:commandButton value="Add HMIS Details" style="font-size: 12px;font-weight: bold;" action="#{chbBean.update_existing_hmis('Update')}" update="existing_hmis,hmis_list,:hmis_form:notification"/>
+                            <p:commandButton value="Clear" style="font-size: 12px;font-weight: bold;" action="#{chbBean.update_existing_hmis('Clear')}" update="existing_hmis,hmis_list,:hmis_form:notification"/>
+                        </p:panel>
+                    </p:panel>
+                </p:tab>
+                <p:tab title="List existing HMIS">
+                    <p:panel id="hmis_list">
+                        <p:dataTable id="hmis_table" var="hmis_list" value="#{chbBean.get_hmis_list()}"
+                                     style=" background-color: #f7f7f7;width: 100%;"
+                                     paginator="true" rows="10" paginatorPosition="bottom"
+                                     tableStyle="table-layout: auto;"
+                                     filteredValue="#{chbBean.filteredHmis_list}">
+                            <f:facet name="header">
+                                List of HMISs
+                            </f:facet>
+
+                            <p:column headerText=" Date of Admission " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.recordDate}" />
+                            </p:column>
+
+                            <p:column headerText=" IPD " styleClass="tblcol1" filterBy="#{hmis_list.ipd}" filterMatchMode="contains" >
+                                <h:outputText value="#{hmis_list.ipd}" />
+                            </p:column>
+
+                            <p:column headerText=" ANC Number " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.ancNum}" />
+                            </p:column>
+
+                            <p:column headerText=" ANC Reference " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.ancRef}" />
+                            </p:column>
+
+                            <p:column headerText=" Patient Name " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.matName}" />
+                            </p:column>
+
+                            <p:column headerText=" Village ID " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.villageId}" />
+                            </p:column>
+
+                            <p:column headerText=" Village Name " styleClass="tblcol1" filterBy="#{hmis_list.villageName}" >
+                                <h:outputText value="#{hmis_list.villageName}" />
+                            </p:column>
+
+                            <p:column headerText=" Phone Number " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.matPhoneNumber}" />
+                            </p:column>
+
+                            <p:column headerText=" Age" styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.userId}" />
+                            </p:column>
+
+                            <p:column headerText=" Parity    " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.parity}" />
+                            </p:column>
+
+                            <p:column headerText=" Gravida    " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.gravida}" />
+                            </p:column>
+
+                            <p:column headerText=" Gestation " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.gestation}" />
+                            </p:column>
+
+                            <p:column headerText=" Term " styleClass="tblcol1" filterBy="#{hmis_list.villageName}" >
+                                <h:outputText value="#{hmis_list.term}" />
+                            </p:column>
+
+                            <p:column headerText=" FinalDiagnosis " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.finalDiagnosis}" />
+                            </p:column>
+
+                            <p:column headerText=" WHO Clinical Stage " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.whoClinicalStage}" />
+                            </p:column>
+
+                            <p:column headerText=" CD4 Count " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.cd4Count}" />
+                            </p:column>
+
+                            <p:column headerText=" Viral Load " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.viralLoad}" />
+                            </p:column>
+
+                            <p:column headerText=" Revisit " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.revisit}" />
+                            </p:column>
+
+                            <p:column headerText=" Delivery Mode " styleClass="tblcol1" filterBy="#{hmis_list.villageName}" >
+                                <h:outputText value="#{hmis_list.deliveryMode}" />
+                            </p:column>
+
+                            <p:column headerText=" Delivery Date " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.deliveryDate}" />
+                            </p:column>
+
+                            <p:column headerText=" Delivery Time " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.deliveryTime}" />
+                            </p:column>
+
+
+                            <p:column headerText=" Ergometrine " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.ergometrine}" />
+                            </p:column>
+
+                            <p:column headerText=" Pitocin " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.pitocin}" />
+                            </p:column>
+
+                            <p:column headerText=" Misoprostol " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.misoprostol}" />
+                            </p:column>
+
+                            <p:column headerText=" Other Treatment Given " styleClass="tblcol1" filterBy="#{hmis_list.villageName}" >
+                                <h:outputText value="#{hmis_list.otherMeds}" />
+                            </p:column>
+
+                            <p:column headerText=" eMTCT Code: " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.emtctCode}" />
+                            </p:column>
+
+<!--                            <p:column headerText=" Codes for clients who come ot Maternity with known status " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.userId}" />
+                            </p:column>-->
+
+                            <p:column headerText=" ARVs to Mothers " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.arvs}" />
+                            </p:column>
+
+                            <p:column headerText=" Vitamin A Supplement " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.vitaminA}" />
+                            </p:column>
+
+                            <p:column headerText=" MUAC colour code " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.muacColor}" />
+                            </p:column>
+
+                            <p:column headerText=" Integrated Nutrition Register Number " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.muacINR}" />
+                            </p:column>
+
+                            <p:column headerText=" Apgar Score (A/S) " styleClass="tblcol1" >
+                                <h:outputText value="#{hmis_list.apgarScore}" />
+
+                            </p:column>
+
+                            <p:column headerText="Breathing" styleClass="tblcol1" >
+                                <h:outputText value="{#hmis_list.breathing}"/>
+                            </p:column>
+
+                            <p:column headerText="Skin To Skin Contact" styleClass="tblcol1">
+                                <h:outputText value="{#hmis_list.skinToSkin}"/>
+                            </p:column>
+
+                            <p:column headerText=" Breast Fed " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.breastFed}" />
+                            </p:column>
+
+                            <p:column headerText=" TEO " styleClass="tblcol1" >
+                                <h:outputText value="#{hmis_list.teo}" />
+                            </p:column>
+
+                            <p:column headerText=" Vitamin K " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.vitK}" />
+                            </p:column>
+
+                            <p:column headerText=" Chlorohexidine " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.chlorohexidine}" />
+                            </p:column>
+
+                            <p:column headerText=" Counseled " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.counseled}" />
+                            </p:column>
+
+                            <p:column headerText=" IYCF " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.iycf}" />
+                            </p:column>
+
+                            <p:column headerText=" IYCF Feeding " styleClass="tblcol1" >
+                                <h:outputText value="#{hmis_list.iycfFeeding}" />
+                            </p:column>
+
+                            <p:column headerText=" Weight " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.weight}" />
+                            </p:column>
+
+                            <p:column headerText=" Arvs Baby " styleClass="tblcol1" >
+                                <h:outputText value="#{hmis_list.arvsBaby}" />
+                            </p:column>
+
+                            <p:column headerText=" Immunized " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.immunized}" />
+                            </p:column>
+
+                            <p:column headerText=" Family Planning " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.familyPlanning}" />
+                            </p:column>
+
+                            <p:column headerText=" Mother Condition " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.motherCondition}" />
+                            </p:column>
+
+                            <p:column headerText=" Baby Condition " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.babyCondition}" />
+                            </p:column>
+
+                            <p:column headerText=" Delivered By " styleClass="tblcol1" >
+                                <h:outputText value="#{hmis_list.deliveredBy}" />
+                            </p:column>
+
+
+                            <p:column headerText=" Postnatal Care " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.postNatalCare}" />
+                            </p:column>
+
+                            <p:column headerText=" Date Of Discharge " styleClass="tblcol1" >
+                                <h:outputText value="#{hmis_list.dateOfDischarge}" />
+                            </p:column>
+
+                            <p:column headerText=" Name of Person Discharging Patient " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.nameDischarge}" />
+                            </p:column>
+
+                            <p:column headerText=" User ID " styleClass="tblcol1">
+                                <h:outputText value="#{hmis_list.userId}" />
+                            </p:column>
+
+                            <p:column  styleClass="tblcol2">
+                                <p:commandLink value="Edit" style="font-family: 'Tangerine', serif; font-weight: bold; color: blue; width: 10%;" action="#{chbBean.get_existing_hmis(hmis_list.ipd,'hmis_edit')}" update=":hmis_form:tabPanel:existing_hmis,:hmis_form:tabPanel" immediate="true" />
+                            </p:column>
+
+                        </p:dataTable>
+
+                    </p:panel>
+
+                    <h:panelGrid columns="1">
+                        <p:panel>
+                            <h:commandLink>
+                                <p:graphicImage value="#{resource['images:excel.png']}" />
+                                <p:dataExporter type="xls" target="vht_table" fileName="vht_list" />
+                            </h:commandLink>
+                        </p:panel>
+                    </h:panelGrid>
+
+                </p:tab>
+                <p:tab title="Edit Existing HMIS">
+                    <p:panel id="edit_hmis">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Village and Parish" />
+                            <p:selectOneMenu id="villages2" value="#{chbBean.existing_hmis.villageId}" filter="true" filterMatchMode="contains" editable="false" >
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItems value="#{chbBean.get_villages()}" var="village" itemLabel="#{village.villageName}" itemValue="#{village.villageId}" />
+                                <!--<p:ajax listener="#{chbBean.get_village_vht_list()}" update="village_vht,phone_number,age,sex,isCBD"/> -->
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" GRAVIDA or PARITY" />
+                            <!-- <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/> -->
+                            <form>
+                                <h:outputLabel value=" Parity "/>
+                                <p:inputText id="parity" value="#{chbBean.existing_hmis.parity}" />
+
+                                <h:outputLabel value=" Gravida "/>
+                                <p:inputText id="gravida" value="#{chbBean.existing_hmis.gravida}" />
+                            </form>
+
+
+                            <h:outputLabel value=" WEEKS OF GESTATION: " />
+                            <p:inputText id="gestation" value="#{chbBean.existing_hmis.gestation}"/>
+
+                            <h:outputLabel value=" TERM :" />
+                            <p:selectOneMenu value="#{chbBean.new_hmis.term}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="Term" itemValue="(T)" />
+                                <f:selectItem itemLabel="Pre-Term" itemValue="(P)" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" FINAL DIAGNOSIS:  " />
+                            <p:inputText id="finalDiagnosis" value="#{chbBean.existing_hmis.finalDiagnosis}"/>
+
+                            <h:outputLabel value=" WHO CLINICAL STAGE/CD4 COUNTS " />
+                            <form>
+                                <h:outputLabel value=" WHO CLINICAL STAGE "/>
+                                <p:inputText id="whoClinicalStage" value="#{chbBean.existing_hmis.whoClinicalStage}"/>
+
+                                <h:outputLabel value=" CD4 "/>
+                                <p:inputText id="cd4Count" value="#{chbBean.existing_hmis.cd4Count}"/>
+
+                                <h:outputLabel value=" Viral Load "/>
+                                <p:inputText id="viralLoad" value="#{chbBean.existing_hmis.viralLoad}"/>
+
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.revisit}" /> Revisit
+                            </form>
+
+                            <!-- DELIVERY information -->
+                            <h:outputLabel value=" MODE OF DELIVERY/MANAGEMENT PROCEDURE:  " />
+                            <p:inputText id="deliveryMode" value="#{chbBean.existing_hmis.deliveryMode}"/>
+
+                            <h:outputLabel value=" DATE OF DELIVERY" />
+                            <p:inputText id="deliveryDate" value="#{chbBean.existing_hmis.deliveryDate}"/>
+
+                            <h:outputLabel value=" TIME OF DELIVERY" />
+                            <p:inputText id="deliveryTime" value="#{chbBean.existing_hmis.deliveryTime}"/>
+
+                            <h:outputLabel value=" MANAGEMENT OF 3RD STAGE OF LABOUR: " />
+                            <!-- <h:selectBooleanCheckbox value="#{user.rememberMe}" /> Remember Me -->
+                            <form>
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.ergometrine}"/> ERGOMETRINE
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.pitocin}" /> PITOCIN
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.misoprostol}" /> MISOPROSTOL
+                            </form>
+
+                            <h:outputLabel value=" OTHER TREATMENT GIVEN" />
+                            <p:inputText id="otherMeds" value="#{chbBean.existing_hmis.otherMeds}"/>
+
+                            <h:outputLabel value=" eMTCT CODE" />
+                            <p:inputText id="emtctCode" value="#{chbBean.existing_hmis.emtctCode}"/>
+
+                            <h:outputLabel value=" ARVS TO MOTHERS " />
+                            <p:inputText id="arvs" value="#{chbBean.existing_hmis.arvs}"/>
+
+                            <h:outputLabel value=" VITAMIN A SUPPLEMENTATION " />
+                            <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.vitaminA}" /> Vitamin A
+
+                            <h:outputLabel value=" MUAC COLOR CODE " />
+                            <p:inputText id="muacColor" value="#{chbBean.existing_hmis.muacColor}"/>
+
+                            <h:outputLabel value=" MUAC INR NUMBER"/>
+                            <p:inputText id="muacINR" value="#{chbBean.existing_hmis.muacINR}"/>
+
+                            <!-- Child information -->
+                            <h:outputLabel value="  APGAR SCORE (A/S): " />
+                            <p:inputText id="apgarScore" value="#{chbBean.existing_hmis.apgarScore}"/>
+
+                            <h:outputLabel value="SEX:" />
+                            <p:selectOneMenu value="#{chbBean.new_hmis.sexOfBaby}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="Female" itemValue="F" />
+                                <f:selectItem itemLabel="Male" itemValue="M" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" NOT BREATHING AT BIRTH: " />
+                            <p:selectOneMenu value="#{chbBean.new_hmis.breathing}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="Stimulation and or Suction" itemValue="SS" />
+                                <f:selectItem itemLabel="Bag and Mask" itemValue="BM" />
+                                <f:selectItem itemLabel="BMD" itemValue="BMD" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" IMMEDIATE SKIN TO SKIN CONTACT:  " />
+                            <p:inputText id="skinToSkin" value="#{chbBean.existing_hmis.skinToSkin}"/>
+
+                            <h:outputLabel value=" Breast fed less than or equals to 1hrs?  " />
+                            <p:inputText id="breastFed" value="#{chbBean.existing_hmis.breastFed}"/>
+
+                            <h:outputLabel value=" ROUTINE MEDICATION " />
+                            <!-- <h:selectBooleanCheckbox value="#{user.rememberMe}" /> Remember Me -->
+                            <form>
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.teo}" /> Tetracycline
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.vitK}" /> Vitamin K
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.chlorohexidine}" /> Chlorhexidine
+                            </form>
+
+                            <h:outputLabel value=" COUNSELING AT DISCHARGE: " />
+                            <form>
+                                <p:selectOneMenu value="#{chbBean.new_hmis.counseled}">
+                                    <f:selectItem itemLabel="Select" itemValue="" />
+                                    <f:selectItem itemLabel="Counseled" itemValue="C" />
+                                    <f:selectItem itemLabel="Not Counseled" itemValue="NC" />
+                                </p:selectOneMenu>
+
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.matNutrCouns}" /> Maternal Nutritional Counseling
+                            </form>
+
+                            <h:outputLabel value=" IYCF: " />
+                            <form>
+                                <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.iycf}" /> Counseled On Infant/Young Feeding
+
+                                <h:outputLabel value="Feeding Option"/>
+                                <p:inputText id="iycfFeeding" value="#{chbBean.existing_hmis.iycfFeeding}" />
+                            </form>
+
+                            <h:outputLabel value=" WEIGHT (WT): " />
+                            <p:inputText id="weight" value="#{chbBean.existing_hmis.weight}"/>
+
+                            <h:outputLabel value=" ARV'S ADMINISTERED TO BABY:  " />
+                            <p:inputText id="arvsBaby" value="#{chbBean.existing_hmis.arvsBaby}"/>
+
+                            <h:outputLabel value=" IMMUNISATION (BCG/POLIO 0): " />
+                            <h:selectBooleanCheckbox value="#{chbBean.existing_hmis.immunized}" /> Baby Received BCG and Polio
+
+
+                            <!-- DISCHARGE information -->
+                            <h:outputLabel value=" FAMILY PLANNING METHOD GIVEN: " />
+                            <p:inputText id="familyPlanning" value="#{chbBean.existing_hmis.familyPlanning}"/>
+
+                            <h:outputLabel value=" CONDITION OF MOTHER ON DISCHARGE: " />
+                            <p:selectOneMenu value="#{chbBean.new_hmis.motherCondition}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="D" itemValue="D" />
+                                <f:selectItem itemLabel="DD" itemValue="DD" />
+                                <f:selectItem itemLabel="R" itemValue="R" />
+                                <f:selectItem itemLabel="T" itemValue="T" />
+                                <f:selectItem itemLabel="DF" itemValue="DF" />
+                                <f:selectItem itemLabel="DDF" itemValue="DDF" />
+                                <f:selectItem itemLabel="RF" itemValue="RF" />
+                                <f:selectItem itemLabel="TF" itemValue="TF" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" CONDITION OF BABY ON DISCHARGE: " />
+                            <p:selectOneMenu value="#{chbBean.new_hmis.babyCondition}">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItem itemLabel="MSB" itemValue="MSB" />
+                                <f:selectItem itemLabel="FSB" itemValue="FSB" />
+                                <f:selectItem itemLabel="NND" itemValue="NND" />
+                                <f:selectItem itemLabel="AL" itemValue="AL" />
+                                <f:selectItem itemLabel="BDF" itemValue="BDF" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value=" DELIVERED BY: " />
+                            <p:inputText id="deliveredBy" value="#{chbBean.existing_hmis.deliveredBy}"/>
+
+                            <h:outputLabel value=" PNC AT 6H:  " />
+                            <p:inputText id="postNatalCare" value="#{chbBean.existing_hmis.postNatalCare}"/>
+
+                            <h:outputLabel value=" DATE OF DISCHARGE:  " />
+                            <p:inputText id="dateOfDischarge" value="#{chbBean.existing_hmis.dateOfDischarge}"/>
+
+                            <h:outputLabel value=" NAME OF THE PERSON WHO DISCHARGED THE MOTHER:  " />
+                            <p:inputText id="nameDischarge" value="#{chbBean.existing_hmis.nameDischarge}"/>
+
+
+                        </h:panelGrid>
+
+                        <p:panel style="border:none;">
+                            <p:commandButton value="Update Existing HMIS Details" style="font-size: 12px;font-weight: bold;" action="#{chbBean.update_existing_hmis('Update')}" update="existing_hmis,hmis_list,:hmis_form:notification"/>
+                            <p:commandButton value="Clear" style="font-size: 12px;font-weight: bold;" action="#{chbBean.update_existing_hmis('Clear')}" update="existing_hmis,hmis_list,:hmis_form:notification"/>
+                        </p:panel>
+                    </p:panel>
+                </p:tab>
+            </p:tabView>
+
+
+            <p:growl id="notification" sticky="true"/>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

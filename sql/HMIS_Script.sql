@@ -1,4 +1,6 @@
 /* Need to create scipts to find the totals at the end of the HMIS data form*/
+
+-- Dumping database structure for bwindihospital
 CREATE DATABASE IF NOT EXISTS `bwindihospital_reduced` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `bwindihospital_reduced`;
 
@@ -11,6 +13,8 @@ PRIMARY KEY (`code`)
 COMMENT='This table holds the data for the baby condition.'
 ENGINE=InnoDB
 ;
+
+DELETE FROM `babyCondition`;
 
 INSERT INTO `babyCondition` (`code`,`description`)
 VALUES
@@ -30,6 +34,10 @@ COMMENT='This table holds the data for the mother condition.'
 ENGINE=InnoDB
 ;
 
+
+DELETE FROM `motherCondition`;
+
+
 INSERT INTO `motherCondition` (`code`,`description`)
 VALUES
 ('D', 'Woman discharged is alive'),
@@ -42,7 +50,7 @@ VALUES
 ('TF', 'Woman transferred with Fistula')
 ;
 
-CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`familyplanning`(
+CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`familyPlanning`(
 	`code` int(2) NOT NULL,
 	`description` VARCHAR(100) NULL DEFAULT NULL,
 PRIMARY KEY (`code`)
@@ -51,7 +59,10 @@ COMMENT='This table holds the data for the family planning codes'
 ENGINE=InnoDB
 ;
 
-INSERT INTO `familyplanning` (`code`,`description`)
+DELETE FROM `familyPlanning`;
+
+
+INSERT INTO `familyPlanning` (`code`,`description`)
 VALUES
 ('1', 'Post Partum Female Sterilization (Bilateral Tubal Litigation)(PP - BTL)'),
 ('2', 'Post Partum IUD(PP - IUD)'),
@@ -63,7 +74,7 @@ VALUES
 ('8', 'No Family Planning Method Given')
 ;
 
-CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`iycffeeding`(
+CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`iycfFeeding`(
 	`code` VARCHAR(3) NOT NULL,
 	`description` VARCHAR(50) NULL DEFAULT NULL,
 PRIMARY KEY (`code`)
@@ -72,7 +83,11 @@ COMMENT='This table holds the data for the iycf feeding codes'
 ENGINE=InnoDB
 ;
 
-INSERT INTO `iycffeeding` (`code`,`description`)
+
+DELETE FROM `iycfFeeding`;
+
+
+INSERT INTO `iycfFeeding` (`code`,`description`)
 VALUES
 ('EBF', 'For Exclusive breast feeding'),
 ('RF', 'Replacement Feeding'),
@@ -88,13 +103,17 @@ COMMENT='This table holds the data for the counseling codes'
 ENGINE=InnoDB
 ;
 
+
+DELETE FROM `counseled`;
+
+
 INSERT INTO `counseled` (`code`,`description`)
 VALUES
 ('C', 'Counseled'),
 ('NC', 'Not counseled')
 ;
 
-CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`not_breathing`(
+CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`breathing`(
 	`code` VARCHAR(3) NOT NULL,
 	`description` VARCHAR(100) NULL DEFAULT NULL,
 PRIMARY KEY (`code`)
@@ -103,23 +122,31 @@ COMMENT='This table holds the data for the breathing codes'
 ENGINE=InnoDB
 ;
 
-INSERT INTO `not_breathing` (`code`,`description`)
+
+DELETE FROM `breathing`;
+
+
+INSERT INTO `breathing` (`code`,`description`)
 VALUES
-('SS', 'If baby breathes after Stimulation and or Suction procedure'),
+('SS', 'If baby breathers after Stimulation and or Suction procedure'),
 ('BM', 'If baby breathes after Bag and Mask procedure'),
 ('BMD', 'if baby dies Bag and Mask procedure')
 ;
 
-CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`muacColour`(
+CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`muacColor`(
 	`code` VARCHAR(1) NOT NULL,
 	`description` VARCHAR(10) NULL DEFAULT NULL,
 PRIMARY KEY (`code`)
 )
-COMMENT='This table holds the data for the muac colour codes'
+COMMENT='This table holds the data for the muac color codes'
 ENGINE=InnoDB
 ;
 
-INSERT INTO `muacColour` (`code`,`description`)
+
+DELETE FROM `muacColor`;
+
+
+INSERT INTO `muacColor` (`code`,`description`)
 VALUES
 ('R', 'Red'),
 ('Y', 'Yellow'),
@@ -139,6 +166,10 @@ COMMENT='This table holds the data for the eMTCT codes'
 ENGINE=InnoDB
 ;
 
+
+DELETE FROM `emtct_code`;
+
+
 INSERT INTO `emtct_code` (`code`, `description`)
 VALUES
 ('C', 'Counseled but declined HIV testing'),
@@ -148,7 +179,7 @@ VALUES
 ('TRR+', 'Client was originally negative but sero-converted at this test')
 ;
 
-CREATE TABLE IF NOT EXISTS  `bwindihospital_reduced`.`final_diagnosis` (
+CREATE TABLE IF NOT EXISTS `final_diagnosis` (
 	`finalDiagNum` INT(1) NOT NULL,
 	`finalDiagDesc` VARCHAR(100) NULL DEFAULT NULL,
 	PRIMARY KEY (`finalDiagNum`),
@@ -158,6 +189,10 @@ COMMENT='This table holds the final diagnosis codes and descriptions.'
 COLLATE='latin1_swedish_ci'
 ENGINE=InnoDB
 ;
+
+
+DELETE FROM `final_diagnosis`;
+
 
 INSERT INTO `final_diagnosis` (`finalDiagNum`, `finalDiagDesc`) 
 VALUES 
@@ -175,7 +210,7 @@ VALUES
 ('12', 'Other Complications of pregnancy')
 ;
 
-CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`hmis` (
+CREATE TABLE IF NOT EXISTS `hmis` (
 	`DOA` DATE NULL DEFAULT NULL,
 	`IPD` INT(20) NOT NULL,
 	`ANC_Num` INT(20) NULL DEFAULT NULL,
@@ -204,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`hmis` (
 	`emtctCode` VARCHAR(5) NULL DEFAULT NULL,
 	`arvs` VARCHAR(5) NULL DEFAULT NULL,
 	`vitaminA` BIT(1) NULL DEFAULT NULL,
-	`muacColour` CHAR(1) NULL DEFAULT NULL,
+	`muacColor` CHAR(1) NULL DEFAULT NULL,
 	`muacCM` INT(2) NULL DEFAULT NULL,
 	`muacINR` INT(20) NULL DEFAULT NULL,
 	`apgarScore` VARCHAR(10) NULL DEFAULT NULL,

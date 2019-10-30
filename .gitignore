@@ -76,3 +76,12 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+# IGNORE BUILD FILES
+midVerBuild1/
+
+# IGNORE AUTOGEN INTELLIJ FILES
+hospital_maternity_hmis_project/.idea/vcs.xml
+hospital_maternity_hmis_project/.idea/workspace.xml
+
+

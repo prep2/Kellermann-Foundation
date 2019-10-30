@@ -78,10 +78,9 @@ nbdist/
 .nb-gradle/
 
 # IGNORE BUILD FILES
-midVerBuild1
+midVer1Build
 
 # IGNORE AUTOGEN INTELLIJ FILES
-**/.idea/vcs.xml
-**/.idea/workspace.xml
-
+.idea/vcs.xml
+.idea/workspace.xml
 

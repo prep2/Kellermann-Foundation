@@ -1,10 +1,5 @@
 /* Need to create scipts to find the totals at the end of the HMIS data form*/
 
--- Dumping database structure for bwindihospital
-CREATE DATABASE IF NOT EXISTS `bwindihospital_reduced` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `bwindihospital_reduced`;
-
-
 CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`babyCondition`(
 	`code` VARCHAR(5) NOT NULL,
 	`description` VARCHAR(100) NULL DEFAULT NULL,
@@ -34,9 +29,7 @@ COMMENT='This table holds the data for the mother condition.'
 ENGINE=InnoDB
 ;
 
-
 DELETE FROM `motherCondition`;
-
 
 INSERT INTO `motherCondition` (`code`,`description`)
 VALUES
@@ -50,7 +43,7 @@ VALUES
 ('TF', 'Woman transferred with Fistula')
 ;
 
-CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`familyPlanning`(
+CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`familyplanning`(
 	`code` int(2) NOT NULL,
 	`description` VARCHAR(100) NULL DEFAULT NULL,
 PRIMARY KEY (`code`)
@@ -59,10 +52,7 @@ COMMENT='This table holds the data for the family planning codes'
 ENGINE=InnoDB
 ;
 
-DELETE FROM `familyPlanning`;
-
-
-INSERT INTO `familyPlanning` (`code`,`description`)
+INSERT INTO `familyplanning` (`code`,`description`)
 VALUES
 ('1', 'Post Partum Female Sterilization (Bilateral Tubal Litigation)(PP - BTL)'),
 ('2', 'Post Partum IUD(PP - IUD)'),
@@ -74,7 +64,7 @@ VALUES
 ('8', 'No Family Planning Method Given')
 ;
 
-CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`iycfFeeding`(
+CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`iycffeeding`(
 	`code` VARCHAR(3) NOT NULL,
 	`description` VARCHAR(50) NULL DEFAULT NULL,
 PRIMARY KEY (`code`)
@@ -83,11 +73,7 @@ COMMENT='This table holds the data for the iycf feeding codes'
 ENGINE=InnoDB
 ;
 
-
-DELETE FROM `iycfFeeding`;
-
-
-INSERT INTO `iycfFeeding` (`code`,`description`)
+INSERT INTO `iycffeeding` (`code`,`description`)
 VALUES
 ('EBF', 'For Exclusive breast feeding'),
 ('RF', 'Replacement Feeding'),
@@ -102,10 +88,6 @@ PRIMARY KEY (`code`)
 COMMENT='This table holds the data for the counseling codes'
 ENGINE=InnoDB
 ;
-
-
-DELETE FROM `counseled`;
-
 
 INSERT INTO `counseled` (`code`,`description`)
 VALUES
@@ -122,10 +104,6 @@ COMMENT='This table holds the data for the breathing codes'
 ENGINE=InnoDB
 ;
 
-
-DELETE FROM `breathing`;
-
-
 INSERT INTO `breathing` (`code`,`description`)
 VALUES
 ('SS', 'If baby breathers after Stimulation and or Suction procedure'),
@@ -138,13 +116,9 @@ CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`muacColor`(
 	`description` VARCHAR(10) NULL DEFAULT NULL,
 PRIMARY KEY (`code`)
 )
-COMMENT='This table holds the data for the muac color codes'
+COMMENT='This table holds the data for the muac colour codes'
 ENGINE=InnoDB
 ;
-
-
-DELETE FROM `muacColor`;
-
 
 INSERT INTO `muacColor` (`code`,`description`)
 VALUES
@@ -166,10 +140,6 @@ COMMENT='This table holds the data for the eMTCT codes'
 ENGINE=InnoDB
 ;
 
-
-DELETE FROM `emtct_code`;
-
-
 INSERT INTO `emtct_code` (`code`, `description`)
 VALUES
 ('C', 'Counseled but declined HIV testing'),
@@ -190,10 +160,6 @@ COLLATE='latin1_swedish_ci'
 ENGINE=InnoDB
 ;
 
-
-DELETE FROM `final_diagnosis`;
-
-
 INSERT INTO `final_diagnosis` (`finalDiagNum`, `finalDiagDesc`) 
 VALUES 
 ('1', 'Abortions'),
@@ -211,24 +177,24 @@ VALUES
 ;
 
 CREATE TABLE IF NOT EXISTS `hmis` (
-	`DOA` DATE NULL DEFAULT NULL,
+	`recordDate` DATE NULL DEFAULT NULL,
 	`IPD` INT(20) NOT NULL,
-	`ANC_Num` INT(20) NULL DEFAULT NULL,
-	`ANC_Ref` VARCHAR(50) NULL DEFAULT NULL,
-	`Mat_Name` VARCHAR(50) NULL DEFAULT NULL,
+	`ancNum` INT(20) NULL DEFAULT NULL,
+	`ancRef` VARCHAR(50) NULL DEFAULT NULL,
+	`matName` VARCHAR(50) NULL DEFAULT NULL,
+	`villageID` VARCHAR(10) NULL DEFAULT NULL,
 	`matVillage` VARCHAR(20) NULL DEFAULT NULL,
-	`Parish` VARCHAR(20) NULL DEFAULT NULL,
 	`matPhoneNumber` VARCHAR(50) NULL DEFAULT NULL,
-	`Age` INT(10) NULL DEFAULT NULL,
-	`Gravida` INT(5) NULL DEFAULT NULL,
-	`Parity` INT(5) NULL DEFAULT NULL,
+	`age` INT(10) NULL DEFAULT NULL,
+	`gravida` INT(5) NULL DEFAULT NULL,
+	`parity` INT(5) NULL DEFAULT NULL,
 	`weeksGestation` INT(2) NULL DEFAULT NULL,
-	`Term` VARCHAR(1) NULL DEFAULT NULL,
+	`term` VARCHAR(1) NULL DEFAULT NULL,
 	`final_diagnosis` INT(2) NULL DEFAULT NULL,
-	`WHO_clinicalStage` VARCHAR(10) NULL DEFAULT NULL,
+	`whoClinicalStage` VARCHAR(10) NULL DEFAULT NULL,
 	`cd4Count` VARCHAR(5) NULL DEFAULT NULL,
 	`viralLoad` INT(5) NULL DEFAULT NULL,
-	`Revisit` BIT(1) NULL DEFAULT NULL,
+	`revisit` BIT(1) NULL DEFAULT NULL,
 	`deliveryMode` VARCHAR(100) NULL DEFAULT NULL,
 	`deliveryDate` DATE NULL DEFAULT NULL,
 	`deliveryTime` TIME NULL DEFAULT NULL,
@@ -243,20 +209,21 @@ CREATE TABLE IF NOT EXISTS `hmis` (
 	`muacCM` INT(2) NULL DEFAULT NULL,
 	`muacINR` INT(20) NULL DEFAULT NULL,
 	`apgarScore` VARCHAR(10) NULL DEFAULT NULL,
-	`sex` BIT(1) NULL DEFAULT NULL,
+	`sexOfBaby` BIT(1) NULL DEFAULT NULL,
 	`breathing` VARCHAR(3) NULL DEFAULT NULL,
 	`skinToSkin` BIT(1) NULL DEFAULT NULL,
 	`breastFed` BIT(1) NULL DEFAULT NULL,
 	`teo` BIT(1) NULL DEFAULT NULL,
-	`VitK` BIT(1) NULL DEFAULT NULL,
-	`Chlorhexidine` BIT(1) NULL DEFAULT NULL,
+	`vitK` BIT(1) NULL DEFAULT NULL,
+	`chlorhexidine` BIT(1) NULL DEFAULT NULL,
 	`counseled` VARCHAR(2) NULL DEFAULT NULL,
+	`matNutrCouns` BIT(1) NULL DEFAULT NULL,
 	`iycf` BIT(1) NULL DEFAULT NULL,
 	`iycfFeeding` VARCHAR(3) NULL DEFAULT NULL,
 	`weight` DECIMAL(5,3) NULL DEFAULT NULL,
 	`arvsBaby` VARCHAR(100) NULL DEFAULT NULL,
 	`immunized` BIT(1) NULL DEFAULT NULL,
-	`familyPlanning` INT(2) NULL DEFAULT NULL,
+	`familyplanning` INT(2) NULL DEFAULT NULL,
 	`motherCondition` VARCHAR(5) NULL DEFAULT NULL,
 	`babyCondition` VARCHAR(5) NULL DEFAULT NULL,
 	`deliveredBy` VARCHAR(100) NULL DEFAULT NULL,

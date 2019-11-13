@@ -1085,7 +1085,7 @@ CREATE TABLE IF NOT EXISTS `vht` (
   `vhtName` varchar(50) DEFAULT NULL,
   `Age` int(10) DEFAULT NULL,
   `Sex` char(1) DEFAULT NULL,
-  `PhoneNumber` varchar(50) DEFAULT NULL,
+  `vhtPhoneNumber` varchar(50) DEFAULT NULL,
   `isCBD` char(1) DEFAULT NULL,
   `vhtVillage` varchar(20) NOT NULL,
   `recordDate` datetime DEFAULT NULL,

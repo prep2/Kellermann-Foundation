@@ -163,7 +163,7 @@ public class ChbBean
     }
     public List<Hmis> get_hmis_list() {
         try {
-            System.out.println(ChbDAO.Get_Hmis_List());
+            System.out.println("HmisList:"+ChbDAO.Get_Hmis_List());
             return ChbDAO.Get_Hmis_List();
         } catch (Exception ex) {
             System.err.println("ChbBean Error: Method: get_hmis_list" + ex.getMessage());
@@ -185,6 +185,7 @@ public class ChbBean
 
     public void get_village_hmis_list() {
         try {
+            System.out.println("get_village_hmis_list");
             this.village_hmis_list = ChbDAO.Get_Village_Hmis_List(this.existing_hmis.getVillageId());
             this.existing_hmis.setIpd((Integer)null);
             this.existing_hmis.setAncNum((Integer)null);
@@ -260,7 +261,7 @@ public class ChbBean
 
     public void save_new_hmis(Integer userId,String Action) {
         try {
-//            System.out.println("ChbBean.save_new_hmis" + userId);
+            System.out.println("ChbBean.save_new_hmis" + userId);
             if(Action.equals("Save")) {
                 if(ChbDAO.Save_New_Hmis(new_hmis,userId)) {
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "HMIS Details Saved Successfully", "Success"));
@@ -288,7 +289,6 @@ public class ChbBean
 
     public String get_existing_hmis(Integer ipd,String destination) {
         try {
-//            existing_hmis = ChbDAO.Get_Existing_Hmis(existing_hmis.getIpd());
             existing_hmis = ChbDAO.Get_Existing_Hmis(ipd);
             return destination;
         } catch (Exception ex) {
@@ -299,7 +299,7 @@ public class ChbBean
 
     public String update_existing_vht(String Action) {
         try {
-//            System.out.println("ChbBean.update_existing_vht");
+            System.out.println("ChbBean.update_existing_vht");
             if(Action.equals("Update")) {
                 if(ChbDAO.Update_Existing_Vht(existing_vht)) {
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "VHT Details Updated Successfully", "Success"));                

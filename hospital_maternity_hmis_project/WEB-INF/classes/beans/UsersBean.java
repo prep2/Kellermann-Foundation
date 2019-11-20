@@ -219,7 +219,6 @@ public class UsersBean
                     ipd_enabled = false;
                     return "generalstore";
                 } else if (_department.equalsIgnoreCase("Dental")) {
-//                    System.out.println("vvvvvvvvvvvvv");
                     opd_enabled = false;
                     ipd_enabled = false;
                     return "dentist";
@@ -266,7 +265,7 @@ public class UsersBean
             httpSession.invalidate();
             return "start";
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Logout error:" + ex.getMessage());
         }
         return null;
     }

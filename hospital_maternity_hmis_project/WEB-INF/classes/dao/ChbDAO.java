@@ -101,7 +101,7 @@ public class ChbDAO implements Serializable {
         try {
             Connection con;
 
-//            System.out.println("ChbDAO.Get_Hmis_List");
+            System.out.println("ChbDAO.Get_Hmis_List");
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/bwindihospital_reduced";
             con = DriverManager.getConnection(url, "root", "t00r");
@@ -114,10 +114,12 @@ public class ChbDAO implements Serializable {
             ResultSet rs = stmt.executeQuery();
             List hmis_list = new ArrayList();
 
+            System.out.println("Null?"+rs.wasNull());
             while (rs.next()) {
 
                 Hmis hmis = new Hmis();
 
+                System.out.println(rs.getDate("recordDate"));
                 hmis.setRecordDate(rs.getDate("recordDate"));
                 hmis.setIpd(rs.getInt("IPD"));
                 hmis.setAncNum(rs.getInt("ancNum"));
@@ -156,14 +158,13 @@ public class ChbDAO implements Serializable {
                 hmis.setBreastFed(rs.getBoolean("breastFed"));
                 hmis.setTeo(rs.getBoolean("teo"));
                 hmis.setVitK(rs.getBoolean("vitK"));
-                hmis.setChlorohexidine(rs.getBoolean("chlorohexidine"));
+                hmis.setChlorohexidine(rs.getBoolean("chlorhexidine"));
                 hmis.setCounseled(rs.getString("counseled"));
                 hmis.setMatNutrCouns(rs.getBoolean("matNutrCouns"));
                 hmis.setIycf(rs.getBoolean("iycf"));
                 hmis.setIycfFeeding(rs.getString("iycfFeeding"));
                 hmis.setWeight(rs.getFloat("weight"));
                 hmis.setArvsBaby(rs.getString("arvsBaby"));
-                hmis.setSexOfBaby(rs.getString("sexOfBaby"));
                 hmis.setImmunized(rs.getBoolean("immunized"));
                 hmis.setFamilyPlanning(rs.getInt("familyplanning"));
                 hmis.setMotherCondition(rs.getString("motherCondition"));
@@ -173,14 +174,14 @@ public class ChbDAO implements Serializable {
                 hmis.setDateOfDischarge(rs.getString("dateOfDischarge"));
                 hmis.setNameDischarge(rs.getString("nameDischarge"));
                 hmis.setUserId(rs.getInt("userID"));
-
+                System.out.println(rs.getDate("recordDate"));
                 hmis_list.add(hmis);
 
-                //vht_list.add(vht);
             }
             con.close();
             return hmis_list;
         } catch (Exception ex) {
+            System.out.println("Error in Hmis_list: "+ex.getMessage());
             ErrorDAO.Error_Add(new model.Error("ChbDAO", "Get_Hmis_List", " Message: " + ex.getMessage(), date));
             return null;
         }
@@ -237,8 +238,9 @@ public class ChbDAO implements Serializable {
             con = DriverManager.getConnection(url, "root", "t00r");
             date = new Date();
 
-            PreparedStatement stmt = con.prepareStatement("SELECT * From hmis Where matVillage=?");
+            PreparedStatement stmt = con.prepareStatement("SELECT * From hmis");
 
+            /* SELECT * From hmis Where matVillage=?*/
             stmt.setString(1, VillageId);
 
             ResultSet rs = stmt.executeQuery();

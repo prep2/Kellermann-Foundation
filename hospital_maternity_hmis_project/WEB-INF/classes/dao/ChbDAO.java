@@ -20,7 +20,7 @@ import model.Village;
 
 /**
  *
- * @author romugabi
+ *
  */
 public class ChbDAO implements Serializable {
 
@@ -241,7 +241,7 @@ public class ChbDAO implements Serializable {
             PreparedStatement stmt = con.prepareStatement("SELECT * From hmis");
 
             /* SELECT * From hmis Where matVillage=?*/
-            stmt.setString(1, VillageId);
+//            stmt.setString(1, VillageId);
 
             ResultSet rs = stmt.executeQuery();
             List hmis_list = new ArrayList();

@@ -104,7 +104,8 @@
                             </p:column>
                             <p:column>
                                 Phone Number:
-                                <p:inputText type="number" name="#{chbBean.new_hmis.matPhoneNumber}"/>
+                                <p:inputText type="tel" name="#{chbBean.new_hmis.matPhoneNumber}"/>
+
                             </p:column>
 
                             <p:column style="margin:0px;">
@@ -188,11 +189,14 @@
                                     </p:column>
                                     <p:column>
                              DATE OF DELIVERY:
-                            <p:inputText value="#{chbBean.new_hmis.deliveryDate}"/>
+<!--                            <p:inputText value="#{chbBean.new_hmis.deliveryDate}"/>-->
+                                        <input type="date" value="#{chbBean.new_hmis.deliveryDate}"/>
                                     </p:column>
                                     <p:column>
                              TIME OF DELIVERY:
-                            <p:inputText value="#{chbBean.new_hmis.deliveryTime}"/>
+<!--                            <p:inputText value="#{chbBean.new_hmis.deliveryTime}"/>-->
+                                        <input type="time" value="#{chbBean.new_hmis.deliveryTime}"/>
+
                                     </p:column>
                                     <p:column rowspan="3">
                             MANAGEMENT OF 3RD STAGE OF LABOUR:
@@ -258,6 +262,7 @@
                                     <p:column>
                             <h:outputLabel value=" NOT BREATHING AT BIRTH: " />
                             <p:selectOneMenu value="#{chbBean.new_hmis.breathing}">
+                                <f:selectItems value="#{data.names}"/>
                                 <f:selectItem itemLabel="Select" itemValue="" />
                                 <f:selectItem itemLabel="Stimulation and or Suction" itemValue="SS" />
                                 <f:selectItem itemLabel="Bag and Mask" itemValue="BM" />

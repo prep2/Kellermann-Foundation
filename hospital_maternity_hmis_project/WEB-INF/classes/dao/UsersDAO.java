@@ -18,7 +18,7 @@ import model.Users;
 public class UsersDAO
         implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+       private static final long serialVersionUID = 1L;
     private static Date date;
 
     public static boolean Users_Add_UserAccount(String recordid, String uid, String fullName, String userName, String password, String sex, Integer rid, Integer did, String status)

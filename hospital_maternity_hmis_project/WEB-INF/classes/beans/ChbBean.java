@@ -18,11 +18,11 @@ import javax.faces.application.FacesMessage;
 import model.Village;
 import model.Vht;
 import model.Hmis;
-//import org.primefaces.component.tabview.TabView;
+
 
 /**
  *
- * @author romugabi
+ *
  */
 @ManagedBean(name = "chbBean")
 @SessionScoped

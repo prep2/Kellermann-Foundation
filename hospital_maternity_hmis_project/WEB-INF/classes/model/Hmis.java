@@ -1,12 +1,12 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.Date;
 
 public class Hmis implements Serializable{
     private static final long serialVersionUID = 1L;
     private Date recordDate;
+    private Date dateOfAdmission;
     private Integer ipd;
     private Integer ancNum;
     private String ancRef;
@@ -25,11 +25,11 @@ public class Hmis implements Serializable{
     private Integer viralLoad;
     private Boolean revisit;
     private String deliveryMode;
-    //private Date deliveryDate;
+    private Date deliveryDate;
     //could not get dates to work, some kind of java.sql error
     //switched to string for testing purposes
-    private String deliveryDate;
-    private Time deliveryTime;
+    //private String deliveryDate;
+    private Date deliveryTime;
     private Boolean ergometrine;
     private Boolean pitocin;
     private Boolean misoprostol;
@@ -59,10 +59,8 @@ public class Hmis implements Serializable{
     private String motherCondition;
     private String babyCondition;
     private String deliveredBy;
-    //private Date postNatalCare;
-    private String postNatalCare;
-    //private Date dateOfDischarge;
-    private String dateOfDischarge;
+    private Date postNatalCare;
+    private Date dateOfDischarge;
     private String nameDischarge;
     private Integer userId;
 
@@ -73,6 +71,10 @@ public class Hmis implements Serializable{
     public void setRecordDate(Date recordDate) {
         this.recordDate = recordDate;
     }
+
+    public Date getDateOfAdmission() { return dateOfAdmission;}
+
+    public void setDateOfAdmission(Date dateOfAdmission) { this.dateOfAdmission = dateOfAdmission;}
 
 
     public Integer getIpd() {
@@ -219,27 +221,27 @@ public class Hmis implements Serializable{
         this.deliveryMode = deliveryMode;
     }
 
-    /*public Date getDeliveryDate() {
+    public Date getDeliveryDate() {
         return deliveryDate;
     }
 
     public void setDeliveryDate(Date deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
-    */
-    public String getDeliveryDate() {
+
+    /*public String getDeliveryDate() {
         return deliveryDate;
     }
 
     public void setDeliveryDate(String deliveryDate) {
         this.deliveryDate = deliveryDate;
-    }
+    }*/
 
-    public Time getDeliveryTime() {
+    public Date getDeliveryTime() {
         return deliveryTime;
     }
 
-    public void setDeliveryTime(Time deliveryTime) {
+    public void setDeliveryTime(Date deliveryTime) {
         this.deliveryTime = deliveryTime;
     }
 
@@ -475,7 +477,7 @@ public class Hmis implements Serializable{
         this.deliveredBy = deliveredBy;
     }
 
-   /* public Date getPostNatalCare() {
+    public Date getPostNatalCare() {
         return postNatalCare;
     }
 
@@ -488,22 +490,6 @@ public class Hmis implements Serializable{
     }
 
     public void setDateOfDischarge(Date dateOfDischarge) {
-        this.dateOfDischarge = dateOfDischarge;
-    }*/
-
-    public String getPostNatalCare() {
-        return postNatalCare;
-    }
-
-    public void setPostNatalCare(String postNatalCare) {
-        this.postNatalCare = postNatalCare;
-    }
-
-    public String getDateOfDischarge() {
-        return dateOfDischarge;
-    }
-
-    public void setDateOfDischarge(String dateOfDischarge) {
         this.dateOfDischarge = dateOfDischarge;
     }
 
@@ -526,15 +512,16 @@ public class Hmis implements Serializable{
     public Hmis(){
     }
 
-    public Hmis(Date recordDate, Integer ipd, Integer ancNum, String ancRef, String matName, String villageId, String villageName, String matPhoneNumber,
+    public Hmis(Date recordDate, Date dateOfAdmission, Integer ipd, Integer ancNum, String ancRef, String matName, String villageId, String villageName, String matPhoneNumber,
                 Integer age, Integer gravida, Integer parity, Integer gestation, String term, Integer finalDiagnosis, String whoClinicalStage,
-                String cd4Count, Integer viralLoad, Boolean revisit, String deliveryMode, String deliveryDate, Time deliveryTime, Boolean ergometrine,
+                String cd4Count, Integer viralLoad, Boolean revisit, String deliveryMode, Date deliveryDate, Date deliveryTime, Boolean ergometrine,
                 Boolean pitocin, Boolean misoprostol, String otherMeds, String emtctCode, String arvs, Boolean vitaminA, String muacColor, Integer muacCM,
                 Integer muacINR, String apgarScore, String sexOfBaby, String breathing, Boolean skinToSkin, Boolean breastFed, Boolean teo, Boolean vitK,
                 Boolean chlorohexidine, String counseled, Boolean matNutrCouns, Boolean iycf, String iycfFeeding, float weight, String arvsBaby, Boolean immunized,
-                Integer familyPlanning, String motherCondition, String babyCondition, String deliveredBy, String postNatalCare, String dateOfDischarge,
+                Integer familyPlanning, String motherCondition, String babyCondition, String deliveredBy, Date postNatalCare, Date dateOfDischarge,
                 String nameDischarge, Integer userId) {
         this.recordDate = recordDate;
+        this.dateOfAdmission = dateOfAdmission;
         this.ipd = ipd;
         this.ancNum = ancNum;
         this.ancRef = ancRef;

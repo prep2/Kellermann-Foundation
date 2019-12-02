@@ -6,26 +6,26 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c086ade-d967-42ad-bf45-44c911d22c6b" name="Default Changelist" comment="" />
+    <list default="true" id="5e75d11c-b657-45ce-9d0e-08e5c5993788" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WEB-INF/lib/commons-lang3-3.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WEB-INF/lib/primefaces-extensions-2.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/beans/ChbBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/beans/ChbBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/dao/ChbDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/dao/ChbDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/dao/ChbDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/dao/ChbDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/model/Hmis.class" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/model/Hmis.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/model/Hmis.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/model/Hmis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chb/hmis.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/chb/hmis.xhtml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="BHMSver5" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -34,23 +34,19 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectId" id="1RbrVBKSlLpEhDQNHC16PJduMVz" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1TterankbHgURcuk6m2vGTEBAXw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/primefaces-6.0.jar!/" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Apache Software Foundation\Tomcat 8.5\webapps\midVer1" />
-      <recent name="C:\Apache Software Foundation\Tomcat 8.5\webapps\midVer1\WEB-INF" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -65,29 +61,28 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.37" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/BHMS/" />
+    <configuration name="Tomcat 8.5.37" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.37" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8082/BHMSDeploy/" />
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
-      <option name="SHOW_DIALOG_ON_UPDATE" value="false" />
-      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="BHMS">
           <settings>
-            <option name="CONTEXT_PATH" value="/BHMS" />
+            <option name="CONTEXT_PATH" value="/BHMSDeploy" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_midVer1" />
-        <option name="HTTP_PORT" value="8081" />
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_BHMSver5" />
+        <option name="HTTP_PORT" value="8082" />
       </server-settings>
-      <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
       <log_file alias="Tomcat Host Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*" />
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file enabled="true" id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="57436" />
+        <option name="DEBUG_PORT" value="51730" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -147,22 +142,41 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5c086ade-d967-42ad-bf45-44c911d22c6b" name="Default Changelist" comment="" />
-      <created>1553815895772</created>
+      <changelist id="5e75d11c-b657-45ce-9d0e-08e5c5993788" name="Default Changelist" comment="" />
+      <created>1574209447342</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1553815895772</updated>
-      <workItem from="1569946679454" duration="5580000" />
-      <workItem from="1570047253128" duration="435000" />
-      <workItem from="1570648906055" duration="5505000" />
-      <workItem from="1570656019280" duration="1633000" />
-      <workItem from="1570671568804" duration="29413000" />
-      <workItem from="1572843026752" duration="11946000" />
-      <workItem from="1573680574780" duration="5255000" />
+      <updated>1574209447342</updated>
+      <workItem from="1574284020964" duration="586000" />
+      <workItem from="1574290279887" duration="90000" />
+      <workItem from="1574290424341" duration="244000" />
+      <workItem from="1574290684483" duration="174000" />
+      <workItem from="1574310603508" duration="4604000" />
+      <workItem from="1574893915801" duration="8855000" />
+      <workItem from="1574986637866" duration="311000" />
+      <workItem from="1574987112162" duration="3648000" />
+      <workItem from="1575061849871" duration="2776000" />
+      <workItem from="1575064777062" duration="24239000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

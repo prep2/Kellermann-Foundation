@@ -8,7 +8,8 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://java.sun.com/jsf/core">
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:pe="http://primefaces.org/ui/extensions">
 
 
     <ui:define name="title">Add or Edit HMIS</ui:define>
@@ -21,6 +22,17 @@
 
         <h:form id="hmis_form">
             <h:inputHidden value="#{usersBean.uid}" binding="#{userid}"/>
+            <style>
+                .ui-panelgrid
+                {
+                    width:100%;
+                }
+                .ui-panelgrid td, .ui-panelgrid tr
+                {
+                    border-style: none !important
+                }
+
+            </style>
 
             <!--<style>
 				.ui-datatable {
@@ -67,7 +79,7 @@
                 <p:tab title="Add new HMIS">
                     <p:panel id="new_hmis">
 
-                        <p:panelGrid style="border-style:none;">
+                        <p:panelGrid style="border-style:none !important; background-color: #f7f7f7;width: 100%; min-width:100%;">
                             <f:facet name="header">
                                 <p:row>
                                     <p:column colspan="4">Admission Information</p:column>
@@ -76,19 +88,21 @@
                         <p:row>
                             <p:column>
                                 Date of Admission:
-                                <p:inputText type="number" name="#{chbBean.new_hmis.recordDate}"/>
+                                <p:calendar value="#{chbBean.new_hmis.dateOfAdmission}"></p:calendar>
                             </p:column>
                             <p:column>
                                 IPD No:
-                                <p:inputText type="number" name="#{chbBean.new_hmis.ipd}"/>
+                                <p:inputText type="number" value="#{chbBean.new_hmis.ipd}"/>
+                                <!--<input type="number" name="#{chbBean.new_hmis.ipd}"/>
+                                <input type="number" value="#{chbBean.new_hmis.ipd}"/>-->
                             </p:column>
                             <p:column>
                                 ANC Number:
-                                <p:inputText type="number" name="#{chbBean.new_hmis.ancNum}"/>
+                                <p:inputText type="number" value="#{chbBean.new_hmis.ancNum}"/>
                             </p:column>
                             <p:column>
                                 ANC Ref:
-                                <p:inputText type="text" name="#{chbBean.new_hmis.ancRef}"/>
+                                <p:inputText type="text" value="#{chbBean.new_hmis.ancRef}"/>
                             </p:column>
 
                         </p:row>
@@ -96,21 +110,21 @@
                         <p:row>
                             <p:column>
                                 Name:
-                                <p:inputText type="text" name="#{chbBean.new_hmis.matName}"/>
+                                <p:inputText type="text" value="#{chbBean.new_hmis.matName}"/>
                             </p:column>
                             <p:column>
                                 Age:
-                                <p:inputText type="number" name="#{chbBean.new_hmis.age}"/>
+                                <p:inputText type="number" value="#{chbBean.new_hmis.age}"/>
                             </p:column>
                             <p:column>
                                 Phone Number:
-                                <p:inputText type="tel" name="#{chbBean.new_hmis.matPhoneNumber}"/>
+                                <p:inputText type="tel" value="#{chbBean.new_hmis.matPhoneNumber}"/>
 
                             </p:column>
 
                             <p:column style="margin:0px;">
                                 Village and Parish:
-                                <p:selectOneMenu style="margin-top:10px;" id="village" value="#{chbBean.new_hmis.villageId}" filter="true" filterMatchMode="contains" editable="false" >
+                                <p:selectOneMenu  id="village" value="#{chbBean.new_hmis.villageId}" filter="true" filterMatchMode="contains" editable="false" >
                                     <f:selectItem itemLabel="Select" itemValue="" />
                                     <f:selectItems value="#{chbBean.get_villages()}" var="village" itemLabel="#{village.villageName}" itemValue="#{village.villageId}" />
                                     <!--<p:ajax listener="#{chbBean.get_village_hmis_list()}" update="village_vhts,phone_number,age,sex,isCBD"/> -->
@@ -122,33 +136,50 @@
                             <p:column rowspan = "2">
                                 GRAVIDA or PARITY
                                 <br/>
-                                <h:form>
+                                <p:panelGrid>
+                                    <p:row>
                                     Parity
-                                    <p:inputText type="text" name="#{chbBean.new_hmis.parity}" />
-
+                                    <p:inputText type="text" value="#{chbBean.new_hmis.parity}" />
+                                    </p:row>
+                                    <p:row>
                                     <br/>
 
                                     Gravida
-                                    <p:inputText type="text" name="#{chbBean.new_hmis.gravida}" />
-                                </h:form>
+                                    <p:inputText type="text" value="#{chbBean.new_hmis.gravida}" />
+                                    </p:row>
+                                </p:panelGrid>
                             </p:column>
-                                <p:column rowspan="2" colspan="2">
-                                     WHO CLINICAL STAGE/CD4 COUNTS
-                                    <br/>
-                                    <h:form>
+                            <p:column rowspan="2" colspan="2">
+                                <p:panelGrid>
+                                        <p:row>
+                                            <p:column>
                                        WHO CLINICAL STAGE
+                                            </p:column>
+                                            <p:column>
                                         <p:inputText value="#{chbBean.new_hmis.whoClinicalStage}"/>
-
-                                        <br/>
+                                            </p:column>
+                                        </p:row>
+                                        <p:row>
+                                            <p:column>
                                         CD4
+                                            </p:column>
+                                            <p:column>
                                         <p:inputText value="#{chbBean.new_hmis.cd4Count}"/>
-
-                                        <!-- <h:outputLabel value=" Viral Load "/>
-                                         <p:inputText value="#{chbBean.new_hmis.viralLoad}"/>
-
-                                         <h:selectBooleanCheckbox value="#{chbBean.new_hmis.revisit}" /> Revisit-->
-                                    </h:form>
-                                </p:column>
+                                            </p:column>
+                                        </p:row>
+                                        <p:row>
+                                        <p:column>
+                                        Viral Load
+                                        </p:column>
+                                        <p:column>
+                                        <p:inputText value="#{chbBean.new_hmis.viralLoad}"/>
+                                        <br/>
+                                        <h:selectBooleanCheckbox value="#{chbBean.new_hmis.revisit}"/>
+                                        Revisit
+                                        </p:column>
+                                        </p:row>
+                                </p:panelGrid>
+                            </p:column>
                             <p:column>WEEKS OF GESTATION:
                                 <p:inputText value="#{chbBean.new_hmis.gestation}"/>
                             </p:column>
@@ -165,9 +196,10 @@
                             </p:column>
                         </p:row>
                             <p:row>
-                            <p:column colspan="3">
+                            <p:column colspan="4">
                                 FINAL DIAGNOSIS:
-                                <p:inputText value="#{chbBean.new_hmis.finalDiagnosis}"/>
+                            <br/>
+                                <p:inputTextarea cols="33" rows="6" value="#{chbBean.new_hmis.finalDiagnosis}"/>
                             </p:column>
                         </p:row>
                         </p:panelGrid>
@@ -183,25 +215,28 @@
                             </f:facet>
 
                                 <p:row>
-                                    <p:column>
-                            MODE OF DELIVERY/MANAGEMENT PROCEDURE:
+                                    <p:column style="width:100%; max-width:150px;">
+                            MODE OF DELIVERY/ MANAGEMENT PROCEDURE:
                             <p:inputText value="#{chbBean.new_hmis.deliveryMode}"/>
                                     </p:column>
                                     <p:column>
                              DATE OF DELIVERY:
 <!--                            <p:inputText value="#{chbBean.new_hmis.deliveryDate}"/>-->
-                                        <input type="date" value="#{chbBean.new_hmis.deliveryDate}"/>
+                                        <p:calendar value="#{chbBean.new_hmis.deliveryDate}"></p:calendar>
                                     </p:column>
                                     <p:column>
                              TIME OF DELIVERY:
 <!--                            <p:inputText value="#{chbBean.new_hmis.deliveryTime}"/>-->
-                                        <input type="time" value="#{chbBean.new_hmis.deliveryTime}"/>
-
+                                        <pe:timePicker value="#{chbBean.new_hmis.deliveryTime}" timeSeparator=":" startHours="1" endHours="24"
+                                                       startMinutes="00" endMinutes="59" intervalMinutes="1" showCloseButton="true"
+                                                       showDeselectButton="true" showNowButton="true" rows="6" showPeriod="true" style="width:100%; display:block; max-width:150px;"
+                                                      required="false" />
                                     </p:column>
-                                    <p:column rowspan="3">
+                                    <p:column rowspan="2" colspan="2">
                             MANAGEMENT OF 3RD STAGE OF LABOUR:
+                                        <br/>
+                                    <h:form>
                             <!-- <h:selectBooleanCheckbox value="#{user.rememberMe}" /> Remember Me -->
-                            <h:form>
                                 <h:selectBooleanCheckbox value="#{chbBean.new_hmis.ergometrine}"/> ERGOMETRINE
                                 <h:selectBooleanCheckbox value="#{chbBean.new_hmis.pitocin}" /> PITOCIN
                                 <h:selectBooleanCheckbox value="#{chbBean.new_hmis.misoprostol}" /> MISOPROSTOL
@@ -243,7 +278,7 @@
                             <!-- Child information -->
                                 <f:facet name="header">
                                     <p:row>
-                                        <p:column colspan="5">Child Information</p:column>
+                                        <p:column colspan="4">Child Information</p:column>
                                     </p:row>
                                 </f:facet>
                                 <p:row>
@@ -273,25 +308,26 @@
                             <h:outputLabel value=" IMMEDIATE SKIN TO SKIN CONTACT:  " />
                             <p:inputText value="#{chbBean.new_hmis.skinToSkin}"/>
                                     </p:column>
-                                    <p:column>
-                            <h:outputLabel value=" Breast fed less than or equals to 1hrs?  " />
-                            <p:inputText value="#{chbBean.new_hmis.breastFed}"/>
-                                    </p:column>
                                 </p:row>
 
                                 <p:row>
                                 <p:column>
+                                        <p:row>
                             <h:outputLabel value=" ROUTINE MEDICATION " />
+                                        </p:row>
+                                <br/>
+                                    <p:row>
                             <!-- <h:selectBooleanCheckbox value="#{user.rememberMe}" /> Remember Me -->
-                                </p:column>
-                                    <p:column>
-                            <h:form>
                                 <h:selectBooleanCheckbox value="#{chbBean.new_hmis.teo}" /> Tetracycline
+                            </p:row>
+                            <p:row>
                                 <h:selectBooleanCheckbox value="#{chbBean.new_hmis.vitK}" /> Vitamin K
-                                <h:selectBooleanCheckbox value="#{chbBean.new_hmis.chlorohexidine}" /> Chlorhexidine
-                            </h:form>
+                            </p:row>
+                            <p:row>
+                            <h:selectBooleanCheckbox value="#{chbBean.new_hmis.chlorohexidine}" /> Chlorhexidine
+                            </p:row>
                                     </p:column>
-                                    <p:column>
+                                    <p:column colspan="2">
                             <h:outputLabel value=" COUNSELING AT DISCHARGE: " />
                             <h:form>
                                 <p:selectOneMenu value="#{chbBean.new_hmis.counseled}">
@@ -299,7 +335,7 @@
                                     <f:selectItem itemLabel="Counseled" itemValue="C" />
                                     <f:selectItem itemLabel="Not Counseled" itemValue="NC" />
                                 </p:selectOneMenu>
-
+                            <br/>
                                 <h:selectBooleanCheckbox value="#{chbBean.new_hmis.matNutrCouns}" /> Maternal Nutritional Counseling
                             </h:form>
                                     </p:column>
@@ -312,21 +348,26 @@
                                 <p:inputText value="#{chbBean.new_hmis.iycfFeeding}" />
                             </h:form>
                                     </p:column>
-                                    <p:column>
-                            <h:outputLabel value=" WEIGHT (WT): " />
-                            <p:inputText value="#{chbBean.new_hmis.weight}"/>
-                                    </p:column>
                                 </p:row>
 
                                 <p:row>
+                                    <p:column>
+                                        <h:outputLabel value=" WEIGHT (WT): " />
+                                        <p:inputText value="#{chbBean.new_hmis.weight}"/>
+                                    </p:column>
                                 <p:column>
                             <h:outputLabel value=" ARV'S ADMINISTERED TO BABY:  " />
                             <p:inputText value="#{chbBean.new_hmis.arvsBaby}"/>
                                 </p:column>
                                 <p:column>
                             <h:outputLabel value=" IMMUNISATION (BCG/POLIO 0): " />
+                                    <br/>
                             <h:selectBooleanCheckbox value="#{chbBean.new_hmis.immunized}" /> Baby Received BCG and Polio
                                 </p:column>
+                                    <p:column>
+                                        <h:outputLabel value=" Breast fed less than or equals to 1hrs?  " />
+                                        <p:inputText value="#{chbBean.new_hmis.breastFed}"/>
+                                    </p:column>
                                 </p:row>
                             </p:panelGrid>
 
@@ -335,7 +376,7 @@
                             <!-- DISCHARGE information -->
                                 <f:facet name="header">
                                     <p:row>
-                                        <p:column colspan="5">Discharge Information</p:column>
+                                        <p:column colspan="4">Discharge Information</p:column>
                                     </p:row>
                                 </f:facet>
                                 <p:row>
@@ -373,15 +414,16 @@
                             <h:outputLabel value=" DELIVERED BY: " />
                             <p:inputText value="#{chbBean.new_hmis.deliveredBy}"/>
                                     </p:column>
-                                    <p:column>
-                            <h:outputLabel value=" PNC AT 6H:  " />
-                            <p:inputText value="#{chbBean.new_hmis.postNatalCare}"/>
-                                    </p:column>
                                 </p:row>
                                 <p:row>
+                                    <p:column>
+                                        <h:outputLabel value=" PNC AT 6H:  " />
+                                        <p:calendar value="#{chbBean.new_hmis.postNatalCare}"></p:calendar>
+
+                                    </p:column>
                                 <p:column>
                             <h:outputLabel value=" DATE OF DISCHARGE:  " />
-                            <p:inputText value="#{chbBean.new_hmis.dateOfDischarge}"/>
+                                    <p:calendar value="#{chbBean.new_hmis.dateOfDischarge}"></p:calendar>
                                 </p:column>
                                     <p:column>
                             <h:outputLabel value=" NAME OF THE PERSON WHO DISCHARGED THE MOTHER:  " />
@@ -426,10 +468,6 @@
                                 <h:outputText value="#{hmis_list.villageName}" />
                             </p:column>
 
-                            <p:column headerText=" Phone Number " styleClass="tblcol1">
-                                <h:outputText value="#{hmis_list.matPhoneNumber}" />
-                            </p:column>
-
                             <p:column headerText=" Delivery Date " styleClass="tblcol1">
                                 <h:outputText value="#{hmis_list.deliveryDate}" />
                             </p:column>
@@ -448,10 +486,6 @@
 
                             <p:column headerText=" Name of Person Discharging Patient " styleClass="tblcol1">
                                 <h:outputText value="#{hmis_list.nameDischarge}" />
-                            </p:column>
-
-                            <p:column headerText=" User ID " styleClass="tblcol1">
-                                <h:outputText value="#{hmis_list.userId}" />
                             </p:column>
 
                             <p:column  styleClass="tblcol2">

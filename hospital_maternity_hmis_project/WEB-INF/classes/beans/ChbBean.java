@@ -333,6 +333,7 @@ public class ChbBean
             }
 
             this.existing_hmis = new Hmis();
+            this.existing_hmis.setDateOfAdmission(null);
             this.existing_hmis.setRecordDate(null);
             this.existing_hmis.setIpd(null);
             this.existing_hmis.setAncNum(null);
@@ -346,6 +347,7 @@ public class ChbBean
             this.existing_hmis.setGestation(null);
             this.existing_hmis.setTerm("");
             this.existing_hmis.setFinalDiagnosis(null);
+            this.existing_hmis.setHivTestDate(null);
             this.existing_hmis.setWhoClinicalStage("");
             this.existing_hmis.setCd4Count("");
             this.existing_hmis.setViralLoad(null);

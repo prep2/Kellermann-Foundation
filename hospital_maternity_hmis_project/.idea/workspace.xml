@@ -7,16 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e75d11c-b657-45ce-9d0e-08e5c5993788" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WEB-INF/lib/commons-lang3-3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WEB-INF/lib/primefaces-extensions-2.0.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/classes/beans/ChbBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/beans/ChbBean.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WEB-INF/classes/dao/ChbDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/dao/ChbDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WEB-INF/classes/dao/ChbDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/dao/ChbDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WEB-INF/classes/model/Hmis.class" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/model/Hmis.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WEB-INF/classes/model/Hmis.java" beforeDir="false" afterPath="$PROJECT_DIR$/WEB-INF/classes/model/Hmis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chb/hmis.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/chb/hmis.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chb/hmis_edit.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/chb/hmis_edit.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chb/vht.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/chb/vht.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sql/HMIS_Script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../sql/HMIS_Script.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +46,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -60,7 +60,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.37">
     <configuration name="Tomcat 8.5.37" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.37" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8082/BHMSDeploy/" />
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
@@ -136,6 +136,83 @@
         </option>
       </method>
     </configuration>
+    <configuration name="hmis.xhtml" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.5.37" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/chb/hmis.xhtml" />
+      <deployment>
+        <artifact name="BHMS">
+          <settings>
+            <option name="CONTEXT_PATH" value="/BHMS" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="hmis_xhtml_BHMSver5" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49737" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="BHMS" />
+        </option>
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Tomcat Server.hmis.xhtml" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -156,7 +233,9 @@
       <workItem from="1574986637866" duration="311000" />
       <workItem from="1574987112162" duration="3648000" />
       <workItem from="1575061849871" duration="2776000" />
-      <workItem from="1575064777062" duration="24239000" />
+      <workItem from="1575064777062" duration="47170000" />
+      <workItem from="1575493337806" duration="18078000" />
+      <workItem from="1576075492701" duration="3430000" />
     </task>
     <servers />
   </component>

@@ -20,6 +20,7 @@ public class Hmis implements Serializable{
     private Integer gestation;
     private String term;
     private Integer finalDiagnosis;
+    private Date hivTestDate;
     private String whoClinicalStage;
     private String cd4Count;
     private Integer viralLoad;
@@ -179,6 +180,14 @@ public class Hmis implements Serializable{
 
     public void setFinalDiagnosis(Integer finalDiagnosis) {
         this.finalDiagnosis = finalDiagnosis;
+    }
+
+    public Date getHivTestDate() {
+        return hivTestDate;
+    }
+
+    public void setHivTestDate(Date hivTestDate) {
+        this.hivTestDate=hivTestDate;
     }
 
     public String getWhoClinicalStage() {
@@ -513,7 +522,7 @@ public class Hmis implements Serializable{
     }
 
     public Hmis(Date recordDate, Date dateOfAdmission, Integer ipd, Integer ancNum, String ancRef, String matName, String villageId, String villageName, String matPhoneNumber,
-                Integer age, Integer gravida, Integer parity, Integer gestation, String term, Integer finalDiagnosis, String whoClinicalStage,
+                Integer age, Integer gravida, Integer parity, Integer gestation, String term, Integer finalDiagnosis, Date hivTestDate, String whoClinicalStage,
                 String cd4Count, Integer viralLoad, Boolean revisit, String deliveryMode, Date deliveryDate, Date deliveryTime, Boolean ergometrine,
                 Boolean pitocin, Boolean misoprostol, String otherMeds, String emtctCode, String arvs, Boolean vitaminA, String muacColor, Integer muacCM,
                 Integer muacINR, String apgarScore, String sexOfBaby, String breathing, Boolean skinToSkin, Boolean breastFed, Boolean teo, Boolean vitK,
@@ -535,6 +544,7 @@ public class Hmis implements Serializable{
         this.gestation = gestation;
         this.term = term;
         this.finalDiagnosis = finalDiagnosis;
+        this.hivTestDate=hivTestDate;
         this.whoClinicalStage = whoClinicalStage;
         this.cd4Count = cd4Count;
         this.viralLoad = viralLoad;

@@ -65,7 +65,6 @@ public class ChbDAO implements Serializable {
         try {
             Connection con;
 
-//            System.out.println("ChbDAO.Get_Vht_List");
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/bwindihospital_reduced";
             con = DriverManager.getConnection(url, "root", "t00r");
@@ -123,7 +122,6 @@ public class ChbDAO implements Serializable {
 
                 Hmis hmis = new Hmis();
 
-                System.out.println(rs.getDate("recordDate"));
                 hmis.setRecordDate(rs.getDate("recordDate"));
                 hmis.setIpd(rs.getInt("IPD"));
                 hmis.setAncNum(rs.getInt("ancNum"));
@@ -137,7 +135,7 @@ public class ChbDAO implements Serializable {
                 hmis.setParity(rs.getInt("parity"));
                 hmis.setGestation(rs.getInt("weeksGestation"));
                 hmis.setTerm(rs.getString("term"));
-                hmis.setFinalDiagnosis(rs.getInt("final_diagnosis"));
+                hmis.setFinalDiagnosis(rs.getInt("finalDiagnosis"));
                 hmis.setWhoClinicalStage(rs.getString("whoClinicalStage"));
                 hmis.setCd4Count(rs.getString("cd4Count"));
                 hmis.setViralLoad(rs.getInt("viralLoad"));
@@ -170,7 +168,7 @@ public class ChbDAO implements Serializable {
                 hmis.setWeight(rs.getFloat("weight"));
                 hmis.setArvsBaby(rs.getString("arvsBaby"));
                 hmis.setImmunized(rs.getBoolean("immunized"));
-                hmis.setFamilyPlanning(rs.getInt("familyplanning"));
+                hmis.setFamilyPlanning(rs.getInt("familyPlanning"));
                 hmis.setMotherCondition(rs.getString("motherCondition"));
                 hmis.setBabyCondition(rs.getString("babyCondition"));
                 hmis.setDeliveredBy(rs.getString("deliveredBy"));
@@ -178,14 +176,12 @@ public class ChbDAO implements Serializable {
                 hmis.setDateOfDischarge(rs.getDate("dateOfDischarge"));
                 hmis.setNameDischarge(rs.getString("nameDischarge"));
                 hmis.setUserId(rs.getInt("userID"));
-                System.out.println(rs.getDate("recordDate"));
                 hmis_list.add(hmis);
 
             }
             con.close();
             return hmis_list;
         } catch (Exception ex) {
-            System.out.println("Error in Hmis_list: "+ex.getMessage());
             ErrorDAO.Error_Add(new model.Error("ChbDAO", "Get_Hmis_List", " Message: " + ex.getMessage(), date));
             return null;
         }
@@ -195,7 +191,6 @@ public class ChbDAO implements Serializable {
         try {
             Connection con;
 
-            System.out.println("ChbDAO.Get_Village_Vht_List " + VillageId);
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/bwindihospital_reduced";
             con = DriverManager.getConnection(url, "root", "t00r");
@@ -236,7 +231,6 @@ public class ChbDAO implements Serializable {
         try {
             Connection con;
 
-            System.out.println("ChbDAO.Get_Village_Hmis_List " + VillageId);
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/bwindihospital_reduced";
             con = DriverManager.getConnection(url, "root", "t00r");
@@ -244,8 +238,6 @@ public class ChbDAO implements Serializable {
 
             PreparedStatement stmt = con.prepareStatement("SELECT * From hmis");
 
-            /* SELECT * From hmis Where matVillage=?*/
-//            stmt.setString(1, VillageId);
 
             ResultSet rs = stmt.executeQuery();
             List hmis_list = new ArrayList();
@@ -336,7 +328,6 @@ public class ChbDAO implements Serializable {
 
             stmt.setString(1, new_vht.getVhtName());
             stmt.setObject(2, new_vht.getAge());
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Age: "+new_vht.getAge(), "Success"));
             stmt.setString(3, new_vht.getSex());
             stmt.setString(4, new_vht.getVhtPhoneNumber());
             stmt.setString(5, new_vht.getIsCBD());
@@ -362,16 +353,15 @@ public class ChbDAO implements Serializable {
             String url = "jdbc:mysql://localhost:3306/bwindihospital_reduced";
             Connection con = DriverManager.getConnection(url, "root", "t00r");
             PreparedStatement stmt = con.prepareStatement("insert into hmis (recordDate, IPD, ancNum, ancRef, matName, villageID, " +
-                    "matPhoneNumber, age, gravida, parity, weeksGestation, term, final_diagnosis, whoClinicalStage, cd4Count, viralLoad," +
+                    "matPhoneNumber, age, gravida, parity, weeksGestation, term, finalDiagnosis, whoClinicalStage, cd4Count, viralLoad," +
                     "revisit, deliveryMode, deliveryDate, deliveryTime, ergometrine, pitocin, misoprostol, otherMeds, emtctCode," +
                     "arvs, vitaminA, muacColor, muacCM, muacINR, apgarScore, sexOfBaby, breathing, skinToSkin, breastFed, teo, vitK, chlorhexidine," +
-                    "counseled, matNutrCouns, iycf, iycfFeeding, weight, arvsBaby, immunized, familyplanning, motherCondition, babyCondition," +  
-                    "deliveredBy, postNatalCare, dateOfDischarge, nameDischarge, userId, dateOfAdmission, matVillage) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?," +
-                    "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    "counseled, matNutrCouns, iycf, iycfFeeding, weight, arvsBaby, immunized, familyPlanning, motherCondition, babyCondition," +
+                    "deliveredBy, postNatalCare, dateOfDischarge, nameDischarge, userId, dateOfAdmission, matVillage, hivTestDate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?," +
+                    "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
             stmt.setString(1, dateFormat.format(date));
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Stuff Successfully", "Success"));
             stmt.setObject(2, new_hmis.getIpd());
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "IPD: "+new_hmis.getIpd(), "Success"));
             stmt.setObject(3, new_hmis.getAncNum());
             stmt.setString(4, new_hmis.getAncRef());
             stmt.setString(5, new_hmis.getMatName());
@@ -395,15 +385,13 @@ public class ChbDAO implements Serializable {
             else {
                 stmt.setString(19, dateFormat.format(new_hmis.getDeliveryDate()));
             }
-            if(new_hmis.getDateOfDischarge()==null)
+            if(new_hmis.getDeliveryTime()==null)
             {
                 stmt.setNull(20, java.sql.Types.TIME);
             }
             else {
                 stmt.setString(20, timeFormat.format(new_hmis.getDeliveryTime()));
             }
-            //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "After Time: "+new_hmis.getDeliveryTime()+"   "+timeFormat.format(new_hmis.getDeliveryTime()), "Success"));
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "After Time: ", "Success"));
             stmt.setObject(21, new_hmis.getErgometrine());
             stmt.setObject(22, new_hmis.getPitocin());
             stmt.setObject(23, new_hmis.getMisoprostol());
@@ -436,28 +424,18 @@ public class ChbDAO implements Serializable {
 
             if(new_hmis.getPostNatalCare()==null)
             {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "nil", "Success"));
-
                 stmt.setNull(50, java.sql.Types.DATE);
             }
             else {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "pnc: "+dateFormat.format(new_hmis.getPostNatalCare()), "Success"));
-
                 stmt.setString(50, dateFormat.format(new_hmis.getPostNatalCare()));
             }
             if(new_hmis.getDateOfDischarge()==null)
             {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "nil", "Success"));
-
                 stmt.setNull(51, java.sql.Types.DATE);
             }
             else {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "date of discharge: "+ dateFormat.format(new_hmis.getDateOfDischarge()), "Success"));
-
                 stmt.setString(51, dateFormat.format(new_hmis.getDateOfDischarge()));
             }
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "date of discharge ", "Success"));
-
 
             stmt.setString(52, new_hmis.getNameDischarge());
             stmt.setObject(53, userId);
@@ -468,13 +446,27 @@ public class ChbDAO implements Serializable {
             else {
                 stmt.setString(54, dateFormat.format(new_hmis.getDateOfAdmission()));
             }
-            stmt.setString(55, new_hmis.getVillageName());
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Last Attribute", "Success"));
+
+            PreparedStatement villagestmt = con.prepareStatement("SELECT * From village Where village.VillageId=?");
+            villagestmt.setObject(1, new_hmis.getVillageId());
+            ResultSet rs = villagestmt.executeQuery();
+            if(rs.next()) {
+                stmt.setString(55, rs.getString("VillageName"));
+            }
+
+            if(new_hmis.getHivTestDate()==null)
+            {
+                stmt.setNull(56, java.sql.Types.DATE);
+            }
+            else {
+                stmt.setString(56, dateFormat.format(new_hmis.getHivTestDate()));
+            }
             stmt.executeUpdate();
             con.close();
             return true;
         } catch (Exception var6) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, var6.getMessage(), "Success"));
+            //for debugging
+            //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ERROR: "+ var6.getMessage(), "Success"));
             ErrorDAO.Error_Add(new Error("ChbDAO", "Save_New_Hmis", " Message: " + var6.getMessage(), date));
             return false;
         }
@@ -484,14 +476,13 @@ public class ChbDAO implements Serializable {
         try {
             Connection con;
 
-            System.out.println("ChbDAO.Get_Existing_Vht = " + VhtId);
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/bwindihospital_reduced";
             con = DriverManager.getConnection(url, "root", "t00r");
             date = new java.util.Date();
 
             PreparedStatement stmt = con.prepareStatement("SELECT * From vht,village Where vht.vhtVillage=village.VillageId and vhtId=?");
-            
+
             stmt.setObject(1, VhtId);
                         
             ResultSet rs = stmt.executeQuery();
@@ -510,8 +501,6 @@ public class ChbDAO implements Serializable {
                 vht.setRecordDate(rs.getDate("recordDate"));
                 vht.setUserId(rs.getInt("userId"));
 
-                System.out.println("ChbDAO.Get_Existing_Vht = " + vht.getVhtId());                
-                
             }
             con.close();
             return vht;
@@ -525,33 +514,29 @@ public class ChbDAO implements Serializable {
         try {
             Connection con;
 
-            System.out.println("ChbDAO.Get_Existing_Hmis = " + ipd);
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/bwindihospital_reduced";
             con = DriverManager.getConnection(url, "root", "t00r");
             date = new java.util.Date();
-
-            PreparedStatement stmt = con.prepareStatement("SELECT * From hmis,village Where hmis.matVillage=village.VillageId and ipd=?");
-
+            PreparedStatement stmt = con.prepareStatement("SELECT * From hmis,village Where hmis.villageID=village.VillageId and ipd=?");
             stmt.setObject(1, ipd);
 
             ResultSet rs = stmt.executeQuery();
-
             Hmis hmis = new Hmis();
             while (rs.next()) {
-
                 hmis.setRecordDate(rs.getDate("recordDate"));
-                hmis.setIpd(rs.getInt("ipd"));
+                hmis.setDateOfAdmission(rs.getDate("dateOfAdmission"));
+                hmis.setIpd(rs.getInt("IPD"));
                 hmis.setAncNum(rs.getInt("ancNum"));
                 hmis.setAncRef(rs.getString("ancRef"));
                 hmis.setMatName(rs.getString("matName"));
-                hmis.setVillageId(rs.getString("villageId"));
-                hmis.setVillageName(rs.getString("villageName"));
+                hmis.setVillageId(rs.getString("villageID"));
+                hmis.setVillageName(rs.getString("matVillage"));
                 hmis.setMatPhoneNumber(rs.getString("matPhoneNumber"));
                 hmis.setAge(rs.getInt("age"));
                 hmis.setGravida(rs.getInt("gravida"));
                 hmis.setParity(rs.getInt("parity"));
-                hmis.setGestation(rs.getInt("gestation"));
+                hmis.setGestation(rs.getInt("weeksGestation"));
                 hmis.setTerm(rs.getString("term"));
                 hmis.setFinalDiagnosis(rs.getInt("finalDiagnosis"));
                 hmis.setWhoClinicalStage(rs.getString("whoClinicalStage"));
@@ -578,7 +563,7 @@ public class ChbDAO implements Serializable {
                 hmis.setBreastFed(rs.getBoolean("breastFed"));
                 hmis.setTeo(rs.getBoolean("teo"));
                 hmis.setVitK(rs.getBoolean("vitK"));
-                hmis.setChlorohexidine(rs.getBoolean("chlorohexidine"));
+                hmis.setChlorohexidine(rs.getBoolean("chlorhexidine"));
                 hmis.setCounseled(rs.getString("counseled"));
                 hmis.setMatNutrCouns(rs.getBoolean("matNutrCouns"));
                 hmis.setIycf(rs.getBoolean("iycf"));
@@ -595,7 +580,6 @@ public class ChbDAO implements Serializable {
                 hmis.setNameDischarge(rs.getString("nameDischarge"));
                 hmis.setUserId(rs.getInt("userId"));
 
-                System.out.println("ChbDAO.Get_Existing_Hmis = " + hmis.getIpd());
 
             }
             con.close();
@@ -638,72 +622,124 @@ public class ChbDAO implements Serializable {
         try {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-            date = new Date();
+            date = new java.util.Date();
+
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/bwindihospital_reduced";
             Connection con = DriverManager.getConnection(url, "root", "t00r");
-            PreparedStatement stmt = con.prepareStatement("UPDATE hmis SET ancNum=?,ancRef=?, matName=?, villageId=?, matPhoneNumber=?" +
-                    "age=?, gravida=?, parity=?, gestation=?, term=?, finalDiagnosis=?, whoClinicalStage=?, cd4Count=?, viralLoad=?, revisit=?, deliveryMode=?, " +
-                    "deliveryDate=?, deliveryTime=?, ergometrine=?, pitocin=?, misoprostol=?, otherMeds=?, emtctCode=?, arvs=?, vitaminA=?" +
-                    "muacColor=?, muacCM=?, muacINR=?, apgarScore=?, sexOfBaby=?, breathing=?, skinToSkin=?, breastFed=?, teo=?, vitK=?, cholorohexidine=?, " +
-                    "counseled=?, matNutrCouns=?, iycf=?, iycfFeeding=?, weight=?, arvsBaby=?, immunized=?, familyPlanning=?, motherCondition=?, babyCondition=?" +
-                    "deliveredBy=?, postNatalCare=?, dateOfDischarge=?, nameDischarge=?, userId=?, Where ipd=?");
-            stmt.setObject(1, existing_hmis.getAncNum());
-            stmt.setString(2, existing_hmis.getAncRef());
-            stmt.setString(3, existing_hmis.getMatName());
-            stmt.setString(4, existing_hmis.getVillageId());
-            stmt.setString(5, existing_hmis.getMatPhoneNumber());
-            stmt.setObject(6, existing_hmis.getAge());
-            stmt.setObject(7, existing_hmis.getGravida());
-            stmt.setObject(8, existing_hmis.getParity());
-            stmt.setObject(9, existing_hmis.getGestation());
-            stmt.setString(10, existing_hmis.getTerm());
-            stmt.setObject(11, existing_hmis.getFinalDiagnosis());
-            stmt.setString(12, existing_hmis.getWhoClinicalStage());
-            stmt.setString(13, existing_hmis.getCd4Count());
-            stmt.setObject(14, existing_hmis.getViralLoad());
-            stmt.setObject(15, existing_hmis.getRevisit());
-            stmt.setString(16, existing_hmis.getDeliveryMode());
-            stmt.setString(17, dateFormat.format(existing_hmis.getDeliveryDate()));
-            stmt.setString(18, timeFormat.format(existing_hmis.getDeliveryTime()));
-            stmt.setObject(19, existing_hmis.getErgometrine());
-            stmt.setObject(20, existing_hmis.getPitocin());
-            stmt.setObject(21, existing_hmis.getMisoprostol());
-            stmt.setString(22, existing_hmis.getOtherMeds());
-            stmt.setString(23, existing_hmis.getEmtctCode());
-            stmt.setString(24, existing_hmis.getArvs());
-            stmt.setObject(25, existing_hmis.getVitaminA());
-            stmt.setString(26, existing_hmis.getMuacColor());
-            stmt.setObject(27, existing_hmis.getMuacCM());
-            stmt.setObject(28, existing_hmis.getMuacINR());
-            stmt.setString(29, existing_hmis.getApgarScore());
-            stmt.setString(30, existing_hmis.getSexOfBaby());
-            stmt.setString(31, existing_hmis.getBreathing());
-            stmt.setObject(32, existing_hmis.getSkinToSkin());
-            stmt.setObject(33, existing_hmis.getBreastFed());
-            stmt.setObject(34, existing_hmis.getTeo());
-            stmt.setObject(35, existing_hmis.getVitK());
-            stmt.setObject(36, existing_hmis.getChlorohexidine());
-            stmt.setString(37, existing_hmis.getCounseled());
-            stmt.setObject(38, existing_hmis.getMatNutrCouns());
-            stmt.setObject(39, existing_hmis.getIycf());
-            stmt.setString(40, existing_hmis.getIycfFeeding());
-            stmt.setObject(41, existing_hmis.getWeight());
-            stmt.setString(42, existing_hmis.getArvsBaby());
-            stmt.setObject(43, existing_hmis.getImmunized());
-            stmt.setObject(44, existing_hmis.getFamilyPlanning());
-            stmt.setString(45, existing_hmis.getMotherCondition());
-            stmt.setString(46, existing_hmis.getBabyCondition());
-            stmt.setString(47, existing_hmis.getDeliveredBy());
-            stmt.setString(48, dateFormat.format(existing_hmis.getPostNatalCare()));
-            stmt.setString(49, dateFormat.format(existing_hmis.getDateOfDischarge()));
-            stmt.setString(50, existing_hmis.getNameDischarge());
-            stmt.setObject(51, existing_hmis.getUserId());
-            stmt.setObject(52, existing_hmis.getIpd());
+            PreparedStatement stmt = con.prepareStatement("UPDATE hmis SET dateOfAdmission=?,matVillage=?,ancNum=?,ancRef=?, matName=?, villageID=?, matPhoneNumber=?," +
+                    "age=?, gravida=?, parity=?, weeksGestation=?, term=?, finalDiagnosis=?, whoClinicalStage=?, cd4Count=?, viralLoad=?, revisit=?, deliveryMode=?, " +
+                    "deliveryDate=?, deliveryTime=?, ergometrine=?, pitocin=?, misoprostol=?, otherMeds=?, emtctCode=?, arvs=?, vitaminA=?," +
+                    "muacColor=?, muacCM=?, muacINR=?, apgarScore=?, sexOfBaby=?, breathing=?, skinToSkin=?, breastFed=?, teo=?, vitK=?, chlorhexidine=?," +
+                    "counseled=?, matNutrCouns=?, iycf=?, iycfFeeding=?, weight=?, arvsBaby=?, immunized=?, familyPlanning=?, motherCondition=?, babyCondition=?," +
+                    "deliveredBy=?, postNatalCare=?, dateOfDischarge=?, nameDischarge=?, userId=?, hivTestDate=? Where ipd=?");
+
+            if(existing_hmis.getDateOfAdmission()==null)
+            {
+                stmt.setNull(1, java.sql.Types.DATE);
+            }
+            else {
+                stmt.setString(1, dateFormat.format(existing_hmis.getDateOfAdmission()));
+            }
+
+            PreparedStatement villagestmt = con.prepareStatement("SELECT * From village Where village.VillageId=?");
+            villagestmt.setObject(1, existing_hmis.getVillageId());
+            ResultSet rs = villagestmt.executeQuery();
+
+            if(rs.next()) {
+                stmt.setString(2, rs.getString("VillageName"));
+            }
+            stmt.setObject(3, existing_hmis.getAncNum());
+            stmt.setString(4, existing_hmis.getAncRef());
+            stmt.setString(5, existing_hmis.getMatName());
+            stmt.setString(6, existing_hmis.getVillageId());
+            stmt.setString(7, existing_hmis.getMatPhoneNumber());
+            stmt.setObject(8, existing_hmis.getAge());
+            stmt.setObject(9, existing_hmis.getGravida());
+            stmt.setObject(10, existing_hmis.getParity());
+            stmt.setObject(11, existing_hmis.getGestation());
+            stmt.setString(12, existing_hmis.getTerm());
+            stmt.setObject(13, existing_hmis.getFinalDiagnosis());
+            stmt.setString(14, existing_hmis.getWhoClinicalStage());
+            stmt.setString(15, existing_hmis.getCd4Count());
+            stmt.setObject(16, existing_hmis.getViralLoad());
+            stmt.setObject(17, existing_hmis.getRevisit());
+            stmt.setString(18, existing_hmis.getDeliveryMode());
+            if(existing_hmis.getDeliveryDate()==null)
+            {
+                stmt.setNull(19, java.sql.Types.DATE);
+            }
+            else {
+                stmt.setString(19, dateFormat.format(existing_hmis.getDeliveryDate()));
+            }
+            if(existing_hmis.getDeliveryTime()==null)
+            {
+                stmt.setNull(20, java.sql.Types.TIME);
+            }
+            else {
+                stmt.setString(20, timeFormat.format(existing_hmis.getDeliveryTime()));
+            }
+            stmt.setObject(21, existing_hmis.getErgometrine());
+            stmt.setObject(22, existing_hmis.getPitocin());
+            stmt.setObject(23, existing_hmis.getMisoprostol());
+            stmt.setString(24, existing_hmis.getOtherMeds());
+            stmt.setString(25, existing_hmis.getEmtctCode());
+            stmt.setString(26, existing_hmis.getArvs());
+            stmt.setObject(27, existing_hmis.getVitaminA());
+            stmt.setString(28, existing_hmis.getMuacColor());
+            stmt.setObject(29, existing_hmis.getMuacCM());
+            stmt.setObject(30, existing_hmis.getMuacINR());
+            stmt.setString(31, existing_hmis.getApgarScore());
+            stmt.setString(32, existing_hmis.getSexOfBaby());
+            stmt.setString(33, existing_hmis.getBreathing());
+            stmt.setObject(34, existing_hmis.getSkinToSkin());
+            stmt.setObject(35, existing_hmis.getBreastFed());
+            stmt.setObject(36, existing_hmis.getTeo());
+            stmt.setObject(37, existing_hmis.getVitK());
+            stmt.setObject(38, existing_hmis.getChlorohexidine());
+            stmt.setString(39, existing_hmis.getCounseled());
+            stmt.setObject(40, existing_hmis.getMatNutrCouns());
+            stmt.setObject(41, existing_hmis.getIycf());
+            stmt.setString(42, existing_hmis.getIycfFeeding());
+            stmt.setObject(43, existing_hmis.getWeight());
+            stmt.setString(44, existing_hmis.getArvsBaby());
+            stmt.setObject(45, existing_hmis.getImmunized());
+            stmt.setObject(46, existing_hmis.getFamilyPlanning());
+            stmt.setString(47, existing_hmis.getMotherCondition());
+            stmt.setString(48, existing_hmis.getBabyCondition());
+            stmt.setString(49, existing_hmis.getDeliveredBy());
+            if(existing_hmis.getPostNatalCare()==null)
+            {
+                stmt.setNull(50, java.sql.Types.DATE);
+            }
+            else {
+                stmt.setString(50, dateFormat.format(existing_hmis.getPostNatalCare()));
+            }
+            if(existing_hmis.getDateOfDischarge()==null)
+            {
+                stmt.setNull(51, java.sql.Types.DATE);
+            }
+            else {
+                stmt.setString(51, dateFormat.format(existing_hmis.getDateOfDischarge()));
+            }
+            stmt.setString(52, existing_hmis.getNameDischarge());
+            stmt.setObject(53, existing_hmis.getUserId());
+            if(existing_hmis.getHivTestDate()==null)
+            {
+                stmt.setNull(54, java.sql.Types.DATE);
+            }
+            else {
+                stmt.setString(54, dateFormat.format(existing_hmis.getHivTestDate()));
+            }
+            stmt.setObject(55, existing_hmis.getIpd());
+
             stmt.executeUpdate();
             con.close();
             return true;
         } catch (Exception var4) {
+            //use for debugging
+            //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ERROR: "+var4, "Success"));
+
             ErrorDAO.Error_Add(new Error("ChbDAO", "Update_Existing_HMIS", " Message: " + var4.getMessage(), date));
             return false;
         }

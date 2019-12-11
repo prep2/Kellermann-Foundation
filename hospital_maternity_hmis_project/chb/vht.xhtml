@@ -128,14 +128,14 @@
                         <h:panelGrid columns="2">
                             <h:outputLabel value="Village:" />
                             <p:selectOneMenu id="villages2" value="#{chbBean.existing_vht.villageId}" filter="true" filterMatchMode="contains" editable="false" >
-                                <f:selectItem itemLabel="Select" itemValue="" />  
+                                <f:selectItem itemLabel="Select" itemValue="" />
                                 <f:selectItems value="#{chbBean.get_villages()}" var="village" itemLabel="#{village.villageName}" itemValue="#{village.villageId}" />
                                 <p:ajax listener="#{chbBean.get_village_vht_list()}" update="village_vhts,phone_number,age,sex,isCBD"/>
                             </p:selectOneMenu>
 
                             <h:outputLabel value="Name of VHT:" />
-                            <p:selectOneMenu id="village_vhts" value="#{chbBean.existing_vht.vhtId}" filter="true" filterMatchMode="contains" editable="false"> 
-                                <f:selectItem itemLabel="Select" itemValue="" /> 
+                            <p:selectOneMenu id="village_vhts" value="#{chbBean.existing_vht.vhtId}" filter="true" filterMatchMode="contains" editable="false">
+                                <f:selectItem itemLabel="Select" itemValue="" />
                                 <f:selectItems value="#{chbBean.village_vht_list}" var="vht" itemLabel="#{vht.vhtName}" itemValue="#{vht.vhtId}" />
                                 <p:ajax listener="#{chbBean.get_existing_vht(chbBean.existing_vht.vhtId,'null')}" update="phone_number,age,sex,isCBD"/>
                             </p:selectOneMenu>
@@ -144,10 +144,10 @@
                             <p:inputText id="phone_number" value="#{chbBean.existing_vht.vhtPhoneNumber}"/>
 
                             <h:outputLabel value="Age (years):" />
-                            <p:inputText id="age" value="#{chbBean.existing_vht.age}"/>                            
-                            
+                            <p:inputText id="age" value="#{chbBean.existing_vht.age}"/>
+
                             <h:outputLabel value="Sex:" />
-                            <p:selectOneMenu id="sex" value="#{chbBean.existing_vht.sex}"> 
+                            <p:selectOneMenu id="sex" value="#{chbBean.existing_vht.sex}">
                                 <f:selectItem itemLabel="Select" itemValue="" />
                                 <f:selectItem itemLabel="Female" itemValue="F" />
                                 <f:selectItem itemLabel="Male" itemValue="M" />

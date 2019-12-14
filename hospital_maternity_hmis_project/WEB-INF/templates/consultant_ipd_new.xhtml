@@ -1,0 +1,86 @@
+<!DOCTYPE html [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY bull "&#8226;">
+    <!ENTITY copy "&#169;">
+    ]>
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:ui="http://java.sun.com/jsf/facelets"
+          xmlns:p="http://primefaces.org/ui">
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/main/images/favicon.png" />
+            </f:facet>
+            <ui:insert name="head" />
+            <title><ui:insert name="title"/></title>
+            <h:outputStylesheet name="css/showcase.css" />
+            <h:outputStylesheet name="css/perfect-scrollbar.css" />
+            <h:outputStylesheet name="css/sh.css" />
+            <h:outputStylesheet name="css/main.css" />            
+            <h:outputScript name="jquery/jquery.js" library="primefaces" />
+            <h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+            <h:outputScript name="js/perfect-scrollbar.js" />
+            <h:outputScript name="js/showcase.js" />
+            <ui:insert name="head" />
+        </h:head>
+
+        <h:body>
+
+            <!-- PC CONTENT STARTS HERE-->
+            <div class="PC">
+
+                <div id="MENUSIDE">
+                    <div id="MENUSIDEindent">
+                        <span id="LOGO" class="bordersOfMenuSide">
+                            <h:graphicImage styleClass="hiddenIcons" name="images/nice.png" />
+                            <span class="bhmsText">BHMS</span>
+                        </span>
+
+                        <span class="emptyBox"></span>
+                        <div class="MenuSideName">#{usersBean.fullName}</div>
+                        
+                        <span class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="images/ward.svg" /><h:graphicImage styleClass="hiddenIcons" name="images/ward.svg" /><span class="MainLinkText">Manage Patients</span></span>
+                        <div>
+                            <a class="SubMenuLink" href="#{request.contextPath}/consultant/ipd/ward/nighttime_reception.xhtml">&bull; Nighttime Reception</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/consultant/ipd/ward/new.xhtml">&bull; Patients to be Admitted</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/consultant/ipd/ward/existing.xhtml">&bull; Patients on Ward</a>                            
+                            <a class="SubMenuLink" href="#{request.contextPath}/consultant/ipd/ward/discharged.xhtml">&bull; Discharged Patients</a>
+                        </div>
+
+                        <br/><br/><br/><br/><br/><br/><br/>
+
+                        <span class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="images/menu.svg" /><h:graphicImage styleClass="hiddenIcons" name="images/menu.svg" /><span class="MainLinkText">Other</span></span>
+                        <div>
+                            <a class="SubMenuLink" href="#{request.contextPath}/consultant/ipd/drugs.xhtml">&bull; Drugs Requests</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/consultant/ipd/reports.xhtml">&bull; Reports</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/consultant/ipd/search.xhtml">&bull; Patient Search</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/consultant/ipd/genhistory.xhtml">&bull; Single Patient Histories</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/consultant/ipd/settings.xhtml">&bull; Settings</a>
+<!--                        </div>
+
+                        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                        
+                        <span class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="images/clinics.svg" /><h:graphicImage styleClass="hiddenIcons" name="images/clinics.svg" /><span class="MainLinkText">Chronic Clinics</span></span>
+                        <div>
+                            <a class="SubMenuLink" href="# {request.contextPath}/consultant/ipd/clinics/alcohol/pending.xhtml">&bull; Alcohol Clinic</a>
+                            <a class="SubMenuLink" href="# {request.contextPath}/consultant/ipd/clinics/diabetes/pending.xhtml">&bull; Diabetes Clinic</a>
+                            <a class="SubMenuLink" href="# {request.contextPath}/consultant/ipd/clinics/hyper/pending.xhtml">&bull; Hypertension Clinic</a>  -->
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div id="CONTENTSIDE">
+                    <div id="CONTENTSIDEindent">
+                        <div class="top" ><ui:insert name="section"></ui:insert> &nbsp;<ui:insert name="commands"></ui:insert></div>
+                        <ui:insert name="content"></ui:insert>
+                    </div>
+                </div>
+
+            </div>
+        </h:body>
+    </html>

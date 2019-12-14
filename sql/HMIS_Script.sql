@@ -9,6 +9,8 @@ COMMENT='This table holds the data for the baby condition.'
 ENGINE=InnoDB
 ;
 
+DELETE FROM `babyCondition`;
+
 INSERT INTO `babyCondition` (`code`,`description`)
 VALUES
 ('MSB', 'Macerated still birth'),
@@ -26,6 +28,8 @@ PRIMARY KEY (`code`)
 COMMENT='This table holds the data for the mother condition.'
 ENGINE=InnoDB
 ;
+
+DELETE FROM `motherCondition`;
 
 INSERT INTO `motherCondition` (`code`,`description`)
 VALUES
@@ -100,14 +104,14 @@ COMMENT='This table holds the data for the breathing codes'
 ENGINE=InnoDB
 ;
 
-INSERT INTO `not_breathing` (`code`,`description`)
+INSERT INTO `breathing` (`code`,`description`)
 VALUES
-('SS', 'If baby breathes after Stimulation and or Suction procedure'),
+('SS', 'If baby breathers after Stimulation and or Suction procedure'),
 ('BM', 'If baby breathes after Bag and Mask procedure'),
 ('BMD', 'if baby dies Bag and Mask procedure')
 ;
 
-CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`muacColour`(
+CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`muacColor`(
 	`code` VARCHAR(1) NOT NULL,
 	`description` VARCHAR(10) NULL DEFAULT NULL,
 PRIMARY KEY (`code`)
@@ -116,7 +120,7 @@ COMMENT='This table holds the data for the muac colour codes'
 ENGINE=InnoDB
 ;
 
-INSERT INTO `muaccolour` (`code`,`description`)
+INSERT INTO `muacColor` (`code`,`description`)
 VALUES
 ('R', 'Red'),
 ('Y', 'Yellow'),
@@ -145,7 +149,7 @@ VALUES
 ('TRR+', 'Client was originally negative but sero-converted at this test')
 ;
 
-CREATE TABLE IF NOT EXISTS  `bwindihospital_reduced`.`final_diagnosis` (
+CREATE TABLE IF NOT EXISTS `final_diagnosis` (
 	`finalDiagNum` INT(1) NOT NULL,
 	`finalDiagDesc` VARCHAR(100) NULL DEFAULT NULL,
 	PRIMARY KEY (`finalDiagNum`),
@@ -172,25 +176,27 @@ VALUES
 ('12', 'Other Complications of pregnancy')
 ;
 
-CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`hmis` (
-	`DOA` DATE NULL DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `hmis` (
+	`recordDate` DATE NULL DEFAULT NULL,
+	`dateOfAdmission` DATE NULL DEFAULT NULL,
 	`IPD` INT(20) NOT NULL,
-	`ANC_Num` INT(20) NULL DEFAULT NULL,
-	`ANC_Ref` VARCHAR(50) NULL DEFAULT NULL,
-	`Mat_Name` VARCHAR(50) NULL DEFAULT NULL,
+	`ancNum` INT(20) NULL DEFAULT NULL,
+	`ancRef` VARCHAR(50) NULL DEFAULT NULL,
+	`matName` VARCHAR(50) NULL DEFAULT NULL,
+	`villageID` VARCHAR(10) NULL DEFAULT NULL,
 	`matVillage` VARCHAR(20) NULL DEFAULT NULL,
-	`Parish` VARCHAR(20) NULL DEFAULT NULL,
 	`matPhoneNumber` VARCHAR(50) NULL DEFAULT NULL,
-	`Age` INT(10) NULL DEFAULT NULL,
-	`Gravida` INT(5) NULL DEFAULT NULL,
-	`Parity` INT(5) NULL DEFAULT NULL,
+	`age` INT(3) NULL DEFAULT NULL,
+	`gravida` INT(5) NULL DEFAULT NULL,
+	`parity` INT(5) NULL DEFAULT NULL,
 	`weeksGestation` INT(2) NULL DEFAULT NULL,
-	`Term` VARCHAR(1) NULL DEFAULT NULL,
-	`final_diagnosis` INT(2) NULL DEFAULT NULL,
-	`WHO_clinicalStage` VARCHAR(10) NULL DEFAULT NULL,
+	`term` VARCHAR(10) NULL DEFAULT NULL,
+	`finalDiagnosis` INT(2) NULL DEFAULT NULL,
+	`hivTestDate` DATE NULL DEFAULT NULL,
+	`whoClinicalStage` VARCHAR(10) NULL DEFAULT NULL,
 	`cd4Count` VARCHAR(5) NULL DEFAULT NULL,
 	`viralLoad` INT(5) NULL DEFAULT NULL,
-	`Revisit` BIT(1) NULL DEFAULT NULL,
+	`revisit` BIT(1) NULL DEFAULT NULL,
 	`deliveryMode` VARCHAR(100) NULL DEFAULT NULL,
 	`deliveryDate` DATE NULL DEFAULT NULL,
 	`deliveryTime` TIME NULL DEFAULT NULL,
@@ -199,20 +205,21 @@ CREATE TABLE IF NOT EXISTS `bwindihospital_reduced`.`hmis` (
 	`misoprostol` BIT(1) NULL DEFAULT NULL,
 	`otherMeds` VARCHAR(100) NULL DEFAULT NULL,
 	`emtctCode` VARCHAR(5) NULL DEFAULT NULL,
-	`arvs` VARCHAR(5) NULL DEFAULT NULL,
+	`arvs` VARCHAR(3) NULL DEFAULT NULL,
 	`vitaminA` BIT(1) NULL DEFAULT NULL,
-	`muacColour` CHAR(1) NULL DEFAULT NULL,
+	`muacColor` CHAR(1) NULL DEFAULT NULL,
 	`muacCM` INT(2) NULL DEFAULT NULL,
 	`muacINR` INT(20) NULL DEFAULT NULL,
 	`apgarScore` VARCHAR(10) NULL DEFAULT NULL,
-	`sex` BIT(1) NULL DEFAULT NULL,
+	`sexOfBaby` BIT(1) NULL DEFAULT NULL,
 	`breathing` VARCHAR(3) NULL DEFAULT NULL,
 	`skinToSkin` BIT(1) NULL DEFAULT NULL,
 	`breastFed` BIT(1) NULL DEFAULT NULL,
 	`teo` BIT(1) NULL DEFAULT NULL,
-	`VitK` BIT(1) NULL DEFAULT NULL,
-	`Chlorhexidine` BIT(1) NULL DEFAULT NULL,
+	`vitK` BIT(1) NULL DEFAULT NULL,
+	`chlorhexidine` BIT(1) NULL DEFAULT NULL,
 	`counseled` VARCHAR(2) NULL DEFAULT NULL,
+	`matNutrCouns` BIT(1) NULL DEFAULT NULL,
 	`iycf` BIT(1) NULL DEFAULT NULL,
 	`iycfFeeding` VARCHAR(3) NULL DEFAULT NULL,
 	`weight` DECIMAL(5,3) NULL DEFAULT NULL,

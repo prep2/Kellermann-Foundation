@@ -10,12 +10,12 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping database structure for bwindihospital_reduced
+-- Dumping database structure for bwindihospital
 CREATE DATABASE IF NOT EXISTS `bwindihospital_reduced` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `bwindihospital_reduced`;
 
 
--- Dumping structure for table bwindihospital_reduced.department
+-- Dumping structure for table bwindihospital.department
 CREATE TABLE IF NOT EXISTS `department` (
   `DID` int(10) NOT NULL AUTO_INCREMENT,
   `DepartmentName` varchar(50) DEFAULT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `department` (
   PRIMARY KEY (`DID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1 COMMENT='The Departments in the Hospital';
 
--- Dumping data for table bwindihospital_reduced.department: ~0 rows (approximately)
+-- Dumping data for table bwindihospital.department: ~0 rows (approximately)
 DELETE FROM `department`;
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
 INSERT INTO `department` (`DID`, `DepartmentName`, `Description`) VALUES
@@ -31,7 +31,7 @@ INSERT INTO `department` (`DID`, `DepartmentName`, `Description`) VALUES
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 
 
--- Dumping structure for table bwindihospital_reduced.error_log
+-- Dumping structure for table bwindihospital.error_log
 CREATE TABLE IF NOT EXISTS `error_log` (
   `Controller_Name` varchar(50) DEFAULT NULL,
   `Method_Name` varchar(50) DEFAULT NULL,
@@ -39,23 +39,23 @@ CREATE TABLE IF NOT EXISTS `error_log` (
   `Record_Date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='This will log all errors for the administrator to be able to trouble shoot.';
 
--- Dumping data for table bwindihospital_reduced.error_log: ~576 rows (approximately)
+-- Dumping data for table bwindihospital.error_log: ~576 rows (approximately)
 DELETE FROM `error_log`;
 /*!40000 ALTER TABLE `error_log` DISABLE KEYS */;
 INSERT INTO `error_log` (`Controller_Name`, `Method_Name`, `Error`, `Record_Date`) VALUES
-	('ChbDAO', 'Get_Vht_List', ' Message: Table \'bwindihospital_reduced.vhtxx\' doesn\'t exist', '2018-09-14 14:24:05'),
-	('ChbDAO', 'Get_Vht_List', ' Message: Table \'bwindihospital_reduced.vhtxx\' doesn\'t exist', '2018-09-14 14:24:05');
+	('ChbDAO', 'Get_Vht_List', ' Message: Table \'bwindihospital.vhtxx\' doesn\'t exist', '2018-09-14 14:24:05'),
+	('ChbDAO', 'Get_Vht_List', ' Message: Table \'bwindihospital.vhtxx\' doesn\'t exist', '2018-09-14 14:24:05');
 /*!40000 ALTER TABLE `error_log` ENABLE KEYS */;
 
 
--- Dumping structure for table bwindihospital_reduced.login_history
+-- Dumping structure for table bwindihospital.login_history
 CREATE TABLE IF NOT EXISTS `login_history` (
   `Staff_Id` varchar(6) DEFAULT NULL,
   `Login_Date` date DEFAULT NULL,
   `Login_Time` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table bwindihospital_reduced.login_history: ~866 rows (approximately)
+-- Dumping data for table bwindihospital.login_history: ~866 rows (approximately)
 DELETE FROM `login_history`;
 /*!40000 ALTER TABLE `login_history` DISABLE KEYS */;
 INSERT INTO `login_history` (`Staff_Id`, `Login_Date`, `Login_Time`) VALUES
@@ -928,7 +928,7 @@ INSERT INTO `login_history` (`Staff_Id`, `Login_Date`, `Login_Time`) VALUES
 /*!40000 ALTER TABLE `login_history` ENABLE KEYS */;
 
 
--- Dumping structure for table bwindihospital_reduced.parishes
+-- Dumping structure for table bwindihospital.parishes
 CREATE TABLE IF NOT EXISTS `parishes` (
   `ParishId` varchar(20) CHARACTER SET utf8 NOT NULL,
   `SubcountyId` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
@@ -937,7 +937,7 @@ CREATE TABLE IF NOT EXISTS `parishes` (
   KEY `SubcountyId` (`SubcountyId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table bwindihospital_reduced.parishes: ~58 rows (approximately)
+-- Dumping data for table bwindihospital.parishes: ~58 rows (approximately)
 DELETE FROM `parishes`;
 /*!40000 ALTER TABLE `parishes` DISABLE KEYS */;
 INSERT INTO `parishes` (`ParishId`, `SubcountyId`, `ParishName`) VALUES
@@ -1002,7 +1002,7 @@ INSERT INTO `parishes` (`ParishId`, `SubcountyId`, `ParishName`) VALUES
 /*!40000 ALTER TABLE `parishes` ENABLE KEYS */;
 
 
--- Dumping structure for table bwindihospital_reduced.roles
+-- Dumping structure for table bwindihospital.roles
 CREATE TABLE IF NOT EXISTS `roles` (
   `RID` int(10) NOT NULL DEFAULT '0',
   `Name` varchar(50) DEFAULT NULL,
@@ -1010,7 +1010,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   PRIMARY KEY (`RID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Table for the different Roles as According to the Hospital Management';
 
--- Dumping data for table bwindihospital_reduced.roles: ~0 rows (approximately)
+-- Dumping data for table bwindihospital.roles: ~0 rows (approximately)
 DELETE FROM `roles`;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`RID`, `Name`, `Description`) VALUES
@@ -1018,14 +1018,14 @@ INSERT INTO `roles` (`RID`, `Name`, `Description`) VALUES
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 
--- Dumping structure for table bwindihospital_reduced.subcounty
+-- Dumping structure for table bwindihospital.subcounty
 CREATE TABLE IF NOT EXISTS `subcounty` (
   `SubcountyId` varchar(20) CHARACTER SET utf8 NOT NULL,
   `SubcountyName` varchar(60) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`SubcountyId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table bwindihospital_reduced.subcounty: ~23 rows (approximately)
+-- Dumping data for table bwindihospital.subcounty: ~23 rows (approximately)
 DELETE FROM `subcounty`;
 /*!40000 ALTER TABLE `subcounty` DISABLE KEYS */;
 INSERT INTO `subcounty` (`SubcountyId`, `SubcountyName`) VALUES
@@ -1055,7 +1055,7 @@ INSERT INTO `subcounty` (`SubcountyId`, `SubcountyName`) VALUES
 /*!40000 ALTER TABLE `subcounty` ENABLE KEYS */;
 
 
--- Dumping structure for table bwindihospital_reduced.users
+-- Dumping structure for table bwindihospital.users
 CREATE TABLE IF NOT EXISTS `users` (
   `UID` int(8) NOT NULL AUTO_INCREMENT,
   `record_id` varchar(125) CHARACTER SET utf8 DEFAULT NULL,
@@ -1071,7 +1071,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`UID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1 COMMENT='Keeps information about the users';
 
--- Dumping data for table bwindihospital_reduced.users: ~20 rows (approximately)
+-- Dumping data for table bwindihospital.users: ~20 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`UID`, `record_id`, `Status`, `FullName`, `UserName`, `RID`, `DID`, `Password`, `Sex`, `UserLevel`, `Deleted`) VALUES
@@ -1079,7 +1079,7 @@ INSERT INTO `users` (`UID`, `record_id`, `Status`, `FullName`, `UserName`, `RID`
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 
--- Dumping structure for table bwindihospital_reduced.vht
+-- Dumping structure for table bwindihospital.vht
 CREATE TABLE IF NOT EXISTS `vht` (
   `vhtId` int(10) NOT NULL AUTO_INCREMENT,
   `vhtName` varchar(50) DEFAULT NULL,
@@ -1098,7 +1098,7 @@ CREATE TABLE IF NOT EXISTS `vht` (
   KEY `vhtVillage` (`vhtVillage`,`userId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=801 DEFAULT CHARSET=latin1;
 
--- Dumping data for table bwindihospital_reduced.vht: ~548 rows (approximately)
+-- Dumping data for table bwindihospital.vht: ~548 rows (approximately)
 DELETE FROM `vht`;
 /*!40000 ALTER TABLE `vht` DISABLE KEYS */;
 INSERT INTO `vht` (`vhtId`, `vhtName`, `Age`, `Sex`, `vhtPhoneNumber`, `isCBD`, `vhtVillage`, `recordDate`, `userId`, `recordStatus`, `mchisid`, `create_unsyncd`, `update_unsyncd`) VALUES
@@ -1125,7 +1125,7 @@ INSERT INTO `vht` (`vhtId`, `vhtName`, `Age`, `Sex`, `vhtPhoneNumber`, `isCBD`, 
 /*!40000 ALTER TABLE `vht` ENABLE KEYS */;
 
 
--- Dumping structure for table bwindihospital_reduced.village
+-- Dumping structure for table bwindihospital.village
 CREATE TABLE IF NOT EXISTS `village` (
   `VillageId` varchar(20) CHARACTER SET utf8 NOT NULL,
   `ParishId` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
@@ -1134,7 +1134,7 @@ CREATE TABLE IF NOT EXISTS `village` (
   KEY `ParishId` (`ParishId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table bwindihospital_reduced.village: ~215 rows (approximately)
+-- Dumping data for table bwindihospital.village: ~215 rows (approximately)
 DELETE FROM `village`;
 /*!40000 ALTER TABLE `village` DISABLE KEYS */;
 INSERT INTO `village` (`VillageId`, `ParishId`, `VillageName`) VALUES

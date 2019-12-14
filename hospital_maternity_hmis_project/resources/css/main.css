@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body .ui-widget {
+    font-family: "Trebuchet MS", "Liberation Sans", "DejaVu Sans", sans-serif;
+    font-size: 10px;
+    line-height: 1.3em;
+    color: #40356E;
+}
+
+html {
+    overflow-y: scroll; /* Sticky vertical scrollbar to prevent horizontal shifts on navigation. */
+}
+
+.topmenu{
+    height: 80px;
+    background: url("#{resource['images:topbg.png']}") repeat;
+    border-bottom: 2px solid #c0b9c4;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.topcontent{
+    position:absolute;
+    left:0;
+    top:0;
+    float: left;
+    padding-top: 40px;
+    padding-left: 80px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #40356E;
+}
+
+.toplogout{
+    position:absolute;
+    right:0;
+    top:0;
+    padding-top: 40px;
+    padding-right: 5px;
+    color: #40356E;
+}
+
+#content {
+    float: right;
+    width: 90%;
+    margin-bottom: 10px; /* Just some spacing to avoid vertical page shifts when switching between source code tabs. */
+}
+
+.iconsearch{
+    background:url('../images/toolbar_find.ico') no-repeat;
+    height:32px;
+    width:32px;
+}
+
+.headercolumn{
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.datacolumn{
+    font-weight: 400;
+    font-size: 16px;
+}
+
+th, td {white-space: nowrap; }
+
+div.dataTables_wrapper {
+        width: 800px;
+        margin: 0 auto;
+		overflow-x: scroll;
+}
+
+
+/* ----------- Start Tables CSS------------------------------- */
+
+.tblcol1{width: 5%;}
+.tblcol2{width: 10%;}
+.tblcol3{width: 15%;}
+.tblcol4{width: 20%;}
+.tblcol5{width: 25%;}
+.tblcol6{width: 30%;}
+.tblcol7{width: 35%;}
+.tblcol8{width: 40%;}
+.tblcol9{width: 45%;}
+.tblcol10{width: 50%;}
+.tblcol11{width: 55%;}
+.tblcol12{width: 60%;}
+.tblcol13{width: 65%;}
+.tblcol14{width: 70%;}
+.tblcol15{width: 75%;}
+.tblcol16{width: 80%;}
+.tblcol17{width: 85%;}
+
+
+/* ----------------- End Tables CSS----------------------- */
+
+.vtcontainer {
+    border: 1px solid rgb(195, 219, 240);
+    background-color: #f7f7f7;
+    padding: 6px;
+    color: rgb(11, 86, 144);
+    font-weight: bold;
+    min-height: 450px;
+    max-height: 580px;
+    overflow: auto;
+    margin-bottom:5px;
+    width: 98%;
+    margin: 0 auto;
+}
+
+.labaddpanel{
+    border: 1px solid rgb(195, 219, 240);
+    background-color: #f7f7f7;
+    padding: 6px;
+    color: rgb(11, 86, 144);
+    font-weight: bold;
+    min-height: 330px;
+    max-height: 330px;
+    overflow: auto;
+    margin: 0 auto;
+    margin-bottom:5px;
+}
+
+.labviewpanel{
+    border: 1px solid rgb(195, 219, 240);
+    background-color: #f7f7f7;
+    padding: 6px;
+    color: rgb(11, 86, 144);
+    font-weight: bold;
+    min-height: 450px;
+    max-height: 580px;
+    overflow: auto;
+    margin: 0 auto;
+    margin-bottom:5px;
+}
+
+
+
+

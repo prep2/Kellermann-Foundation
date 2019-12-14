@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Kellermann-Foundation.iml" filepath="$PROJECT_DIR$/.idea/Kellermann-Foundation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/BHMS_dev.iml" filepath="$PROJECT_DIR$/.idea/BHMS_dev.iml" />
     </modules>
   </component>
 </project>

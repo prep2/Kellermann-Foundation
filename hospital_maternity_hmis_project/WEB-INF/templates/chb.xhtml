@@ -1,0 +1,79 @@
+<!DOCTYPE html [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY bull "&#8226;">
+    <!ENTITY copy "&#169;">
+    ]>
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:ui="http://java.sun.com/jsf/facelets"
+          xmlns:p="http://primefaces.org/ui">
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/main/images/favicon.png" />
+            </f:facet>
+            <ui:insert name="head" />
+            <title><ui:insert name="title"/></title>
+            <h:outputStylesheet name="css/showcase.css" />
+            <h:outputStylesheet name="css/perfect-scrollbar.css" />
+            <h:outputStylesheet name="css/sh.css" />
+<!--            <h:outputStylesheet name="css/main.css" />           -->
+            <h:outputScript name="jquery/jquery.js" library="primefaces" />
+            <h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+            <h:outputScript name="js/perfect-scrollbar.js" />
+            <h:outputScript name="js/showcase.js" />
+            <ui:insert name="head" />
+        </h:head>
+
+        <h:body>
+
+            <!-- PC CONTENT STARTS HERE-->
+            <div class="PC">
+
+                <div id="MENUSIDE">
+                    <div id="MENUSIDEindent">
+                        <span id="LOGO" class="bordersOfMenuSide">
+                            <h:graphicImage styleClass="hiddenIcons" name="images/nice.png" />
+                            <span class="bhmsText">BHMS</span>
+                        </span>
+
+                        <span class="emptyBox"></span>
+                        <div class="MenuSideName">#{usersBean.fullName}</div>
+                        <span class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="images/menu.svg" /><h:graphicImage styleClass="hiddenIcons" name="images/menu.svg" /><span class="MainLinkText">VHT data</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/chb/vht.xhtml">&bull; Add/Edit VHTs</a>
+                        </div>
+                        <span class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="images/menu.svg" /><h:graphicImage styleClass="hiddenIcons" name="images/menu.svg" /><span class="MainLinkText">HMIS data</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/chb/hmis.xhtml">&bull; Add/Edit HMISs</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/chb.xhtml">&bull; Blank</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/chb.xhtml">&bull; Blank</a>
+                        </div>
+                        <span class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="images/menu.svg" /><h:graphicImage styleClass="hiddenIcons" name="images/menu.svg" /><span class="MainLinkText">Blank</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/chb.xhtml">&bull; Blank</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/chb.xhtml">&bull; Blank</a>
+                            <a class="SubMenuLink" href="#{request.contextPath}/chb.xhtml">&bull; Blank</a>
+                        </div>
+                        <span class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="images/menu.svg" /><h:graphicImage styleClass="hiddenIcons" name="images/menu.svg" /><span class="MainLinkText">Administration</span></span>
+                        <div class="SubMenuLinkContainer">
+                            <a class="SubMenuLink" href="#{request.contextPath}/chb/settings.xhtml">&bull; Settings</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="CONTENTSIDE">
+                    <div id="CONTENTSIDEindent">
+                        <div class="top" ><ui:insert name="section"></ui:insert> &nbsp;<ui:insert name="commands"></ui:insert></div>
+                        <ui:insert name="content"></ui:insert>
+                    </div>
+                </div>
+
+            </div>
+			
+			
+        </h:body>
+    </html>

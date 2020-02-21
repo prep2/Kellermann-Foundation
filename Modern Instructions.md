@@ -21,20 +21,20 @@ First, open **System Properties**, then open **Environment Variables**. Click th
 ![](https://i.imgur.com/vArAOqn.jpg)
 >My PATH variables for MariaDB and Tomcat are marked by the yellow arrows.
 
-You should be able to run "mysql" in your terminal after a restart of your computer. If there is an error reading "access denied for user...", then you have set up MariaDB successfully. 
+You will be able to run "mysql" in your terminal after a restart of your computer. If there is an error reading "access denied for user...", then you have set up MariaDB successfully. 
 
 ## Running Tomcat inside an IDE ##
 We will be using Intellij IDEA Ultimate for this documentation. Using VS Code instead will be fairly straight forward provided you understand how to run Tomcat inside Intellij, and know how VS Code is structured. 
 
-Launch Intellij and open the *hospital_maternity_hmis_project* folder inside the *Kellermann-Foundation* folder. This is where Tomcat will set its starting directory when you start up the server. 
+Launch Intellij and open the **hospital_maternity_hmis_project** folder inside the **Kellermann-Foundation** folder. This is where Tomcat will set its starting directory when you start up the server. 
 
 >Make sure your Project SDK is Java 1.8 inside Project Structure (located in the File tab or the grid icon in the top left of the IDE).
 
 Next we need to add a Tomcat configuration. There is a configuration dropdown between the build and run icons in the toolbar, click it and open the **Edit Configurations** link. 
 Click **Add New Configuration** and select Tomcat Server. You may need to hit a "Show more" button of some kind. It will ask you if you want a local or a remote configuration, select **local**. 
-Intellij should auto-populate the default settings which *may* work. 
+Intellij should auto-populate the default settings which *may* work out of the box. 
 
-Try running the program using the Build & Run buttons, it should open the webpage at http://localhost:8080/BHMS/
+Try running the program using the Build & Run buttons, it should open the login page at http://localhost:8080/BHMS/
 
 If it doesn't work, try changing the port and URL in the Edit Configurations panel. For example, change http://localhost:8080/BHMS/ to http://localhost:8082/BHMS/
 
@@ -46,10 +46,11 @@ To populate the database, you need to run commands inside the MariaDB shell. Sea
 
 Use the cd function to change your directory. You can simply copy the address of your SQL folder in Windows Explorer and paste it into the MariaDB command prompt (use right click to paste).
 
->My command was: `cd C:\Users\zarro\OneDrive\Documents\Visual Studio Code\Projects\Kellermann-Foundation\sql`  
+My command was: `cd C:\Users\zarro\OneDrive\Documents\Visual Studio Code\Projects\Kellermann-Foundation\sql`  
 >Note that my username and location for my folder will be different than yours.
 
-Or you can cd your way through your whole filesystem. 
+Or you can cd your way through your whole filesystem:   
+
 ![](https://i.imgur.com/tr58MjZ.png)
 
 Now you can run the log-in command:
@@ -76,6 +77,20 @@ Run bwindihospital_reduced first, then HMIS_Script. You will need to do this any
 
 ## Database Authentification ##
 
-Open the UsersDAO.java file located in "Kellermann-Foundation\hospital_maternity_hmis_project\WEB-INF\classes\dao" 
-The UsersDAO files is the file that authenticates users, you must change your credentials to be able to log in to the HMIS database. 
-Inside the file, there are multiple password fields however the password do not match the password you set for MariaDB so use the find function and 
+Open the UsersDAO.java file located in **Kellermann-Foundation\hospital_maternity_hmis_project\WEB-INF\classes\dao** 
+The UsersDAO file is what authenticates users, you must change your credentials inside to be able to log in to the HMIS database. 
+Inside the file, there are multiple password fields however the default password does not match the password you set for Tomcat so use the find function and replace all instances of the default password (t00r) with the password you set for for Tomcat. 
+
+>If you don't remember your password, you can edit your **users.xml** file inside your **\Tomcat\conf** folder. Mine was located at **C:\Program Files\Apache Software Foundation\Tomcat 9.0\conf**
+
+## Launching the Database ##
+
+Build & Run the program and this time, you will be able to log in with the credentials: 
+> **Username:** emmanual  
+> **Password:** *tomcat password*
+
+Congratulations, you never have to do this ever again! (hopefully)
+## Miscellaneous ## 
+
+If you decide to use Visual Studio Code, note that you will need to use the .war file inside the **midVer1Build** folder to run teh databse using the Tomcat extention. If you do not have a **.war** file, run the database using IntelliJ, it will create it for you. 
+

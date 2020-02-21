@@ -2,9 +2,9 @@
 
 ## Programs needed ##
 Latest stable version of [Tomcat](https://tomcat.apache.org/download-80.cgi)
-Latest version of [MariaDB](https://mariadb.org/download/)
+Latest version of [MariaDB](https://mariadb.org/download/).
 An IDE with Java and server capabilities, you can use [Intellij Ultimate](https://www.jetbrains.com/idea/) or [Visual Studio Code](https://code.visualstudio.com/) with [Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) and [Tomcat](https://marketplace.visualstudio.com/items?itemName=adashen.vscode-tomcat) extentions. 
-[Java Development Kit (jdk)](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html) is also needed but you likely already have installed on your system
+[Java Development Kit](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html) is also needed but you likely already have installed on your system.
 
 ## Installing Tomcat and MariaDB ##
 ### Tomcat ### 

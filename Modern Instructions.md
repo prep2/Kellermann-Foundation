@@ -22,4 +22,32 @@ My PATH variables are marked by the yellow arrows.
 
 You should be able to run "mysql" in your terminal after a restart of your computer. If there is an error reading "access denied for user...", then you have set up MariaDB successfully. 
 
-## Populating the database ##
+## Running Tomcat inside an IDE ##
+We will be using Intellij IDEA Ultimate for this documentation. Using VS Code instead will be fairly straight forward provided you understand how to run Tomcat inside Intellij, and know how VS Code is structured. 
+
+Launch Intellij and open the hospital_maternity_hmis_project folder inside the Kellermann Foundation folder. This is where Tomcat will set its starting directory when you start up the server. 
+
+Make sure your Project SDK is Java 1.8 inside Project Structure (located in the File tab or the grid icon in the top left of the IDE).
+Next we need to add a Tomcat configuration. There is a configuration dropdown between the build and run icons in the toolbar, click it and open the "Edit Configurations" link. 
+Click "Add New Configuration" and select Tomcat Server. YOu may need to hit a "Show more" button of some kind. It will ask you if you want a local or a remote configuration, select local. 
+Intellij should auto-populate the settings fou. Try running the program using the Build & Run buttons, it should open the webpage at http://localhost:8080/BHMS/
+
+If it doesn't work, try changing the port and URL in the Edit Configurations panel. For example, change http://localhost:8080/BHMS/ to http://localhost:8082/BHMS/
+Make sure the HTTP and the URL match when you do so. 
+
+## Populating the Database ##
+To populate the database, you need to run commands inside the MariaDB shell. Search for MariaDB on your computer, you should see a shell with the name "Command Prompt (MariaDB 10.4 (x64))". Open it, and note that the shell opens to your system32 folder. You need to change the directory to the folder containing the database SQL scripts located in \Kellermann-Foundation\sql\. 
+
+Use the cd function to change your directory. You can simply copy the address of your SQL folder in Windows Explorer and paste it into the MariaDB command prompt (use right click to paste).
+My command was: cd C:\Users\zarro\OneDrive\Documents\Visual Studio Code\Projects\Kellermann-Foundation\sql
+Note that my username will be different than yours.
+
+Or you can cd your way through your whole filesystem. 
+![](https://i.imgur.com/tr58MjZ.png)
+
+## Database Authentification ##
+
+Open the UsersDAO.java file located in "Kellermann-Foundation\hospital_maternity_hmis_project\WEB-INF\classes\dao" 
+The UsersDAO files is the file that authenticates users, you must change your credentials to be able to log in to the HMIS database. 
+Inside the file, there are multiple password fields however the password do not match the password you set for MariaDB so use the find function and 
+

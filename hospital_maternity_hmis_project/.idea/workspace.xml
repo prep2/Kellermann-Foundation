@@ -7,6 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e75d11c-b657-45ce-9d0e-08e5c5993788" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Modern Instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Modern Instructions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +41,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
@@ -385,7 +386,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -419,6 +420,7 @@
       <workItem from="1582234369006" duration="1745000" />
       <workItem from="1582237123673" duration="139000" />
       <workItem from="1582237509925" duration="4867000" />
+      <workItem from="1582314174164" duration="940000" />
     </task>
     <servers />
   </component>
@@ -454,18 +456,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="554" y="180" key="#Tomcat_Server/0.0.1920.1040@0.0.1920.1040" timestamp="1582234501069" />
-    <state x="416" y="175" width="1086" height="746" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582239565881">
+    <state x="122" y="161" width="1086" height="746" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582315109415">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="416" y="175" width="1086" height="746" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582239565881" />
+    <state x="122" y="161" width="1086" height="746" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582315109415" />
     <state x="554" y="179" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1582234703932">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="554" y="179" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1920.1040@0.0.1920.1040" timestamp="1582234703932" />
-    <state x="742" y="276" key="FileChooserDialogImpl" timestamp="1582234496740">
+    <state x="742" y="276" key="FileChooserDialogImpl" timestamp="1582314531527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="742" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582234496740" />
+    <state x="742" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582314531527" />
     <state width="1087" height="261" key="GridCell.Tab.0.bottom" timestamp="1582262912546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -514,10 +516,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1087" height="261" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582262912546" />
-    <state x="720" y="87" key="SettingsEditor" timestamp="1582258575859">
+    <state x="37" y="116" key="SettingsEditor" timestamp="1582314831484">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="720" y="87" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582258575859" />
+    <state x="37" y="116" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582314831484" />
     <state x="619" y="242" key="run.anything.popup" timestamp="1582237213569">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

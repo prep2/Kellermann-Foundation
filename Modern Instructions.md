@@ -91,7 +91,7 @@ Build & Run the program and this time, you will be able to log in with the crede
 > **Username:** emmanual  
 > **Password:** *tomcat password*
 
-Congratulations, you never have to do this ever again! (hopefully)
+Congratulations, you're finished, you will never have to do this ever again! (hopefully)
 ## Miscellaneous ## 
 
 If you decide to use Visual Studio Code, note that you will need to use the .war file inside the **midVer1Build** folder to run teh databse using the Tomcat extention. If you do not have a **.war** file, run the database using IntelliJ, it will create it for you. 

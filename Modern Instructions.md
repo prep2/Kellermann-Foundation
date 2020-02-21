@@ -38,25 +38,29 @@ Make sure the HTTP and the URL match when you do so.
 Other issues can come up, Google may help you resolve thsoe quickly.
 
 ## Populating the Database ##
-To populate the database, you need to run commands inside the MariaDB shell. Search for MariaDB on your computer, you should see a shell with the name "Command Prompt (MariaDB 10.4 (x64))". Open it, and note that the shell opens to your system32 folder. You need to change the directory to the folder containing the database SQL scripts located in \Kellermann-Foundation\sql\. 
+To populate the database, you need to run commands inside the MariaDB shell. Search for MariaDB on your computer, you should see a shell with the name "Command Prompt (MariaDB 10.4 (x64))". Open it, and note that the shell opens to your system32 folder. You need to change the directory to the folder containing the database SQL scripts located in *\Kellermann-Foundation\sql\*. 
 
 Use the cd function to change your directory. You can simply copy the address of your SQL folder in Windows Explorer and paste it into the MariaDB command prompt (use right click to paste).
-My command was: cd C:\Users\zarro\OneDrive\Documents\Visual Studio Code\Projects\Kellermann-Foundation\sql
+My command was: `cd C:\Users\zarro\OneDrive\Documents\Visual Studio Code\Projects\Kellermann-Foundation\sql`
 Note that my username will be different than yours.
 
 Or you can cd your way through your whole filesystem. 
 ![](https://i.imgur.com/tr58MjZ.png)
 
 Now you can run the populating commands. 
-mysql -u root -p
-<enter password set for MariaDB>
+`mysql -u root -p`
+`<enter password set for MariaDB>`
 
-MariaDB will load so you can run MySQL commands, we will use the source command. The syntax is:  
+MariaDB will load so you can run MySQL commands, we will use the source command. 
 
-`source *filename.fileextention* `
+The syntax is:  
+`source filename.fileextention`
+so our commands will be:
+`source bwindihospital_reduced.sql`
+`source HMIS_Script.sql`
 
+Run bwindihospital_reduced first, then HMIS_Script. You will need to do this anytime there are changes to the database. 
 
-	run bwindi, then HMIS
 
 
 ## Database Authentification ##

@@ -9,14 +9,14 @@ An IDE with Java and server capabilities, you can use [Intellij Ultimate](https:
 ## Installing Tomcat and MariaDB ##
 ### Tomcat ### 
 Using the .exe install method will prompt you for component selection and server configuration. 
-In component selection, make sure you install the Host Manager, it makes troubleshooting much easier and can be helpful later in the install process. 
-In server configuration, set your username and password. 
+In component selection, make sure you install the Host Manager, it makes troubleshooting **much** easier and can be helpful later in the install process. 
+In server configuration, set a username and password. 
 ### MariaDB ###
 Install all components.
 
 ## Setting up environment ##
 In order for your system to see these Tomcat and MariaDB in your terminal, you need to add your programs to your system environment varaibles. 
-First, open system properties, then open environment variables. Click the edit button for system variables (make sure you're not editing your user variables just above). Then hit the new button and add the PATH variables for your programs. You want to use the */bin* folder inside the program folder. 
+First, open **System Properties**, then open **Environment Variables**. Click the **Edit** button for system variables (make sure you're not editing your user variables just above). Then hit the **New** button and add the PATH variables for your programs. You want to use the */bin* folder inside the program folder. 
 ![](https://i.imgur.com/vArAOqn.jpg)
 My PATH variables are marked by the yellow arrows.
 

@@ -13,6 +13,7 @@ In component selection, make sure you install the Host Manager, it makes trouble
 In server configuration, set a username and password. 
 ### MariaDB ###
 Install all components.
+It will walk you through the setup and ask you for a password. Remember it as you will need it everytime you update the databases.
 
 ## Setting up environment ##
 In order for your system to see these Tomcat and MariaDB in your terminal, you need to add your programs to your system environment varaibles. 
@@ -48,7 +49,15 @@ Or you can cd your way through your whole filesystem.
 
 Now you can run the populating commands. 
 mysql -u root -p
-<enter password set>
+<enter password set for MariaDB>
+
+MariaDB will load so you can run MySQL commands, we will use the source command. The syntax is:  
+
+`source *filename.fileextention* `
+
+
+	run bwindi, then HMIS
+
 
 ## Database Authentification ##
 

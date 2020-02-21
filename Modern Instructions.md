@@ -16,7 +16,7 @@ Install all components.
 
 ## Setting up environment ##
 In order for your system to see these Tomcat and MariaDB in your terminal, you need to add your programs to your system environment varaibles. 
-First, open system properties, then open environment variables. Click the edit button for system variables (make sure you're not editing your user variables jus above). Then hit the new button and add the PATH variables for your programs. You want to use the /bin folder inside the program folder. 
+First, open system properties, then open environment variables. Click the edit button for system variables (make sure you're not editing your user variables just above). Then hit the new button and add the PATH variables for your programs. You want to use the */bin* folder inside the program folder. 
 ![](https://i.imgur.com/vArAOqn.jpg)
 My PATH variables are marked by the yellow arrows.
 
@@ -25,15 +25,16 @@ You should be able to run "mysql" in your terminal after a restart of your compu
 ## Running Tomcat inside an IDE ##
 We will be using Intellij IDEA Ultimate for this documentation. Using VS Code instead will be fairly straight forward provided you understand how to run Tomcat inside Intellij, and know how VS Code is structured. 
 
-Launch Intellij and open the hospital_maternity_hmis_project folder inside the Kellermann Foundation folder. This is where Tomcat will set its starting directory when you start up the server. 
+Launch Intellij and open the *hospital_maternity_hmis_project* folder inside the *Kellermann-Foundation* folder. This is where Tomcat will set its starting directory when you start up the server. 
 
 Make sure your Project SDK is Java 1.8 inside Project Structure (located in the File tab or the grid icon in the top left of the IDE).
-Next we need to add a Tomcat configuration. There is a configuration dropdown between the build and run icons in the toolbar, click it and open the "Edit Configurations" link. 
-Click "Add New Configuration" and select Tomcat Server. YOu may need to hit a "Show more" button of some kind. It will ask you if you want a local or a remote configuration, select local. 
+Next we need to add a Tomcat configuration. There is a configuration dropdown between the build and run icons in the toolbar, click it and open the **Edit Configurations** link. 
+Click **Add New Configuration** and select Tomcat Server. YOu may need to hit a "Show more" button of some kind. It will ask you if you want a local or a remote configuration, select local. 
 Intellij should auto-populate the settings fou. Try running the program using the Build & Run buttons, it should open the webpage at http://localhost:8080/BHMS/
 
 If it doesn't work, try changing the port and URL in the Edit Configurations panel. For example, change http://localhost:8080/BHMS/ to http://localhost:8082/BHMS/
 Make sure the HTTP and the URL match when you do so. 
+Other issues can come up, Google may help you resolve thsoe quickly.
 
 ## Populating the Database ##
 To populate the database, you need to run commands inside the MariaDB shell. Search for MariaDB on your computer, you should see a shell with the name "Command Prompt (MariaDB 10.4 (x64))". Open it, and note that the shell opens to your system32 folder. You need to change the directory to the folder containing the database SQL scripts located in \Kellermann-Foundation\sql\. 
@@ -44,6 +45,10 @@ Note that my username will be different than yours.
 
 Or you can cd your way through your whole filesystem. 
 ![](https://i.imgur.com/tr58MjZ.png)
+
+Now you can run the populating commands. 
+mysql -u root -p
+<enter password set>
 
 ## Database Authentification ##
 

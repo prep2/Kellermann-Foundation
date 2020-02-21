@@ -17,4 +17,4 @@ Install all components.
 ## Setting up environment ##
 In order for your system to see these Tomcat and MariaDB in your terminal, you need to add your programs to your system environment varaibles. 
 First, open system properties, then open  environment variables. Click the edit button for system variables (make sure you're not editing your user variables jus above). Then hit the new button and add the paths to your programs. You want to use the /bin folder inside the program folder, my paths are marked by the yellow arrows.
-![](https://imgur.com/vArAOqn)
+![](https://i.imgur.com/vArAOqn.jpg)

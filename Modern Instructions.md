@@ -3,8 +3,10 @@
 ## Programs needed ##
 Latest stable version of [Tomcat](https://tomcat.apache.org/download-80.cgi).
 Latest version of [MariaDB](https://mariadb.org/download/).
-An IDE with Java and server capabilities, you can use [Intellij Ultimate](https://www.jetbrains.com/idea/) or [Visual Studio Code](https://code.visualstudio.com/) with [Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) and [Tomcat](https://marketplace.visualstudio.com/items?itemName=adashen.vscode-tomcat) extentions. 
+An IDE with Java and server capabilities, you can use [Intellij IDEA Ultimate](https://www.jetbrains.com/idea/) or [Visual Studio Code](https://code.visualstudio.com/) with [Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) and [Tomcat](https://marketplace.visualstudio.com/items?itemName=adashen.vscode-tomcat) extentions. 
 [Java Development Kit](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html) is also needed but you likely already have installed on your system.
+
+>Make sure you use the Ultimate edition as that is the only way to interact with databases in Intellij. It is [free for students](https://www.jetbrains.com/student/).  
 
 ## Installing Tomcat and MariaDB ##
 ### Tomcat ### 
@@ -71,7 +73,7 @@ so our commands will be:
 
 `source HMIS_Script.sql`
 
-Run bwindihospital_reduced first, then HMIS_Script. You will need to do this anytime there are changes to the database. 
+Run `bwindihospital_reduced.sql` first, `then HMIS_Script.sql`. You will need to do this anytime there are changes to the database. 
 
 
 

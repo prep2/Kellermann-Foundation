@@ -16,5 +16,10 @@ Install all components.
 
 ## Setting up environment ##
 In order for your system to see these Tomcat and MariaDB in your terminal, you need to add your programs to your system environment varaibles. 
-First, open system properties, then open  environment variables. Click the edit button for system variables (make sure you're not editing your user variables jus above). Then hit the new button and add the paths to your programs. You want to use the /bin folder inside the program folder, my paths are marked by the yellow arrows.
+First, open system properties, then open environment variables. Click the edit button for system variables (make sure you're not editing your user variables jus above). Then hit the new button and add the PATH variables for your programs. You want to use the /bin folder inside the program folder. 
 ![](https://i.imgur.com/vArAOqn.jpg)
+My PATH variables are marked by the yellow arrows.
+
+You should be able to run "mysql" in your terminal after a restart of your computer. If there is an error reading "access denied for user...", then you have set up MariaDB successfully. 
+
+## Populating the database ##

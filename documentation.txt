@@ -1,0 +1,17 @@
+open maria console
+cd to sql file directory 
+
+mysql -u root -p
+<enter password set>
+
+mysql shell will load
+source *filename* 
+	run bwindi, then HMIS
+
+
+to see SQL tables
+	use bwindihospital_reduced
+
+
+
+end everything with ;

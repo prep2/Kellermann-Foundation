@@ -19,7 +19,7 @@ It will walk you through the setup and ask you for a password. Remember it as yo
 
 ## Setting up environment ##
 In order for your system to see these Tomcat and MariaDB in your terminal, you need to add your programs to your system environment varaibles. 
-First, open **System Properties**, then open **Environment Variables**. Click the **Edit** button for system variables (make sure you're not editing your user variables just above). Then hit the **New** button and add the PATH variables for your programs. You want to use the */bin* folder inside the program folder. 
+First, open **System Properties**, then open **Environment Variables**. Click the **Edit** button for system variables (make sure you're not editing your user variables just above). Then hit the **New** button and add the PATH variables for your programs. You want to use the **/bin** folder inside the program folder. 
 ![](https://i.imgur.com/vArAOqn.jpg)
 >My PATH variables for MariaDB and Tomcat are marked by the yellow arrows.
 

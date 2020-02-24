@@ -15,7 +15,7 @@ In component selection, make sure you install the Host Manager, it makes trouble
 In server configuration, set a username and password. 
 ### MariaDB ###
 Install all components.
-It will walk you through the setup and ask you for a password. Remember it as you will need it everytime you update the databases.
+It will walk you through the setup and ask you for a password. Remember it as you will need it everytime you update the database.
 
 ## Setting up environment ##
 In order for your system to see these Tomcat and MariaDB in your terminal, you need to add your programs to your system environment varaibles. 
@@ -76,7 +76,6 @@ so our commands will be:
 Run `bwindihospital_reduced.sql` first, `then HMIS_Script.sql`. You will need to do this anytime there are changes to the database. 
 
 
-
 ## Database Authentification ##
 
 Open the UsersDAO.java file located in **Kellermann-Foundation\hospital_maternity_hmis_project\WEB-INF\classes\dao** 
@@ -92,7 +91,8 @@ Build & Run the program and this time, you will be able to log in with the crede
 > **Password:** *tomcat password*
 
 Congratulations, you're finished, you will never have to do this ever again! (hopefully)
-## Miscellaneous ## 
 
-If you decide to use Visual Studio Code, note that you will need to use the .war file inside the **midVer1Build** folder to run teh databse using the Tomcat extention. If you do not have a **.war** file, run the database using IntelliJ, it will create it for you. 
+## Miscellaneous ##
+
+If you decide to use Visual Studio Code, note that you will need to use the **.war** file inside the **midVer1Build** folder to run the database using the Tomcat extention. If you do not have a **.war** file, run the database using IntelliJ, it will create it for you. 
 

@@ -30,18 +30,20 @@ We will be using Intellij IDEA Ultimate for this documentation. Using VS Code in
 
 Launch Intellij and open the **hospital_maternity_hmis_project** folder inside the **Kellermann-Foundation** folder. This is where Tomcat will set its starting directory when you start up the server. 
 
->Make sure your Project SDK is Java 1.8 inside Project Structure (located in the File tab or the grid icon in the top left of the IDE).
+>Make sure your Project SDK is **Java 1.8** inside Project Structure (located in the File tab or the grid icon in the top left of the IDE). 
 
 Next we need to add a Tomcat configuration. There is a configuration dropdown between the build and run icons in the toolbar, click it and open the **Edit Configurations** link. 
 Click **Add New Configuration** and select Tomcat Server. You may need to hit a "Show more" button of some kind. It will ask you if you want a local or a remote configuration, select **local**. 
 Intellij should auto-populate the default settings which *may* work out of the box. 
 
+In the Tomcat folder, there will be a file called server.xml, search for and open it and change the shutdown port from -1 to 82.
+
 Try running the program using the Build & Run buttons, it should open the login page at http://localhost:8080/BHMS/
 
-If it doesn't work, try changing the port and URL in the Edit Configurations panel. For example, change http://localhost:8080/BHMS/ to http://localhost:8082/BHMS/
+If it doesn't work, try changing the port and URL in the Edit Configurations panel and the server.xml file. For example, change http://localhost:8080/BHMS/ to http://localhost:8082/BHMS/
 
-Make sure the HTTP and the URL match when you do so. 
-Other issues can come up, Google may help you resolve those quickly.
+Make sure the HTTP and the URL match if you make any port changes. 
+Other issues can come up, Google may help you resolve those.
 
 ## Populating the Database ##
 To populate the database, you need to run commands inside the MariaDB shell. Search for MariaDB on your computer, you should see a shell with the name **Command Prompt (MariaDB 10.4 (x64))**. Open it, and note that the shell opens to your *\Windows\system32* folder. You need to change the directory to the folder containing the database SQL scripts located in **\Kellermann-Foundation\sql**. 

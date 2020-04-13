@@ -129,19 +129,23 @@ Source: https://www.atlassian.com/git/tutorials/syncing
 
 ![Select your respository](https://i.imgur.com/EZnKWwb.png)
 
-    Select the repository. Note that I have two respositories with the same name, one is a fork (a copy) and one is the official UTDEPICS repository. The owner is listed above each.
+>Select the repository. Note that I have two respositories with the same name, one is a fork (a copy) and one is the official UTDEPICS repository. The owner is listed above each.
 
 ![Walkthrough](https://i.imgur.com/tfJkdSf.png)
+1. This is your list of changes. They can be simple edits to entire files being created or deleted. The checkmark to the left of the filename lets you add or remove that file from the commit.
 
-    1. This is your list of changes. They can be simple edits to entire files being created or deleted. The checkmark to the left of the filename lets you add or remove that file from the commit.
-    2. The description for your commit.
-    3. Your branch. Each repository has a master branch which is generally the latest production code. You can also create more branches for staging changes for the master (think of it as a beta repository) or other usecases. Here, we have a branch just for spring 2020 changes.
-    4. Fetching/Pushing origin button. This button lets you grab the latest changes from upstream (the spring 2020 branch in this instance) or push your changes to the upstream.
+2. The description for your commit.
+
+3. Your branch. Each repository has a master branch which is generally the latest production code. You can also create more branches for staging changes for the master (think of it as a beta repository) or other usecases. Here, we have a branch just for spring 2020 changes.
+
+4. Fetching/Pushing origin button. This button lets you grab the latest changes from upstream (the spring 2020 branch in this instance) or push your changes to the upstream.
 
 >To make a commit, simply check which files you wish to commit, add a description, and hit the commit button at the bottom left.
 
 ![Pushing](https://i.imgur.com/gR0hzN5.png)
 
-    1. The push origin button shows you how many local commits you have and lets you push to the origin.
-    2. Same as the first button but smaller and less blue.
-    3. Your un-commited changes. These would be files you haven't finished editing or files you don't want to upload.
+1. The push origin button shows you how many local commits you have and lets you push to the origin.
+
+2. Same as the first button but smaller and less blue.
+
+3. Your un-commited changes. These would be files you haven't finished editing or files you don't want to upload.

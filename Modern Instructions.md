@@ -98,3 +98,50 @@ Congratulations, you're finished, you will never have to do this ever again! (ho
 
 If you decide to use Visual Studio Code, note that you will need to use the **.war** file inside the **midVer1Build** folder to run the database using the Tomcat extention. If you do not have a **.war** file, run the database using IntelliJ, it will create it for you.
 
+# Using GitHub #
+
+## Terminology ##
+
+- A commit is what you will be "pushing" to the origin. When you make a commit, you save those changes to your local repository meaning those changes are only on your machine.
+- A push is used to upload local repository content to a remote repository. Pushing is how you transfer commits from your local repository to a remote repo.
+- A pull is used to fetch and download content from a remote repository and immediately update the local repository to match that content. It checks and downloads all new changes.
+- A fetch is used to download commits, files, and refs from a remote repository into your local repo.  It checks to see if there are any changes available.
+
+Source: https://www.atlassian.com/git/tutorials/syncing
+
+## Software Needed ##
+
+- [GitHub Desktop](https://desktop.github.com/)
+- [Git Bash](https://gitforwindows.org/) (Optional, but required if you are using VS Code or CLI)
+
+
+
+## Setting up GitHub Desktop ##
+
+1. Launch GitHub Desktop
+2. Open File > Options
+3. Log in to your GitHub Account
+4. Either clone the repository if you don't have it downlaoded already or add local repository and find where your existing repository
+
+>The repository URL is `https://github.com/utdEPICS/Kellermann-Foundation.git`
+
+## Using GitHub Desktop
+
+![Select your respository](https://i.imgur.com/EZnKWwb.png)
+
+    Select the repository. Note that I have two respositories with the same name, one is a fork (a copy) and one is the official UTDEPICS repository. The owner is listed above each.
+
+![Walkthrough](https://i.imgur.com/tfJkdSf.png)
+
+    1. This is your list of changes. They can be simple edits to entire files being created or deleted. The checkmark to the left of the filename lets you add or remove that file from the commit.
+    2. The description for your commit.
+    3. Your branch. Each repository has a master branch which is generally the latest production code. You can also create more branches for staging changes for the master (think of it as a beta repository) or other usecases. Here, we have a branch just for spring 2020 changes.
+    4. Fetching/Pushing origin button. This button lets you grab the latest changes from upstream (the spring 2020 branch in this instance) or push your changes to the upstream.
+
+>To make a commit, simply check which files you wish to commit, add a description, and hit the commit button at the bottom left.
+
+![Pushing](https://i.imgur.com/gR0hzN5.png)
+
+    1. The push origin button shows you how many local commits you have and lets you push to the origin.
+    2. Same as the first button but smaller and less blue.
+    3. Your un-commited changes. These would be files you haven't finished editing or files you don't want to upload.

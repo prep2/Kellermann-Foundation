@@ -7,30 +7,11 @@ package dao;
 
 
 import java.io.Serializable;
-import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import model.Error;
-import model.Vht;
-import model.Hmis;
-import model.Village;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 
 public class CachedOptionsDAO implements Serializable {
     private static final long serialVersionUID = 1L;
+    @SuppressWarnings("unused") //Date date is unused
     private static Date date;
 
 //    public static List<String> Get_Breathing_Options() throws SQLException

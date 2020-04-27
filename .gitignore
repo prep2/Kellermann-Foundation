@@ -84,3 +84,5 @@ midVer1Build
 .idea/vcs.xml
 .idea/workspace.xml
 
+# class files
+*.class

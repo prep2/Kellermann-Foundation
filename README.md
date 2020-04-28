@@ -39,4 +39,4 @@ The web application will allow for efficient monotiring and care of mothers and 
 - Add in report-generating functionaility for patient records
 - Communicating with the Bwindi IT team to determine the next ward that needs to be worked on
 
-### For inquiries, email bht170030@utdallas.edu (Fall 2019)
+### For inquiries, email bht170030@utdallas.edu (Fall 2019), or art170230@utdallas.edu (Spring 2020)

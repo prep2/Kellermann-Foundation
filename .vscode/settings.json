@@ -1,0 +1,18 @@
+{
+    "java.dependency.syncWithFolderExplorer": true,
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/javax.faces.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/commons-fileupload-1.3.1.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/commons-io-2.4.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/commons-lang3-3.1.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/jstl-api.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/jstl-impl.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/mysql-connector-java-5.1.23-bin.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/poi-3.9-20121203.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/primefaces-5.0.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/primefaces-5.1.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/primefaces-extensions-2.0.0.jar",
+        "hospital_maternity_hmis_project/WEB-INF/lib/servlet-api.jar"
+    ]
+}

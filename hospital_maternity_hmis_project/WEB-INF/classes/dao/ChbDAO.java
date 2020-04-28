@@ -18,8 +18,6 @@ import model.Vht;
 import model.Hmis;
 import model.Village;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 
 
 /**
@@ -47,7 +45,7 @@ public class ChbDAO implements Serializable {
             PreparedStatement stmt = con.prepareStatement("select * from village Where ParishId In ('PARI001','PARI002','PARI003','PARI004','PARI005','PARI006','PARI007','PARI008','PARI009','PARI010','PARI016','PARI017','PARI047') order by VillageName ASC");
 
             ResultSet rs = stmt.executeQuery();
-            List village_list = new ArrayList();
+            List <Village> village_list = new ArrayList <Village>();
 
             while (rs.next()) {
                 village = new Village(rs.getString("VillageId"),rs.getString("ParishId"),rs.getString("VillageName"));
@@ -73,7 +71,7 @@ public class ChbDAO implements Serializable {
             PreparedStatement stmt = con.prepareStatement("SELECT * From vht,village Where vht.vhtVillage=village.VillageId");
 
             ResultSet rs = stmt.executeQuery();
-            List vht_list = new ArrayList();
+            List <Vht> vht_list = new ArrayList <Vht>();
 
             while (rs.next()) {
 
@@ -115,7 +113,7 @@ public class ChbDAO implements Serializable {
 
 
             ResultSet rs = stmt.executeQuery();
-            List hmis_list = new ArrayList();
+            List <Hmis> hmis_list = new ArrayList<Hmis>();
 
             System.out.println("Null?"+rs.wasNull());
             while (rs.next()) {
@@ -201,7 +199,7 @@ public class ChbDAO implements Serializable {
             stmt.setString(1, VillageId);
 
             ResultSet rs = stmt.executeQuery();
-            List vht_list = new ArrayList();
+            List <Vht> vht_list = new ArrayList <Vht>();
 
             while (rs.next()) {
 
@@ -240,7 +238,7 @@ public class ChbDAO implements Serializable {
 
 
             ResultSet rs = stmt.executeQuery();
-            List hmis_list = new ArrayList();
+            List <Hmis> hmis_list = new ArrayList <Hmis>();
 
             while (rs.next()) {
 
@@ -484,10 +482,10 @@ public class ChbDAO implements Serializable {
             PreparedStatement stmt = con.prepareStatement("SELECT * From vht,village Where vht.vhtVillage=village.VillageId and vhtId=?");
 
             stmt.setObject(1, VhtId);
-                        
+
             ResultSet rs = stmt.executeQuery();
-            
-            Vht vht = new Vht();            
+
+            Vht vht = new Vht();
             while (rs.next()) {
 
                 vht.setVhtId(rs.getInt("vhtId"));
@@ -746,6 +744,8 @@ public class ChbDAO implements Serializable {
     }
 
 
+
+    @SuppressWarnings("unused") //no obvious use for this function but no harm in keeping it in
     private static java.sql.Date stringToSQLDate(String startDate)
     {
         try {

@@ -54,7 +54,7 @@ public class UsersDAO
             return false;
         }
     }
-    
+
     public static boolean User_Exists(String userName)
             throws SQLException {
 
@@ -70,9 +70,9 @@ public class UsersDAO
 
             stmt = con.prepareStatement("select * from users where userName= ?");
             stmt.setString(1, userName);
-            
+
             ResultSet rs = stmt.executeQuery();
-            
+
             if (rs.next()) {
                 con.close();
                 return true;
@@ -148,8 +148,8 @@ public class UsersDAO
             return null;
         }
     }
-    
-    
+
+
 
     public static Loggedin Users_Get_Details(String userName, String password)
             throws SQLException {
@@ -326,7 +326,7 @@ public class UsersDAO
 
             ResultSet rs = stmt.executeQuery();
 
-            List userList = new ArrayList();
+            List <Users> userList = new ArrayList<Users>();
 
             while (rs.next()) {
                 users = new Users(rs.getString("UID"), rs.getString("FullName"), rs.getString("UserName"), rs.getString("Sex"), rs.getString("Status"), rs.getString("DepartmentName"));
@@ -358,7 +358,7 @@ public class UsersDAO
 
             ResultSet rs = stmt.executeQuery();
 
-            List userList = new ArrayList();
+            List <Users> userList = new ArrayList <Users>();
 
             while (rs.next()) {
                 users = new Users(rs.getString("uid"), rs.getString("fullName"), rs.getString("userName"), rs.getString("sex"), rs.getString("status"));
@@ -418,7 +418,7 @@ public class UsersDAO
             stmt.setString(1, uid);
 
             ResultSet rs = stmt.executeQuery();
-            List userList = new ArrayList();
+            List <Users> userList = new ArrayList <Users>();
 
             while (rs.next()) {
                 users = new Users(rs.getString("uid"), rs.getString("fullName"), rs.getString("userName"), rs.getString("sex"), rs.getString("status"));
@@ -512,7 +512,7 @@ public class UsersDAO
             stmt.setString(1, dateFormat.format(date));
 
             ResultSet rs = stmt.executeQuery();
-            List userList = new ArrayList();
+            List <Users> userList = new ArrayList <Users>();
 
             while (rs.next()) {
                 users = new Users(rs.getString("UID"), rs.getString("FullName"));
@@ -547,7 +547,7 @@ public class UsersDAO
             stmt.setString(2, uid);
 
             ResultSet rs = stmt.executeQuery();
-            List userList = new ArrayList();
+            List <Users> userList = new ArrayList <Users>();
             while (rs.next()) {
                 users = new Users(rs.getString("UID"), rs.getString("FullName"));
                 userList.add(users);
@@ -739,7 +739,7 @@ public class UsersDAO
             stmt.setString(1, dateFormat.format(date));
 
             ResultSet rs = stmt.executeQuery();
-            List userList = new ArrayList();
+            List <Users> userList = new ArrayList <Users>();
 
             while (rs.next()) {
                 users = new Users(rs.getString("UID"), rs.getString("FullName"));
@@ -803,7 +803,7 @@ public class UsersDAO
 
             ResultSet rs = stmt.executeQuery();
 
-            List userList = new ArrayList();
+            List <Users> userList = new ArrayList <Users>();
 
             while (rs.next()) {
                 users = new Users();
@@ -823,7 +823,7 @@ public class UsersDAO
             return null;
         }
     }
-    
+
     public static String Users_Surgery_Get_Profile_Status(String sys_id)
             throws SQLException {
 

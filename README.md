@@ -12,7 +12,7 @@ This project focuses on development of a web application to be used by the mater
 ## Members of this Project
 
 - Khoa Nguyen - Biology
-- Jorge Gonzalez - Computer Science
+- Jorge Gonzalez - Software Engineering
 - Afsar Thalakola - Computer Science
 - Aishani De Sirkar - Computer Science
 - Muiez Queshi - Computer Science
@@ -39,4 +39,4 @@ The web application will allow for efficient monotiring and care of mothers and 
 - Add in report-generating functionaility for patient records
 - Communicating with the Bwindi IT team to determine the next ward that needs to be worked on
 
-### For inquiries, email bht170030@utdallas.edu (Fall 2019), art170230@utdallas.edu (Spring 2020)
+### For inquiries, email bht170030@utdallas.edu (Fall 2019)

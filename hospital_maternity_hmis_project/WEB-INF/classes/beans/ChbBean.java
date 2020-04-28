@@ -7,10 +7,8 @@ package beans;
 
 import dao.ChbDAO;
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -46,13 +44,13 @@ public class ChbBean
 //        tabView.setActiveIndex(0);
         new_vht = new Vht();
         existing_vht = new Vht();
-        vht_list = new ArrayList();
-        village_vht_list = new ArrayList();
+        vht_list = new ArrayList <Vht>();
+        village_vht_list = new ArrayList <Vht>();
         //HMIS info
         new_hmis = new Hmis();
         existing_hmis = new Hmis();
-        hmis_list = new ArrayList();
-        village_hmis_list = new ArrayList();
+        hmis_list = new ArrayList <Hmis>();
+        village_hmis_list = new ArrayList <Hmis>();
 
     }
 
@@ -68,7 +66,7 @@ public class ChbBean
         return new_vht;
     }
 
-    public void setNew_vht(Vht new_vht) {
+    public void setNew_vht(final Vht new_vht) {
         this.new_vht = new_vht;
     }
 
@@ -76,7 +74,7 @@ public class ChbBean
         return existing_vht;
     }
 
-    public void setExisting_vht(Vht existing_vht) {
+    public void setExisting_vht(final Vht existing_vht) {
         this.existing_vht = existing_vht;
     }
 
@@ -84,7 +82,7 @@ public class ChbBean
         return vht_list;
     }
 
-    public void setVht_list(List<Vht> vht_list) {
+    public void setVht_list(final List<Vht> vht_list) {
         this.vht_list = vht_list;
     }
 
@@ -92,7 +90,7 @@ public class ChbBean
         return filteredVht_list;
     }
 
-    public void setFilteredVht_list(List<Vht> filteredVht_list) {
+    public void setFilteredVht_list(final List<Vht> filteredVht_list) {
         this.filteredVht_list = filteredVht_list;
     }
 
@@ -100,7 +98,7 @@ public class ChbBean
         return village_vht_list;
     }
 
-    public void setVillage_vht_list(List<Vht> village_vht_list) {
+    public void setVillage_vht_list(final List<Vht> village_vht_list) {
         this.village_vht_list = village_vht_list;
     }
 
@@ -109,7 +107,7 @@ public class ChbBean
         return new_hmis;
     }
 
-    public void setNew_hmis(Hmis new_hmis) {
+    public void setNew_hmis(final Hmis new_hmis) {
         this.new_hmis = new_hmis;
     }
 
@@ -117,7 +115,7 @@ public class ChbBean
         return existing_hmis;
     }
 
-    public void setExisting_hmis(Hmis existing_hmis) {
+    public void setExisting_hmis(final Hmis existing_hmis) {
         this.existing_hmis = existing_hmis;
     }
 
@@ -125,13 +123,13 @@ public class ChbBean
         return hmis_list;
     }
 
-    public void setHmis_list(List<Hmis> hmis_list) { this.hmis_list = hmis_list; }
+    public void setHmis_list(final List<Hmis> hmis_list) { this.hmis_list = hmis_list; }
 
     public List<Hmis> getFilteredHmis_list() {
         return filteredHmis_list;
     }
 
-    public void setFilteredHmis_list(List<Hmis> filteredHmis_list) {
+    public void setFilteredHmis_list(final List<Hmis> filteredHmis_list) {
         this.filteredHmis_list = filteredHmis_list;
     }
 
@@ -139,7 +137,7 @@ public class ChbBean
         return village_hmis_list;
     }
 
-    public void setVillage_hmis_list(List<Hmis> village_hmis_list) {
+    public void setVillage_hmis_list(final List<Hmis> village_hmis_list) {
         this.village_hmis_list = village_hmis_list;
     }
 
@@ -147,7 +145,7 @@ public class ChbBean
     public List<Village> get_villages() {
         try {
             return ChbDAO.Get_Villages();
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             System.err.println("vaccineBean Error: Method: get_villages " + ex.getMessage());
         }
         return null;
@@ -156,7 +154,7 @@ public class ChbBean
     public List<Vht> get_vht_list() {
         try {
             return ChbDAO.Get_Vht_List();
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             System.err.println("ChbBean Error: Method: get_vht_list" + ex.getMessage());
         }
         return null;
@@ -165,7 +163,7 @@ public class ChbBean
         try {
             System.out.println("HmisList:"+ChbDAO.Get_Hmis_List());
             return ChbDAO.Get_Hmis_List();
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             System.err.println("ChbBean Error: Method: get_hmis_list" + ex.getMessage());
         }
         return null;
@@ -178,7 +176,7 @@ public class ChbBean
             existing_vht.setAge(null);
             existing_vht.setSex(null);
             existing_vht.setIsCBD(null);
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             System.err.println("ChbBean Error: Method: get_village_vht_list" + ex.getMessage());
         }
     }
@@ -236,13 +234,13 @@ public class ChbBean
             this.existing_hmis.setMotherCondition((String)null);
             this.existing_hmis.setBabyCondition((String)null);
             this.existing_hmis.setDeliveredBy(null);this.existing_hmis.setPostNatalCare(null);
-        } catch (Exception var2) {
+        } catch (final Exception var2) {
             System.err.println("ChbBean Error: Method: get_village_vht_list" + var2.getMessage());
         }
 
     }
 
-    public void save_new_vht(Integer userId,String Action) {
+    public void save_new_vht(final Integer userId,final String Action) {
         try {
 //            System.out.println("ChbBean.save_new_vht" + userId);
             if(Action.equals("Save")) {
@@ -254,12 +252,12 @@ public class ChbBean
             }
             new_vht = new Vht();
 //            tabView.setActiveIndex(0);
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             System.err.println("ChbBean Error: Method: save_new_vht " + ex.getMessage());
         }
     }
 
-    public void save_new_hmis(Integer userId,String Action) {
+    public void save_new_hmis(final Integer userId,final String Action) {
         try {
             System.out.println("ChbBean.save_new_hmis" + userId);
             if(Action.equals("Save")) {
@@ -271,38 +269,38 @@ public class ChbBean
             }
             new_hmis = new Hmis();
 //            tabView.setActiveIndex(0);
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             System.err.println("ChbBean Error: Method: save_new_hmis " + ex.getMessage());
         }
     }
 
-    public String get_existing_vht(Integer vhtId,String destination) {
+    public String get_existing_vht(final Integer vhtId,final String destination) {
         try {
 //            existing_vht = ChbDAO.Get_Existing_Vht(existing_vht.getVhtId());
             existing_vht = ChbDAO.Get_Existing_Vht(vhtId);
             return destination;
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             System.err.println("ChbBean Error: Method: get_existing_vht" + ex.getMessage());
             return null;
         }
     }
 
-    public String get_existing_hmis(Integer ipd,String destination) {
+    public String get_existing_hmis(final Integer ipd,final String destination) {
         try {
             existing_hmis = ChbDAO.Get_Existing_Hmis(ipd);
             return destination;
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             System.err.println("ChbBean Error: Method: get_existing_hmis" + ex.getMessage());
             return null;
         }
     }
 
-    public String update_existing_vht(String Action) {
+    public String update_existing_vht(final String Action) {
         try {
             System.out.println("ChbBean.update_existing_vht");
             if(Action.equals("Update")) {
                 if(ChbDAO.Update_Existing_Vht(existing_vht)) {
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "VHT Details Updated Successfully", "Success"));                
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "VHT Details Updated Successfully", "Success"));
                 } else {
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Transaction Error. Contact System Administrator If Error Persists", "Failure"));
                 }
@@ -315,14 +313,14 @@ public class ChbBean
             existing_vht.setAge(null);
             existing_vht.setVhtPhoneNumber("");
             existing_vht.setIsCBD("");
-            return "vht";            
-        } catch (Exception ex) {
+            return "vht";
+        } catch (final Exception ex) {
             System.err.println("ChbBean Error: Method: update_existing_vht " + ex.getMessage());
             return null;
         }
     }
 
-    public String update_existing_hmis(String Action) {
+    public String update_existing_hmis(final String Action) {
         try {
             if (Action.equals("Update")) {
                 if (ChbDAO.Update_Existing_Hmis(this.existing_hmis)) {
@@ -389,7 +387,7 @@ public class ChbBean
             this.existing_hmis.setNameDischarge("");
             this.existing_hmis.setUserId(null);
             return "hmis";
-        } catch (Exception var3) {
+        } catch (final Exception var3) {
             System.err.println("ChbBean Error: Method: update_existing_hmis " + var3.getMessage());
             return null;
         }

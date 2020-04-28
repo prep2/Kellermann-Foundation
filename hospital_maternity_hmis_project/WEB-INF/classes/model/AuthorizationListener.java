@@ -1,9 +1,6 @@
 package model;
 
-import javax.faces.application.Application;
 import javax.faces.application.NavigationHandler;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
@@ -13,7 +10,9 @@ import javax.servlet.http.HttpSession;
 public class AuthorizationListener
   implements PhaseListener
 {
-  public void afterPhase(PhaseEvent event)
+	private static final long serialVersionUID = 6406806522469361092L;  //randomly generated for serialized class
+
+public void afterPhase(PhaseEvent event)
   {
     FacesContext facesContext = event.getFacesContext();
     String currentPage = facesContext.getViewRoot().getViewId();
